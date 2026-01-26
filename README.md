@@ -1,29 +1,31 @@
-# Astro Starter Kit: Minimal
+# Javi Rubio - Personal Website
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Personal website built with Astro, featuring a clean, minimalist design focused on content and readability.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Tech Stack
 
-## 🚀 Project Structure
+- Astro
+- JavaScript (vanilla)
+- CSS (vanilla, no frameworks)
+- System fonts
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
 /
 ├── public/
+│   └── profile.jpg
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── speaking.astro
+│   │   └── contact.astro
+│   └── styles/
+│       └── global.css
 └── package.json
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 

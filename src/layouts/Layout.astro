@@ -1,5 +1,6 @@
 ---
 const { title } = Astro.props;
+const description = "Helping teams build better products, knowledge systems, and sustainable work cultures. 20 years at the intersection of product, engineering, and knowledge management.";
 ---
 
 <!DOCTYPE html>
@@ -9,6 +10,7 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
