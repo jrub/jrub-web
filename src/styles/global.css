@@ -1,0 +1,40 @@
+:root {
+  /* Brand colors */
+  --color-magenta: #C61E6B;
+  --color-turquoise: #7BC5BC;
+
+  /* Neutral colors */
+  --color-white: #FFFFFF;
+  --color-black: #1A1A1A;
+  --color-gray-light: #F8F8F8;
+  --color-gray-medium: #666666;
+
+  /* Typography */
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-system);
+  color: var(--color-black);
+  background-color: var(--color-white);
+  line-height: 1.6;
+}
+
+h1, h2 {
+  color: var(--color-magenta);
+}
+
+a {
+  color: var(--color-turquoise);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
