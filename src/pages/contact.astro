@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact - Javi Rubio">
+  <div class="contact-container">
+    <h1>Let's talk</h1>
+
+    <p class="intro">Open to conversations and collaborations on AI strategy, product thinking, or work culture. Available for speaking, workshops, and advisory work.</p>
+
+    <div class="contact-list">
+      <div class="contact-item">
+        <span class="contact-label">Schedule a call:</span>
+        <a href="https://app.timetime.in/rp/javier" target="_blank" rel="noopener noreferrer">
+          https://app.timetime.in/rp/javier
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-label">Email:</span>
+        <a href="mailto:jrubr@duck.com">
+          jrubr@duck.com
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-label">LinkedIn:</span>
+        <a href="https://linkedin.com/in/javi-rubio" target="_blank" rel="noopener noreferrer">
+          https://linkedin.com/in/javi-rubio
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <span class="contact-label">#NoMeetings:</span>
+        <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer">
+          https://nomeetings.work
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .contact-label {
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+
+  .contact-item a {
+    color: var(--color-turquoise);
+  }
+
+  .contact-item a:hover {
+    text-decoration: underline;
+  }
+</style>
