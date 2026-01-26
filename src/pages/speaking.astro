@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Speaking - Javi Rubio">
+  <div class="speaking-container">
+    <h1>Speaking</h1>
+
+    <p class="intro">I regularly speak at corporate events and tech conferences:</p>
+
+    <div class="talks-list">
+      <div class="talk">
+        <a href="https://www.youtube.com/watch?v=IHIsuIlSiio" target="_blank" rel="noopener noreferrer">
+          <strong>Documenting APIs</strong>
+        </a>
+        <span class="separator">·</span>
+        <span class="event">Software Crafters Barcelona, 2025</span>
+      </div>
+
+      <div class="talk">
+        <a href="https://www.youtube.com/watch?v=HsPIX0tNlO8" target="_blank" rel="noopener noreferrer">
+          <strong>AI in support teams</strong>
+        </a>
+        <span class="separator">·</span>
+        <span class="event">Software Crafters Barcelona, 2024</span>
+      </div>
+
+      <div class="talk">
+        <strong>Enterprise knowledge management</strong>
+        <span class="separator">·</span>
+        <span class="event">CAS (Agile Spain Conference), Madrid, 2024</span>
+      </div>
+
+      <div class="talk">
+        <strong>We're capitalists</strong>
+        <span class="separator">·</span>
+        <span class="event">Software Crafters Barcelona, 2023</span>
+      </div>
+
+      <div class="talk">
+        <a href="https://www.youtube.com/watch?v=SYnLZCFtims" target="_blank" rel="noopener noreferrer">
+          <strong>#NoMeetings: How to have fewer, more efficient meetings</strong>
+        </a>
+        <span class="separator">·</span>
+        <span class="event">CAS, Santiago de Compostela, 2022</span>
+      </div>
+
+      <div class="talk">
+        <strong>Great interactions generate great products</strong>
+        <span class="separator">·</span>
+        <span class="event">CAS, Vitoria, 2018 (workshop)</span>
+      </div>
+
+      <div class="talk">
+        <a href="https://www.youtube.com/watch?v=1fs9DPdTKS8" target="_blank" rel="noopener noreferrer">
+          <strong>DevOps: From the trenches to the boardroom</strong>
+        </a>
+        <span class="separator">·</span>
+        <span class="event">CAS, Alicante, 2016</span>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .speaking-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .talks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .talk {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .talk strong {
+    font-weight: 600;
+  }
+
+  .separator {
+    margin: 0 0.5rem;
+    color: var(--color-gray-medium);
+  }
+
+  .event {
+    color: var(--color-gray-medium);
+  }
+
+  .talk a {
+    color: var(--color-turquoise);
+  }
+
+  .talk a:hover {
+    text-decoration: underline;
+  }
+</style>
