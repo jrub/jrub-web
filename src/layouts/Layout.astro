@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 const { title } = Astro.props;
 const description = "Helping teams build better products, knowledge systems, and sustainable work cultures. 20 years at the intersection of product, engineering, and knowledge management.";
 const currentPath = Astro.url.pathname;
@@ -68,8 +69,6 @@ const currentPath = Astro.url.pathname;
 </html>
 
 <style>
-  @import '../styles/global.css';
-
   header {
     padding: 2rem;
     border-bottom: 1px solid var(--color-gray-light);
