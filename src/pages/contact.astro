@@ -6,36 +6,23 @@ import Layout from '../layouts/Layout.astro';
   <div class="contact-container">
     <h1>Let's talk</h1>
 
-    <p class="intro">Open to conversations and collaborations on AI strategy, product thinking, or work culture. Available for speaking, workshops, and advisory work.</p>
+    <p class="intro">
+      Open to conversations and collaborations on AI strategy, product thinking, or work culture.
+      Available for speaking, workshops, and advisory work.
+    </p>
 
-    <div class="contact-list">
-      <div class="contact-item">
-        <span class="contact-label">Schedule a call:</span>
-        <a href="https://app.timetime.in/rp/javier" target="_blank" rel="noopener noreferrer">
-          https://app.timetime.in/rp/javier
-        </a>
-      </div>
+    <p class="intro">
+      Send me an email at <a href="mailto:jrubr@duck.com">jrubr@duck.com</a> or schedule a call below:
+    </p>
 
-      <div class="contact-item">
-        <span class="contact-label">Email:</span>
-        <a href="mailto:jrubr@duck.com">
-          jrubr@duck.com
-        </a>
-      </div>
-
-      <div class="contact-item">
-        <span class="contact-label">LinkedIn:</span>
-        <a href="https://linkedin.com/in/javi-rubio" target="_blank" rel="noopener noreferrer">
-          https://linkedin.com/in/javi-rubio
-        </a>
-      </div>
-
-      <div class="contact-item">
-        <span class="contact-label">#NoMeetings:</span>
-        <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer">
-          https://nomeetings.work
-        </a>
-      </div>
+    <div class="timetime-embed">
+      <iframe
+        src="https://app.timetime.in/b/fc270c46-17dd-4d47-ad67-531b7cd372fa?hideInfo=true"
+        width="100%"
+        height="100%"
+        style="border: none; min-height: 600px"
+        title="Schedule a call with Javi Rubio"
+      ></iframe>
     </div>
   </div>
 </Layout>
@@ -53,32 +40,21 @@ import Layout from '../layouts/Layout.astro';
 
   .intro {
     font-size: 1.1rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
     line-height: 1.7;
   }
 
-  .contact-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  .intro:last-of-type {
+    margin-bottom: 2.5rem;
   }
 
-  .contact-item {
-    font-size: 1.1rem;
-    line-height: 1.6;
+  .intro a {
+    font-weight: 500;
   }
 
-  .contact-label {
-    font-weight: 600;
-    margin-right: 0.5rem;
-  }
-
-  .contact-item a {
-    color: var(--color-turquoise);
-  }
-
-  .contact-item a:hover {
-    text-decoration: underline;
+  .timetime-embed {
+    width: 100%;
+    min-height: 600px;
   }
 
   @media (max-width: 768px) {
@@ -88,21 +64,6 @@ import Layout from '../layouts/Layout.astro';
 
     .intro {
       font-size: 1rem;
-    }
-
-    .contact-item {
-      font-size: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .contact-label {
-      margin-right: 0;
-    }
-
-    .contact-item a {
-      word-break: break-all;
     }
   }
 </style>
