@@ -5,7 +5,7 @@ import profileImage from '../../public/profile.jpg';
 ---
 
 <Layout title="Javi Rubio">
-  <div class="home-container">
+  <div class="content-container">
     <section class="hero">
       <div class="hero-header">
         <div>
@@ -15,19 +15,19 @@ import profileImage from '../../public/profile.jpg';
         <Image src={profileImage} alt="Javi Rubio" class="profile-photo" width={200} height={200} />
       </div>
 
-      <p class="bio">
+      <p class="intro">
         20 years working at the intersection of product, engineering, and knowledge management. I've been part of startups from day one, served as CTO, led complex technical products, and built developer experience systems.
       </p>
 
-      <p class="bio">
+      <p class="intro">
         I speak at tech conferences and corporate events, organize communities, and work with organizations on AI strategy, collaboration practices, and sustainable work cultures.
       </p>
 
-      <p class="bio">
+      <p class="intro">
         Known for championing <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>, helping distributed teams rethink collaboration beyond default rituals.
       </p>
 
-      <p class="bio">
+      <p class="intro">
         I work with organizations on speaking engagements, workshops, and advisory projects. <a href="/contact">Let's talk!</a>
       </p>
     </section>
@@ -35,11 +35,6 @@ import profileImage from '../../public/profile.jpg';
 </Layout>
 
 <style>
-  .home-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
   .hero {
     text-align: left;
   }
@@ -73,7 +68,6 @@ import profileImage from '../../public/profile.jpg';
   }
 
   h1 {
-    font-size: 2.5rem;
     margin-bottom: 1rem;
   }
 
@@ -81,21 +75,6 @@ import profileImage from '../../public/profile.jpg';
     font-size: 1.3rem;
     font-weight: 500;
     color: var(--color-black);
-  }
-
-  .bio {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-  }
-
-  .bio a {
-    font-weight: 500;
-    color: var(--color-turquoise);
-  }
-
-  .bio a:hover {
-    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
@@ -111,16 +90,8 @@ import profileImage from '../../public/profile.jpg';
       order: -1;
     }
 
-    h1 {
-      font-size: 2rem;
-    }
-
     .tagline {
       font-size: 1.1rem;
-    }
-
-    .bio {
-      font-size: 1rem;
     }
   }
 </style>

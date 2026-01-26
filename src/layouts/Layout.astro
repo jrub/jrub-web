@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 const { title } = Astro.props;
 const description = "Helping teams build better products, knowledge systems, and sustainable work cultures. 20 years at the intersection of product, engineering, and knowledge management.";
 const currentPath = Astro.url.pathname;
@@ -68,11 +69,13 @@ const currentPath = Astro.url.pathname;
 </html>
 
 <style>
-  @import '../styles/global.css';
-
   header {
-    padding: 2rem;
+    position: sticky;
+    top: 0;
+    background-color: var(--color-white);
+    padding: 1rem 2rem;
     border-bottom: 1px solid var(--color-gray-light);
+    z-index: 100;
   }
 
   nav {
@@ -144,18 +147,11 @@ const currentPath = Astro.url.pathname;
 
   @media (max-width: 768px) {
     header {
-      padding: 1rem;
-    }
-
-    nav {
-      flex-direction: column;
-      gap: 1rem;
-      align-items: flex-start;
+      padding: 0.75rem 1rem;
     }
 
     .nav-links {
       gap: 1rem;
-      flex-wrap: wrap;
     }
 
     main {

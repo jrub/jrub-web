@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Speaking - Javi Rubio">
-  <div class="speaking-container">
+  <div class="content-container">
     <h1>Speaking</h1>
 
     <p class="intro">I regularly speak at corporate events and tech conferences:</p>
@@ -63,18 +63,7 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .speaking-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-
   .intro {
-    font-size: 1.1rem;
     margin-bottom: 2.5rem;
   }
 
@@ -113,23 +102,7 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-gray-medium);
   }
 
-  .talk a {
-    color: var(--color-turquoise);
-  }
-
-  .talk a:hover {
-    text-decoration: underline;
-  }
-
   @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .intro {
-      font-size: 1rem;
-    }
-
     .talk {
       font-size: 1rem;
     }
