@@ -1,17 +1,89 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Javi Rubio">
+  <div class="home-container">
+    <section class="hero">
+      <h1>Javi Rubio</h1>
+
+      <p class="tagline">Helping teams build better products, knowledge systems, and sustainable work cultures.</p>
+
+      <p class="bio">
+        20 years working at the intersection of product, engineering, and knowledge management. I've been part of startups from day one, served as CTO, led complex technical products, and built developer experience systems.
+      </p>
+
+      <p class="bio">
+        I speak at tech conferences and corporate events, organize communities, and work with organizations on AI strategy, collaboration practices, and sustainable work cultures.
+      </p>
+
+      <p class="bio">
+        Known for championing <strong>#NoMeetings</strong>, helping distributed teams rethink collaboration beyond default rituals.
+      </p>
+
+      <p class="bio">
+        I work with organizations on speaking engagements, workshops, and advisory projects. Let's talk.
+      </p>
+
+      <div class="cta-buttons">
+        <a href="/contact" class="btn-primary">Schedule a call</a>
+        <a href="/speaking" class="btn-secondary">View speaking</a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .home-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tagline {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: var(--color-black);
+  }
+
+  .bio {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .btn-primary {
+    background-color: var(--color-magenta);
+    color: var(--color-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    text-decoration: none;
+  }
+
+  .btn-secondary {
+    color: var(--color-turquoise);
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+  }
+</style>
