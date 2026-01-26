@@ -5,9 +5,13 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Javi Rubio">
   <div class="home-container">
     <section class="hero">
-      <h1>Javi Rubio</h1>
-
-      <p class="tagline">Helping teams build better products, knowledge systems, and sustainable work cultures.</p>
+      <div class="hero-header">
+        <div>
+          <h1>Javi Rubio</h1>
+          <p class="tagline">Helping teams build better products, knowledge systems, and sustainable work cultures.</p>
+        </div>
+        <img src="/profile.jpg" alt="Javi Rubio" class="profile-photo" />
+      </div>
 
       <p class="bio">
         20 years working at the intersection of product, engineering, and knowledge management. I've been part of startups from day one, served as CTO, led complex technical products, and built developer experience systems.
@@ -43,15 +47,30 @@ import Layout from '../layouts/Layout.astro';
     text-align: left;
   }
 
+  .hero-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
   h1 {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .tagline {
     font-size: 1.3rem;
     font-weight: 500;
-    margin-bottom: 2rem;
     color: var(--color-black);
   }
 
