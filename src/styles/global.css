@@ -50,3 +50,41 @@ a:focus-visible {
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+/* Common layout */
+.content-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Common typography */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.intro {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+/* Content links - consistent styling */
+.content-container a {
+  color: var(--color-turquoise);
+  font-weight: 500;
+}
+
+.content-container a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .intro {
+    font-size: 1rem;
+  }
+}
