@@ -13,7 +13,7 @@ import Layout from '../layouts/Layout.astro';
         <a href="https://www.youtube.com/watch?v=IHIsuIlSiio" target="_blank" rel="noopener noreferrer">
           <strong>Documenting APIs</strong>
         </a>
-        <span class="separator">·</span>
+
         <span class="event">Software Crafters Barcelona, 2025</span>
       </li>
 
@@ -21,19 +21,19 @@ import Layout from '../layouts/Layout.astro';
         <a href="https://www.youtube.com/watch?v=HsPIX0tNlO8" target="_blank" rel="noopener noreferrer">
           <strong>AI in support teams</strong>
         </a>
-        <span class="separator">·</span>
+
         <span class="event">Software Crafters Barcelona, 2024</span>
       </li>
 
       <li class="talk">
         <strong>Enterprise knowledge management</strong>
-        <span class="separator">·</span>
+
         <span class="event">CAS (Agile Spain Conference), Madrid, 2024</span>
       </li>
 
       <li class="talk">
         <strong>We're capitalists</strong>
-        <span class="separator">·</span>
+
         <span class="event">Software Crafters Barcelona, 2023</span>
       </li>
 
@@ -41,13 +41,13 @@ import Layout from '../layouts/Layout.astro';
         <a href="https://www.youtube.com/watch?v=SYnLZCFtims" target="_blank" rel="noopener noreferrer">
           <strong>#NoMeetings: How to have fewer, more efficient meetings</strong>
         </a>
-        <span class="separator">·</span>
+
         <span class="event">CAS, Santiago de Compostela, 2022</span>
       </li>
 
       <li class="talk">
         <strong>Great interactions generate great products</strong>
-        <span class="separator">·</span>
+
         <span class="event">CAS, Vitoria, 2018 (workshop)</span>
       </li>
 
@@ -55,7 +55,7 @@ import Layout from '../layouts/Layout.astro';
         <a href="https://www.youtube.com/watch?v=1fs9DPdTKS8" target="_blank" rel="noopener noreferrer">
           <strong>DevOps: From the trenches to the boardroom</strong>
         </a>
-        <span class="separator">·</span>
+
         <span class="event">CAS, Alicante, 2016</span>
       </li>
     </ul>
@@ -72,12 +72,10 @@ import Layout from '../layouts/Layout.astro';
     padding-left: 0;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .talk {
-    font-size: 1.1rem;
-    line-height: 1.6;
     padding-left: 1.5rem;
     position: relative;
   }
@@ -90,20 +88,19 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .talk strong {
+    font-size: 1.1rem;
     font-weight: 600;
   }
 
-  .separator {
-    margin: 0 0.5rem;
-    color: var(--color-gray-medium);
-  }
-
   .event {
+    display: block;
+    font-size: 0.9rem;
     color: var(--color-gray-medium);
+    margin-top: 0.15rem;
   }
 
   @media (max-width: 768px) {
-    .talk {
+    .talk strong {
       font-size: 1rem;
     }
   }
