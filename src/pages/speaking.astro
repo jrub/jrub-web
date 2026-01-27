@@ -36,7 +36,7 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
         </div>
         <div class="photo-slide">
           <Picture src={cas22Graphic} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
-          <span class="photo-caption">CAS22 - NoMeetings - w graphic recorder</span>
+          <span class="photo-caption">CAS22 - NoMeetings</span>
         </div>
         <div class="photo-slide">
           <Picture src={cas22} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
@@ -148,7 +148,8 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
   .photo-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: var(--color-gray-light);
   }
 
   .photo-caption {
@@ -165,9 +166,9 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
 
   @keyframes fadeSlide {
     0%   { opacity: 0; }
-    5%   { opacity: 1; }
-    25%  { opacity: 1; }
-    30%  { opacity: 0; }
+    2%   { opacity: 1; }
+    12%  { opacity: 1; }
+    14%  { opacity: 0; }
     100% { opacity: 0; }
   }
 
