@@ -18,31 +18,31 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
         <p class="intro">I regularly speak at corporate events and tech conferences:</p>
       </div>
       <div class="photo-carousel" aria-hidden="true">
-        <div class="photo-slide">
-          <Picture src={scbcn25} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
+        <div class="photo-slide landscape">
+          <Picture src={scbcn25} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
           <span class="photo-caption">SCBCN25 - Documenting APIs</span>
         </div>
-        <div class="photo-slide">
+        <div class="photo-slide portrait">
           <Picture src={scbcn24} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
           <span class="photo-caption">SCBCN24 - AI in Support teams</span>
         </div>
-        <div class="photo-slide">
+        <div class="photo-slide portrait">
           <Picture src={scbcn23} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
           <span class="photo-caption">SCBCN23 - We're capitalists</span>
         </div>
-        <div class="photo-slide">
+        <div class="photo-slide portrait">
           <Picture src={scbcn22} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
           <span class="photo-caption">SCBCN22 - NoMeetings Open Space</span>
         </div>
-        <div class="photo-slide">
+        <div class="photo-slide portrait">
           <Picture src={cas22Graphic} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
+          <span class="photo-caption">CAS22 - NoMeetings - w graphic recorder</span>
+        </div>
+        <div class="photo-slide landscape">
+          <Picture src={cas22} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
           <span class="photo-caption">CAS22 - NoMeetings</span>
         </div>
-        <div class="photo-slide">
-          <Picture src={cas22} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
-          <span class="photo-caption">CAS22 - NoMeetings</span>
-        </div>
-        <div class="photo-slide">
+        <div class="photo-slide portrait">
           <Picture src={aos23} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
           <span class="photo-caption">AOS23 - Event organizers</span>
         </div>
@@ -128,6 +128,8 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
     border-radius: 12px;
     overflow: hidden;
     position: relative;
+    transition: width 0.6s ease, height 0.6s ease;
+    animation: carouselResize 28s infinite;
   }
 
   .photo-slide {
@@ -135,6 +137,9 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
     inset: 0;
     opacity: 0;
     animation: fadeSlide 28s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .photo-slide:nth-child(1) { animation-delay: 0s; }
@@ -148,8 +153,17 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
   .photo-slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background-color: var(--color-gray-light);
+    object-fit: cover;
+  }
+
+  /* Portrait photos: 220x280 (vertical) */
+  .photo-slide.portrait img {
+    object-fit: cover;
+  }
+
+  /* Landscape photos: 280x180 (horizontal) */
+  .photo-slide.landscape img {
+    object-fit: cover;
   }
 
   .photo-caption {
@@ -172,6 +186,17 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
     100% { opacity: 0; }
   }
 
+  @keyframes carouselResize {
+    /* Foto 1 (0-14%): landscape */
+    0%, 14% { width: 280px; height: 180px; }
+    /* Foto 2-5 (14-71%): portrait */
+    14.1%, 71% { width: 220px; height: 280px; }
+    /* Foto 6 (71-85%): landscape */
+    71.1%, 85% { width: 280px; height: 180px; }
+    /* Foto 7 (85-100%): portrait */
+    85.1%, 100% { width: 220px; height: 280px; }
+  }
+
   @media (max-width: 768px) {
     .speaking-header {
       gap: 1rem;
@@ -181,6 +206,17 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
       width: 130px;
       height: 170px;
       border-radius: 8px;
+    }
+
+    @keyframes carouselResize {
+      /* Foto 1 (0-14%): landscape */
+      0%, 14% { width: 170px; height: 110px; }
+      /* Foto 2-5 (14-71%): portrait */
+      14.1%, 71% { width: 130px; height: 170px; }
+      /* Foto 6 (71-85%): landscape */
+      71.1%, 85% { width: 170px; height: 110px; }
+      /* Foto 7 (85-100%): portrait */
+      85.1%, 100% { width: 130px; height: 170px; }
     }
   }
 
