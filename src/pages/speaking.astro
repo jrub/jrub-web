@@ -1,83 +1,235 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import scbcn25 from '../assets/photos/SCBCN25 - Documenting APIs.jpeg';
+import scbcn24 from '../assets/photos/SCBCN24 - AI in Support teams.jpeg';
+import scbcn23 from '../assets/photos/SCBCN23 - We\'re capitalists.jpeg';
+import scbcn22 from '../assets/photos/SCBCN22 - NoMeetings Open Space.jpeg';
+import cas22Graphic from '../assets/photos/CAS22 - NoMeetings - w graphic recorder.jpeg';
+import cas22 from '../assets/photos/CAS22 - NoMeetings.jpeg';
+import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
 ---
 
 <Layout title="Speaking - Javi Rubio">
   <div class="content-container">
-    <h1>Speaking</h1>
+    <div class="speaking-header">
+      <div class="speaking-content">
+        <div class="speaking-intro">
+          <h1>Speaking</h1>
+          <p class="intro">I regularly speak at corporate events and tech conferences:</p>
+        </div>
+        <ul class="talks-list-inline">
+          <li class="talk">
+            <a href="https://www.youtube.com/watch?v=IHIsuIlSiio" target="_blank" rel="noopener noreferrer">
+              <strong>Documenting APIs</strong>
+            </a>
 
-    <p class="intro">I regularly speak at corporate events and tech conferences:</p>
+            <span class="event">Software Crafters Barcelona, 2025</span>
+          </li>
 
-    <ul class="talks-list">
-      <li class="talk">
-        <a href="https://www.youtube.com/watch?v=IHIsuIlSiio" target="_blank" rel="noopener noreferrer">
-          <strong>Documenting APIs</strong>
-        </a>
-        <span class="separator">·</span>
-        <span class="event">Software Crafters Barcelona, 2025</span>
-      </li>
+          <li class="talk">
+            <a href="https://www.youtube.com/watch?v=HsPIX0tNlO8" target="_blank" rel="noopener noreferrer">
+              <strong>AI in support teams</strong>
+            </a>
 
-      <li class="talk">
-        <a href="https://www.youtube.com/watch?v=HsPIX0tNlO8" target="_blank" rel="noopener noreferrer">
-          <strong>AI in support teams</strong>
-        </a>
-        <span class="separator">·</span>
-        <span class="event">Software Crafters Barcelona, 2024</span>
-      </li>
+            <span class="event">Software Crafters Barcelona, 2024</span>
+          </li>
 
-      <li class="talk">
-        <strong>Enterprise knowledge management</strong>
-        <span class="separator">·</span>
-        <span class="event">CAS (Agile Spain Conference), Madrid, 2024</span>
-      </li>
+          <li class="talk">
+            <strong>Enterprise knowledge management</strong>
 
-      <li class="talk">
-        <strong>We're capitalists</strong>
-        <span class="separator">·</span>
-        <span class="event">Software Crafters Barcelona, 2023</span>
-      </li>
+            <span class="event">CAS (Agile Spain Conference), Madrid, 2024</span>
+          </li>
 
-      <li class="talk">
-        <a href="https://www.youtube.com/watch?v=SYnLZCFtims" target="_blank" rel="noopener noreferrer">
-          <strong>#NoMeetings: How to have fewer, more efficient meetings</strong>
-        </a>
-        <span class="separator">·</span>
-        <span class="event">CAS, Santiago de Compostela, 2022</span>
-      </li>
+          <li class="talk">
+            <strong>We're capitalists</strong>
 
-      <li class="talk">
-        <strong>Great interactions generate great products</strong>
-        <span class="separator">·</span>
-        <span class="event">CAS, Vitoria, 2018 (workshop)</span>
-      </li>
+            <span class="event">Software Crafters Barcelona, 2023</span>
+          </li>
 
-      <li class="talk">
-        <a href="https://www.youtube.com/watch?v=1fs9DPdTKS8" target="_blank" rel="noopener noreferrer">
-          <strong>DevOps: From the trenches to the boardroom</strong>
-        </a>
-        <span class="separator">·</span>
-        <span class="event">CAS, Alicante, 2016</span>
-      </li>
-    </ul>
+          <li class="talk">
+            <a href="https://www.youtube.com/watch?v=SYnLZCFtims" target="_blank" rel="noopener noreferrer">
+              <strong>#NoMeetings: How to have fewer, more efficient meetings</strong>
+            </a>
+
+            <span class="event">CAS, Santiago de Compostela, 2022</span>
+          </li>
+
+          <li class="talk">
+            <strong>Great interactions generate great products</strong>
+
+            <span class="event">CAS, Vitoria, 2018 (workshop)</span>
+          </li>
+
+          <li class="talk">
+            <a href="https://www.youtube.com/watch?v=1fs9DPdTKS8" target="_blank" rel="noopener noreferrer">
+              <strong>DevOps: From the trenches to the boardroom</strong>
+            </a>
+
+            <span class="event">CAS, Alicante, 2016</span>
+          </li>
+        </ul>
+      </div>
+      <div class="photo-carousel" aria-hidden="true">
+        <div class="photo-slide landscape">
+          <Picture src={scbcn25} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN25 - Documenting APIs</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={scbcn24} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN24 - AI in Support teams</span>
+        </div>
+        <div class="photo-slide landscape">
+          <Picture src={scbcn23} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN23 - We're capitalists</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={scbcn22} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN22 - NoMeetings Open Space</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={cas22Graphic} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
+          <span class="photo-caption">CAS22 - NoMeetings & bgcampa</span>
+        </div>
+        <div class="photo-slide landscape">
+          <Picture src={cas22} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">CAS22 - NoMeetings</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={aos23} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
+          <span class="photo-caption">AOS23 - Event organizers</span>
+        </div>
+      </div>
+    </div>
   </div>
 </Layout>
 
 <style>
-  .intro {
-    margin-bottom: 2.5rem;
+  .speaking-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 
-  .talks-list {
+  .speaking-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .speaking-intro {
+    margin-bottom: 2rem;
+  }
+
+  .intro {
+    margin-bottom: 0;
+  }
+
+  .talks-list-inline {
     list-style: none;
     padding-left: 0;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
+  /* Photo carousel */
+  .photo-carousel {
+    flex-shrink: 0;
+    width: 280px;
+    min-width: 280px;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-slide {
+    position: absolute;
+    opacity: 0;
+    animation: fadeSlide 28s infinite;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .photo-slide.portrait {
+    width: 220px;
+    height: 280px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .photo-slide.landscape {
+    width: 280px;
+    height: 180px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .photo-slide:nth-child(1) { animation-delay: 0s; }
+  .photo-slide:nth-child(2) { animation-delay: 4s; }
+  .photo-slide:nth-child(3) { animation-delay: 8s; }
+  .photo-slide:nth-child(4) { animation-delay: 12s; }
+  .photo-slide:nth-child(5) { animation-delay: 16s; }
+  .photo-slide:nth-child(6) { animation-delay: 20s; }
+  .photo-slide:nth-child(7) { animation-delay: 24s; }
+
+  .photo-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--color-gray-medium);
+    background: rgba(255, 255, 255, 0.85);
+    text-align: center;
+  }
+
+  @keyframes fadeSlide {
+    0%   { opacity: 0; }
+    2%   { opacity: 1; }
+    12%  { opacity: 1; }
+    14%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .speaking-header {
+      gap: 1rem;
+    }
+
+    .photo-carousel {
+      width: 170px;
+      min-width: 170px;
+      height: 170px;
+    }
+
+    .photo-slide.portrait {
+      width: 130px;
+      height: 170px;
+    }
+
+    .photo-slide.landscape {
+      width: 170px;
+      height: 110px;
+    }
+  }
+
+
   .talk {
-    font-size: 1.1rem;
-    line-height: 1.6;
     padding-left: 1.5rem;
     position: relative;
   }
@@ -90,20 +242,19 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .talk strong {
+    font-size: 1.1rem;
     font-weight: 600;
   }
 
-  .separator {
-    margin: 0 0.5rem;
-    color: var(--color-gray-medium);
-  }
-
   .event {
+    display: block;
+    font-size: 0.9rem;
     color: var(--color-gray-medium);
+    margin-top: 0.15rem;
   }
 
   @media (max-width: 768px) {
-    .talk {
+    .talk strong {
       font-size: 1rem;
     }
   }
