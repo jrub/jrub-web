@@ -1,5 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Picture } from 'astro:assets';
+import scbcn25 from '../assets/photos/SCBCN25 - Documenting APIs.jpeg';
+import scbcn24 from '../assets/photos/SCBCN24 - AI in Support teams.jpeg';
+import cas22 from '../assets/photos/CAS22 - #NoMeetings - w graphic recorder.jpeg';
+import scbcn23 from '../assets/photos/SCBCN23 - We\'re capitalists.jpeg';
 ---
 
 <Layout title="Speaking - Javi Rubio">
@@ -11,16 +16,20 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="photo-carousel" aria-hidden="true">
         <div class="photo-slide">
+          <Picture src={scbcn25} alt="Speaking at Software Crafters Barcelona 2025" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
           <span class="photo-caption">#SCBCN25</span>
         </div>
         <div class="photo-slide">
+          <Picture src={scbcn24} alt="Speaking at Software Crafters Barcelona 2024" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
           <span class="photo-caption">#SCBCN24</span>
         </div>
         <div class="photo-slide">
+          <Picture src={cas22} alt="Speaking at CAS 2022" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
           <span class="photo-caption">#CAS2022</span>
         </div>
         <div class="photo-slide">
-          <span class="photo-caption">#CAS2016</span>
+          <Picture src={scbcn23} alt="Speaking at Software Crafters Barcelona 2023" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
+          <span class="photo-caption">#SCBCN23</span>
         </div>
       </div>
     </div>
@@ -109,16 +118,20 @@ import Layout from '../layouts/Layout.astro';
   .photo-slide {
     position: absolute;
     inset: 0;
-    background-color: var(--color-gray-light);
     opacity: 0;
     animation: fadeSlide 16s infinite;
   }
 
-  /* Placeholder colors — will be replaced by real photos */
-  .photo-slide:nth-child(1) { background-color: #e0d5c9; animation-delay: 0s; }
-  .photo-slide:nth-child(2) { background-color: #c9d5e0; animation-delay: 4s; }
-  .photo-slide:nth-child(3) { background-color: #d5e0c9; animation-delay: 8s; }
-  .photo-slide:nth-child(4) { background-color: #e0c9d5; animation-delay: 12s; }
+  .photo-slide:nth-child(1) { animation-delay: 0s; }
+  .photo-slide:nth-child(2) { animation-delay: 4s; }
+  .photo-slide:nth-child(3) { animation-delay: 8s; }
+  .photo-slide:nth-child(4) { animation-delay: 12s; }
+
+  .photo-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   .photo-caption {
     position: absolute;
