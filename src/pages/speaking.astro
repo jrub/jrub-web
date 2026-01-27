@@ -13,9 +13,62 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
 <Layout title="Speaking - Javi Rubio">
   <div class="content-container">
     <div class="speaking-header">
-      <div class="speaking-intro">
-        <h1>Speaking</h1>
-        <p class="intro">I regularly speak at corporate events and tech conferences:</p>
+      <div class="speaking-content">
+        <div class="speaking-intro">
+          <h1>Speaking</h1>
+          <p class="intro">I regularly speak at corporate events and tech conferences:</p>
+        </div>
+        <ul class="talks-list-inline">
+          <li class="talk">
+            <a href="https://www.youtube.com/watch?v=IHIsuIlSiio" target="_blank" rel="noopener noreferrer">
+              <strong>Documenting APIs</strong>
+            </a>
+
+            <span class="event">Software Crafters Barcelona, 2025</span>
+          </li>
+
+          <li class="talk">
+            <a href="https://www.youtube.com/watch?v=HsPIX0tNlO8" target="_blank" rel="noopener noreferrer">
+              <strong>AI in support teams</strong>
+            </a>
+
+            <span class="event">Software Crafters Barcelona, 2024</span>
+          </li>
+
+          <li class="talk">
+            <strong>Enterprise knowledge management</strong>
+
+            <span class="event">CAS (Agile Spain Conference), Madrid, 2024</span>
+          </li>
+
+          <li class="talk">
+            <strong>We're capitalists</strong>
+
+            <span class="event">Software Crafters Barcelona, 2023</span>
+          </li>
+
+          <li class="talk">
+            <a href="https://www.youtube.com/watch?v=SYnLZCFtims" target="_blank" rel="noopener noreferrer">
+              <strong>#NoMeetings: How to have fewer, more efficient meetings</strong>
+            </a>
+
+            <span class="event">CAS, Santiago de Compostela, 2022</span>
+          </li>
+
+          <li class="talk">
+            <strong>Great interactions generate great products</strong>
+
+            <span class="event">CAS, Vitoria, 2018 (workshop)</span>
+          </li>
+
+          <li class="talk">
+            <a href="https://www.youtube.com/watch?v=1fs9DPdTKS8" target="_blank" rel="noopener noreferrer">
+              <strong>DevOps: From the trenches to the boardroom</strong>
+            </a>
+
+            <span class="event">CAS, Alicante, 2016</span>
+          </li>
+        </ul>
       </div>
       <div class="photo-carousel" aria-hidden="true">
         <div class="photo-slide landscape">
@@ -48,58 +101,6 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
         </div>
       </div>
     </div>
-
-    <ul class="talks-list">
-      <li class="talk">
-        <a href="https://www.youtube.com/watch?v=IHIsuIlSiio" target="_blank" rel="noopener noreferrer">
-          <strong>Documenting APIs</strong>
-        </a>
-
-        <span class="event">Software Crafters Barcelona, 2025</span>
-      </li>
-
-      <li class="talk">
-        <a href="https://www.youtube.com/watch?v=HsPIX0tNlO8" target="_blank" rel="noopener noreferrer">
-          <strong>AI in support teams</strong>
-        </a>
-
-        <span class="event">Software Crafters Barcelona, 2024</span>
-      </li>
-
-      <li class="talk">
-        <strong>Enterprise knowledge management</strong>
-
-        <span class="event">CAS (Agile Spain Conference), Madrid, 2024</span>
-      </li>
-
-      <li class="talk">
-        <strong>We're capitalists</strong>
-
-        <span class="event">Software Crafters Barcelona, 2023</span>
-      </li>
-
-      <li class="talk">
-        <a href="https://www.youtube.com/watch?v=SYnLZCFtims" target="_blank" rel="noopener noreferrer">
-          <strong>#NoMeetings: How to have fewer, more efficient meetings</strong>
-        </a>
-
-        <span class="event">CAS, Santiago de Compostela, 2022</span>
-      </li>
-
-      <li class="talk">
-        <strong>Great interactions generate great products</strong>
-
-        <span class="event">CAS, Vitoria, 2018 (workshop)</span>
-      </li>
-
-      <li class="talk">
-        <a href="https://www.youtube.com/watch?v=1fs9DPdTKS8" target="_blank" rel="noopener noreferrer">
-          <strong>DevOps: From the trenches to the boardroom</strong>
-        </a>
-
-        <span class="event">CAS, Alicante, 2016</span>
-      </li>
-    </ul>
   </div>
 </Layout>
 
@@ -108,16 +109,28 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
     display: flex;
     align-items: flex-start;
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
-  .speaking-intro {
+  .speaking-content {
     flex: 1;
     min-width: 0;
   }
 
+  .speaking-intro {
+    margin-bottom: 2rem;
+  }
+
   .intro {
     margin-bottom: 0;
+  }
+
+  .talks-list-inline {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   /* Photo carousel */
@@ -215,13 +228,6 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
     }
   }
 
-  .talks-list {
-    list-style: none;
-    padding-left: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
 
   .talk {
     padding-left: 1.5rem;
