@@ -10,10 +10,18 @@ import Layout from '../layouts/Layout.astro';
         <p class="intro">I regularly speak at corporate events and tech conferences:</p>
       </div>
       <div class="photo-carousel" aria-hidden="true">
-        <div class="photo-slide"></div>
-        <div class="photo-slide"></div>
-        <div class="photo-slide"></div>
-        <div class="photo-slide"></div>
+        <div class="photo-slide">
+          <span class="photo-caption">#SCBCN25</span>
+        </div>
+        <div class="photo-slide">
+          <span class="photo-caption">#SCBCN24</span>
+        </div>
+        <div class="photo-slide">
+          <span class="photo-caption">#CAS2022</span>
+        </div>
+        <div class="photo-slide">
+          <span class="photo-caption">#CAS2016</span>
+        </div>
       </div>
     </div>
 
@@ -111,6 +119,18 @@ import Layout from '../layouts/Layout.astro';
   .photo-slide:nth-child(2) { background-color: #c9d5e0; animation-delay: 4s; }
   .photo-slide:nth-child(3) { background-color: #d5e0c9; animation-delay: 8s; }
   .photo-slide:nth-child(4) { background-color: #e0c9d5; animation-delay: 12s; }
+
+  .photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--color-gray-medium);
+    background: rgba(255, 255, 255, 0.85);
+    text-align: center;
+  }
 
   @keyframes fadeSlide {
     0%   { opacity: 0; }
