@@ -4,9 +4,18 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Speaking - Javi Rubio">
   <div class="content-container">
-    <h1>Speaking</h1>
-
-    <p class="intro">I regularly speak at corporate events and tech conferences:</p>
+    <div class="speaking-header">
+      <div class="speaking-intro">
+        <h1>Speaking</h1>
+        <p class="intro">I regularly speak at corporate events and tech conferences:</p>
+      </div>
+      <div class="photo-carousel" aria-hidden="true">
+        <div class="photo-slide"></div>
+        <div class="photo-slide"></div>
+        <div class="photo-slide"></div>
+        <div class="photo-slide"></div>
+      </div>
+    </div>
 
     <ul class="talks-list">
       <li class="talk">
@@ -63,8 +72,64 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .intro {
+  .speaking-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
     margin-bottom: 2.5rem;
+  }
+
+  .speaking-intro {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .intro {
+    margin-bottom: 0;
+  }
+
+  /* Photo carousel */
+  .photo-carousel {
+    flex-shrink: 0;
+    width: 220px;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .photo-slide {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-gray-light);
+    opacity: 0;
+    animation: fadeSlide 16s infinite;
+  }
+
+  /* Placeholder colors — will be replaced by real photos */
+  .photo-slide:nth-child(1) { background-color: #e0d5c9; animation-delay: 0s; }
+  .photo-slide:nth-child(2) { background-color: #c9d5e0; animation-delay: 4s; }
+  .photo-slide:nth-child(3) { background-color: #d5e0c9; animation-delay: 8s; }
+  .photo-slide:nth-child(4) { background-color: #e0c9d5; animation-delay: 12s; }
+
+  @keyframes fadeSlide {
+    0%   { opacity: 0; }
+    5%   { opacity: 1; }
+    25%  { opacity: 1; }
+    30%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .speaking-header {
+      gap: 1rem;
+    }
+
+    .photo-carousel {
+      width: 130px;
+      height: 170px;
+      border-radius: 8px;
+    }
   }
 
   .talks-list {
