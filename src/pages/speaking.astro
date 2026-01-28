@@ -12,13 +12,41 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
 
 <Layout title="Speaking - Javi Rubio">
   <div class="content-container">
-    <div class="speaking-header">
-      <div class="speaking-content">
-        <div class="speaking-intro">
-          <h1>Speaking</h1>
-          <p class="intro">I regularly speak at corporate events and tech conferences:</p>
-        </div>
-        <ul class="talks-list-inline">
+    <div class="photo-carousel" aria-hidden="true">
+      <div class="photo-slide landscape">
+        <Picture src={scbcn25} alt="Speaking at conference" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+        <span class="photo-caption">SCBCN25 - Documenting APIs</span>
+      </div>
+      <div class="photo-slide portrait">
+        <Picture src={scbcn24} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+        <span class="photo-caption">SCBCN24 - AI in Support teams</span>
+      </div>
+      <div class="photo-slide landscape">
+        <Picture src={scbcn23} alt="Speaking at conference" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+        <span class="photo-caption">SCBCN23 - We're capitalists</span>
+      </div>
+      <div class="photo-slide portrait">
+        <Picture src={scbcn22} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+        <span class="photo-caption">SCBCN22 - NoMeetings Open Space</span>
+      </div>
+      <div class="photo-slide portrait">
+        <Picture src={cas22Graphic} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+        <span class="photo-caption">CAS22 - NoMeetings & bgcampa</span>
+      </div>
+      <div class="photo-slide landscape">
+        <Picture src={cas22} alt="Speaking at conference" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+        <span class="photo-caption">CAS22 - NoMeetings</span>
+      </div>
+      <div class="photo-slide portrait">
+        <Picture src={aos23} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+        <span class="photo-caption">AOS23 - Event organizers</span>
+      </div>
+    </div>
+
+    <h1>Speaking</h1>
+    <p class="intro">I regularly speak at corporate events and tech conferences:</p>
+
+    <ul class="talks-list-inline">
           <li class="talk">
             <a href="https://www.youtube.com/watch?v=IHIsuIlSiio" target="_blank" rel="noopener noreferrer">
               <strong>Documenting APIs</strong>
@@ -69,60 +97,26 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
             <span class="event">CAS, Alicante, 2016</span>
           </li>
         </ul>
-      </div>
-      <div class="photo-carousel" aria-hidden="true">
-        <div class="photo-slide landscape">
-          <Picture src={scbcn25} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
-          <span class="photo-caption">SCBCN25 - Documenting APIs</span>
-        </div>
-        <div class="photo-slide portrait">
-          <Picture src={scbcn24} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
-          <span class="photo-caption">SCBCN24 - AI in Support teams</span>
-        </div>
-        <div class="photo-slide landscape">
-          <Picture src={scbcn23} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
-          <span class="photo-caption">SCBCN23 - We're capitalists</span>
-        </div>
-        <div class="photo-slide portrait">
-          <Picture src={scbcn22} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
-          <span class="photo-caption">SCBCN22 - NoMeetings Open Space</span>
-        </div>
-        <div class="photo-slide portrait">
-          <Picture src={cas22Graphic} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
-          <span class="photo-caption">CAS22 - NoMeetings & bgcampa</span>
-        </div>
-        <div class="photo-slide landscape">
-          <Picture src={cas22} alt="Speaking at conference" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
-          <span class="photo-caption">CAS22 - NoMeetings</span>
-        </div>
-        <div class="photo-slide portrait">
-          <Picture src={aos23} alt="Speaking at conference" widths={[220, 440]} sizes="220px" formats={['avif', 'webp']} />
-          <span class="photo-caption">AOS23 - Event organizers</span>
-        </div>
-      </div>
-    </div>
   </div>
 </Layout>
 
 <style>
-  .speaking-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    margin-bottom: 2rem;
+  .content-container {
+    max-width: 1200px !important;
   }
 
-  .speaking-content {
-    flex: 1;
-    min-width: 0;
+  .content-container::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 
-  .speaking-intro {
-    margin-bottom: 2rem;
+  h1 {
+    margin-bottom: 1rem;
   }
 
   .intro {
-    margin-bottom: 0;
+    margin-bottom: 2rem;
   }
 
   .talks-list-inline {
@@ -133,18 +127,16 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
     gap: 1rem;
   }
 
-  /* Photo carousel */
+  /* Photo carousel - always float right */
   .photo-carousel {
-    flex-shrink: 0;
-    width: 280px;
-    min-width: 280px;
-    height: 280px;
+    float: right;
+    width: 360px;
+    height: 360px;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
     border-radius: 12px;
     overflow: hidden;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .photo-slide {
@@ -156,16 +148,16 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
   }
 
   .photo-slide.portrait {
-    width: 220px;
-    height: 280px;
+    width: 280px;
+    height: 360px;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
   }
 
   .photo-slide.landscape {
-    width: 280px;
-    height: 180px;
+    width: 360px;
+    height: 230px;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
@@ -196,6 +188,9 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
     color: var(--color-gray-medium);
     background: rgba(255, 255, 255, 0.85);
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   @keyframes fadeSlide {
@@ -206,17 +201,13 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
     100% { opacity: 0; }
   }
 
+  /* Mobile: smaller carousel, still floats right */
   @media (max-width: 768px) {
-    .speaking-header {
-      flex-direction: column-reverse;
-      gap: 1.5rem;
-    }
-
     .photo-carousel {
       width: 180px;
-      min-width: 180px;
       height: 180px;
-      align-self: flex-end;
+      margin-left: 1rem;
+      margin-bottom: 1rem;
     }
 
     .photo-slide.portrait {
@@ -227,6 +218,10 @@ import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
     .photo-slide.landscape {
       width: 180px;
       height: 115px;
+    }
+
+    .talks-list-inline {
+      clear: both; /* In mobile, talks go below carousel for full width */
     }
   }
 
