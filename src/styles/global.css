@@ -60,7 +60,7 @@ a:focus-visible {
 /* Common typography */
 h1 {
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .intro {
@@ -86,5 +86,6 @@ h1 {
 
   .intro {
     font-size: 1rem;
+    margin-bottom: 1rem;
   }
 }
