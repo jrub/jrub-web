@@ -7,12 +7,11 @@ import Layout from '../layouts/Layout.astro';
     <h1>Let's talk</h1>
 
     <p class="intro">
-      Open to conversations and collaborations on AI strategy, product thinking, or work culture.
       Available for speaking, workshops, and advisory work.
     </p>
 
     <p class="intro">
-      Send me an email at <a href="mailto:jrubr@duck.com">jrubr@duck.com</a> or schedule a call below:
+      Also open to informal conversations and collaborations on AI strategy, product thinking, and work culture. Ping me at <a href="mailto:jrubr@duck.com">jrubr@duck.com</a> or just schedule a call:
     </p>
 
     <div class="timetime-embed">
@@ -28,12 +27,18 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .intro:last-of-type {
-    margin-bottom: 2.5rem;
-  }
-
   .timetime-embed {
     width: 100%;
     min-height: 600px;
+  }
+
+  @media (max-width: 768px) {
+    .timetime-embed {
+      min-height: 420px;
+    }
+
+    .timetime-embed iframe {
+      min-height: 420px !important;
+    }
   }
 </style>
