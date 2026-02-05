@@ -12,7 +12,7 @@ import Layout from '../layouts/Layout.astro';
     </p>
 
     <p class="intro">
-      Send me an email at <a href="mailto:jrubr@duck.com">jrubr@duck.com</a> or schedule a call below:
+      Send me an email at <a href="mailto:jrubr@duck.com">jrubr@duck.com</a> or schedule a call:
     </p>
 
     <div class="timetime-embed">
@@ -35,5 +35,15 @@ import Layout from '../layouts/Layout.astro';
   .timetime-embed {
     width: 100%;
     min-height: 600px;
+  }
+
+  @media (max-width: 768px) {
+    .timetime-embed {
+      min-height: 480px;
+    }
+
+    .timetime-embed iframe {
+      min-height: 480px !important;
+    }
   }
 </style>
