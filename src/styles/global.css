@@ -60,13 +60,13 @@ a:focus-visible {
 /* Common typography */
 h1 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
 }
 
 .intro {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   line-height: 1.7;
+  text-align: justify;
 }
 
 /* Content links - consistent styling */

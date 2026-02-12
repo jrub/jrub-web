@@ -10,7 +10,10 @@ import profileImage from '../../public/profile.jpg';
       <div class="hero-header">
         <div>
           <h1>Javi Rubio</h1>
-          <p class="tagline">Helping teams build better products, knowledge systems, and sustainable work cultures.</p>
+          <p class="typed-roles">
+            <span id="typed-role"></span>
+          </p>
+          <p class="subtitle">Helping teams build better products, knowledge systems, and sustainable work cultures.</p>
         </div>
         <Image src={profileImage} alt="Javi Rubio" class="profile-photo" width={200} height={200} />
       </div>
@@ -29,6 +32,31 @@ import profileImage from '../../public/profile.jpg';
     </section>
   </div>
 </Layout>
+
+<script>
+  import Typed from 'typed.js';
+
+  const roles = [
+    'Tech Writer',
+    'Developer Relations',
+    'Chief Technical Officer',
+    'Associate Professor',
+    'Android Dev',
+    'Technical Coach',
+    'Technical Product Manager',
+    'Product Engineer'
+  ].sort(() => Math.random() - 0.5);
+
+  new Typed('#typed-role', {
+    strings: roles,
+    typeSpeed: 60,
+    backSpeed: 30,
+    backDelay: 1600,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|'
+  });
+</script>
 
 <style>
   .hero {
@@ -63,10 +91,24 @@ import profileImage from '../../public/profile.jpg';
     }
   }
 
-  .tagline {
+  .typed-roles {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--color-magenta);
+    min-height: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
     font-size: 1.3rem;
     font-weight: 500;
     color: var(--color-black);
+  }
+
+  /* Typed.js cursor styling */
+  :global(.typed-cursor) {
+    color: var(--color-magenta);
+    font-weight: 300;
   }
 
   @media (max-width: 768px) {
@@ -83,7 +125,11 @@ import profileImage from '../../public/profile.jpg';
       order: -1;
     }
 
-    .tagline {
+    .typed-roles {
+      font-size: 1.1rem;
+    }
+
+    .subtitle {
       font-size: 1.1rem;
     }
   }

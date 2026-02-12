@@ -12,7 +12,8 @@
     "test:headed": "playwright test --headed"
   },
   "dependencies": {
-    "astro": "^5.16.15"
+    "astro": "^5.16.15",
+    "typed.js": "^3.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.0"
