@@ -1,5 +1,461 @@
 {
-  "conference_talks": [],
-  "workshops": [],
-  "community_organizing": []
+  "conference_talks": [
+    {
+      "title": "Documenting APIs",
+      "event": "Software Crafters Barcelona",
+      "location": "Barcelona, Spain",
+      "date": "2025-10-25",
+      "language": "en",
+      "video": "https://www.youtube.com/watch?v=IHIsuIlSiio",
+      "slides": null,
+      "photos": [
+        {
+          "src": "SCBCN25 - Documenting APIs.jpeg",
+          "caption": "#SCBCN25 - Documenting APIs",
+          "hero": true
+        }
+      ],
+      "featured": true,
+      "description": "Documentation is the API interface to the world. In an ecosystem full of standards and fragmented tooling, how to apply a product lens to API documentation?"
+    },
+    {
+      "title": "AI in support teams",
+      "event": "Software Crafters Barcelona",
+      "location": "Barcelona, Spain",
+      "date": "2024-10-26",
+      "language": "en",
+      "video": "https://www.youtube.com/watch?v=HsPIX0tNlO8",
+      "slides": null,
+      "photos": [
+        {
+          "src": "SCBCN24 - AI in Support teams.jpeg",
+          "caption": "#SCBCN24 - AI in Support teams",
+          "hero": true
+        }
+      ],
+      "featured": true,
+      "description": "Exploring how AI can enhance support team workflows and customer experience without losing the human touch."
+    },
+    {
+      "title": "Enterprise knowledge management",
+      "event": "CAS (Agile Spain Conference)",
+      "location": "Madrid, Spain",
+      "date": "2024-11-15",
+      "language": "es",
+      "video": null,
+      "slides": null,
+      "photos": [],
+      "featured": true,
+      "description": "Strategies for managing knowledge at scale in enterprise environments, making information accessible and actionable."
+    },
+    {
+      "title": "We're capitalists",
+      "event": "Software Crafters Barcelona",
+      "location": "Barcelona, Spain",
+      "date": "2023-10-07",
+      "language": "en",
+      "video": null,
+      "slides": null,
+      "link": "https://x.com/bcnswcraft/status/1716023511272079501",
+      "photos": [
+        {
+          "src": "SCBCN23 - We're capitalists.jpeg",
+          "caption": "#SCBCN23 - We're capitalists",
+          "hero": true
+        }
+      ],
+      "featured": false,
+      "description": "A critical look at the intersection of software craft and economic realities in the tech industry."
+    },
+    {
+      "title": "#NoMeetings at Adidas",
+      "event": "Adidas (corporate talk)",
+      "location": "Zaragoza, Spain",
+      "date": "2023-01-17",
+      "language": "es",
+      "video": null,
+      "slides": null,
+      "link": "https://x.com/Jessi_Redrado/status/1615428056226664469",
+      "photos": [],
+      "featured": false,
+      "description": "Corporate talk on #NoMeetings practices and rethinking collaboration for distributed teams at Adidas."
+    },
+    {
+      "title": "#NoMeetings: How to have fewer, more efficient meetings",
+      "event": "CAS (Agile Spain Conference)",
+      "location": "Santiago de Compostela, Spain",
+      "date": "2022-11-18",
+      "language": "es",
+      "video": "https://www.youtube.com/watch?v=SYnLZCFtims",
+      "slides": null,
+      "photos": [
+        {
+          "src": "CAS22 - NoMeetings.jpeg",
+          "caption": "#CAS22 - NoMeetings",
+          "hero": true
+        },
+        {
+          "src": "CAS22 - NoMeetings - w graphic recorder.jpeg",
+          "caption": "#CAS22 - NoMeetings with graphic recorder",
+          "hero": false
+        }
+      ],
+      "featured": true,
+      "description": "Rethinking collaboration beyond default meeting rituals for distributed teams. Practical strategies to reduce meeting overhead."
+    },
+    {
+      "title": "#NoMeetings",
+      "event": "LDAC (Lean Agile Delivery & Coaching Network) London",
+      "location": "Online",
+      "date": "2022-11-08",
+      "language": "en",
+      "video": null,
+      "slides": null,
+      "link": "https://www.meetup.com/lean-agile-coaching-meetup/events/288524259/",
+      "photos": [],
+      "featured": false,
+      "description": "Online talk for the London-based Lean Agile Delivery & Coaching Network community on #NoMeetings practices."
+    },
+    {
+      "title": "Haize: Creating an Android architecture that adapts to change",
+      "event": "Agile Aragón",
+      "location": "Zaragoza, Spain",
+      "date": "2017-01-25",
+      "language": "es",
+      "video": null,
+      "slides": "https://codingstones.github.io/slides-haize/",
+      "link": "https://medium.com/coding-stones/clean-architecture-tour-2016-2017-90bb205d443c",
+      "photos": [],
+      "featured": false,
+      "description": "Clean Architecture applied to Android development. How to build an architecture that embraces change and postpones technical decisions."
+    },
+    {
+      "title": "DevOps: From the trenches to the boardroom",
+      "event": "CAS (Agile Spain Conference)",
+      "location": "Alicante, Spain",
+      "date": "2016-11-11",
+      "language": "es",
+      "video": "https://www.youtube.com/watch?v=1fs9DPdTKS8",
+      "slides": null,
+      "photos": [],
+      "featured": false,
+      "description": "Bridging the gap between technical DevOps practices and organizational leadership."
+    }
+  ],
+  "workshops": [
+    {
+      "title": "Great interactions generate great products (Example Mapping Workshop)",
+      "event": "CAS (Agile Spain Conference)",
+      "location": "Vitoria, Spain",
+      "date": "2018-11-16",
+      "language": "es",
+      "type": "workshop",
+      "video": null,
+      "slides": "https://www.slideshare.net/slideshow/example-mapping-presentation-125817269/125817269",
+      "link": "https://x.com/jrubr/status/1073262158165757952",
+      "photos": [],
+      "featured": true,
+      "description": "Interactive workshop exploring how team dynamics and communication patterns shape product outcomes through Example Mapping technique."
+    },
+    {
+      "title": "Example Mapping workshop",
+      "event": "Agile Aragón",
+      "location": "Zaragoza, Spain",
+      "date": "2018-07-25",
+      "language": "es",
+      "type": "workshop",
+      "video": null,
+      "slides": null,
+      "link": "https://www.meetup.com/agilearagon/events/253027811/",
+      "photos": [],
+      "featured": true,
+      "description": "#NoEstimates practice: collaborative technique for breaking down user stories and discovering examples before development."
+    },
+    {
+      "title": "BDD, Specification by Example & Cucumber workshop",
+      "event": "Alliance Healthcare (corporate training)",
+      "location": "Spain",
+      "date": "2017-04-15",
+      "language": "es",
+      "type": "workshop",
+      "video": null,
+      "slides": null,
+      "link": "https://medium.com/coding-stones/una-de-bdd-specification-by-example-y-cucumber-8345ccc71172",
+      "photos": [],
+      "featured": false,
+      "description": "Two-day workshop co-facilitated with Dani Latorre on Behavior-Driven Development, collaborative specification through examples, and Cucumber automation for a multinational development team."
+    },
+    {
+      "title": "Visual Thinking Kata breakfast experiment",
+      "event": "Agile Aragón",
+      "location": "Zaragoza, Spain",
+      "date": "2020-02-08",
+      "language": "es",
+      "type": "workshop",
+      "video": null,
+      "slides": null,
+      "link": "https://www.meetup.com/agilearagon/events/268780252/",
+      "photos": [],
+      "featured": false,
+      "description": "Experiment combining coding katas with visual thinking techniques to explore different learning approaches."
+    },
+    {
+      "title": "Good Practices of BDD with Gherkin",
+      "event": "CodelyTV (online course)",
+      "location": "Online",
+      "date": "2018-01-15",
+      "language": "es",
+      "type": "course",
+      "video": "https://www.youtube.com/watch?v=3jB6IzEFfic",
+      "slides": null,
+      "link": "https://codely.com/en/courses/good-practices-of-bdd-with-gherkin-cucumber-behat-lk14",
+      "photos": [],
+      "featured": false,
+      "description": "Online course on BDD good practices with Gherkin, Cucumber, and Behat."
+    },
+    {
+      "title": "Mini-games workshop with Processing",
+      "event": "Primera Pantalla conference",
+      "location": "Zaragoza, Spain",
+      "date": "2016-01-16",
+      "language": "es",
+      "type": "workshop",
+      "video": null,
+      "slides": null,
+      "link": "https://zagaleshacklab.wordpress.com/2016/01/13/taller-de-minijuegos-con-processing/",
+      "photos": [],
+      "featured": false,
+      "description": "Hands-on workshop teaching kids game development fundamentals using Processing. Ran in 2015 and 2016 editions."
+    },
+    {
+      "title": "Open Space STEAM for teachers",
+      "event": "La Remolacha Hacklab",
+      "location": "Zaragoza, Spain",
+      "date": "2017-06-10",
+      "language": "es",
+      "type": "facilitator",
+      "video": null,
+      "slides": null,
+      "link": "https://zagaleshacklab.wordpress.com/2017/06/09/ensenando-steam-a-nins-un-open-space-para-profs/",
+      "photos": [],
+      "featured": false,
+      "description": "Participated in an open space helping teachers explore STEAM education approaches for children."
+    },
+    {
+      "title": "#NoMeetings Open Space",
+      "event": "SOSZ22 (Startup Open Space)",
+      "location": "Zaragoza, Spain",
+      "date": "2022-09-24",
+      "language": "es",
+      "type": "open_space",
+      "video": null,
+      "slides": null,
+      "link": "https://x.com/aaromnido/status/1573687521363562498",
+      "photos": [],
+      "featured": false,
+      "description": "Facilitated open space session on #NoMeetings practices at Startup Open Space Zaragoza 2022."
+    }
+  ],
+  "media_podcasts": [
+    {
+      "title": "Ni cero, ni uno - #NoMeetings, async work, and remote collaboration",
+      "show": "Ni cero, ni uno",
+      "host": "Carlos Blé",
+      "date": "2023-03-20",
+      "language": "es",
+      "type": "podcast",
+      "link": "https://open.spotify.com/episode/247Wbl9oyDMtJw0rstYMaz?si=94d6c885d00f4778",
+      "article": null,
+      "featured": true,
+      "description": "In-depth interview on #NoMeetings philosophy, asynchronous work practices, remote collaboration strategies, and rethinking default meeting culture in distributed teams."
+    },
+    {
+      "title": "Pymes y Trastos - Gestiona Radio interview",
+      "show": "Pymes y Trastos (Gestiona Radio - Onda Aragonesa)",
+      "host": "Antonio Cubillo",
+      "date": "2017-11-28",
+      "language": "es",
+      "type": "radio",
+      "link": "https://www.ivoox.com/pymes-trastos-pgm-009-2017-11-28-audios-mp3_rf_22331413_1.html",
+      "article": "https://medium.com/coding-stones/entrevista-en-pymes-y-trastos-35a18ba9a9af",
+      "featured": true,
+      "description": "One-hour interview discussing the Coding Stones team origin, Agile and Extreme Programming practices, cooperative-style business philosophy, and approach to working as a small independent team. Co-interviewed with Dani Latorre."
+    },
+    {
+      "title": "La Rosa de los Vientos - El Buscador: Telegram vs WhatsApp security",
+      "show": "La Rosa de los Vientos (Onda Cero)",
+      "host": null,
+      "date": "2014-02-10",
+      "language": "es",
+      "type": "radio",
+      "link": "https://www.ivoox.com/en/buscador-el-telegram-es-mas-seguro-que-audios-mp3_rf_2816918_1.html",
+      "article": "https://www.ondacero.es/podcast/programas/rosa-vientos/buscador/buscador-telegram-mas-seguro-que-whatsapp_201402105542f2ebd7fef20c58b78122.html",
+      "featured": false,
+      "description": "Radio segment discussing the security features of Telegram versus WhatsApp messaging platforms."
+    },
+    {
+      "title": "La Rosa de los Vientos - El Buscador: Cookie Law reality",
+      "show": "La Rosa de los Vientos (Onda Cero)",
+      "host": null,
+      "date": "2013-09-30",
+      "language": "es",
+      "type": "radio",
+      "link": "https://www.ivoox.com/en/buscador-la-realidad-cookies-audios-mp3_rf_2401549_1.html",
+      "article": null,
+      "featured": false,
+      "description": "Radio segment explaining the new Cookie Law and its implications for websites and users."
+    }
+  ],
+  "community_organizing": [
+    {
+      "title": "Agile Aragón",
+      "role": "Co-organizer",
+      "organization": "Agile Aragón",
+      "period": "2015 - 2023",
+      "location": "Zaragoza, Spain",
+      "website": "https://www.meetup.com/agilearagon/",
+      "featured": true,
+      "description": "Co-organizer of the agile methodologies community in Aragón. Managed internal community operations, shared social media management, and facilitated workshops and activities.",
+      "links": [],
+      "activities": [
+        {
+          "title": "Global Day of Code Retreat 2018",
+          "date": "2018-11-17",
+          "role": "Facilitator",
+          "link": "https://www.meetup.com/agilearagon/events/256114280/",
+          "description": "Facilitated the annual global event focused on practicing software craft through deliberate practice, hosted by Vueling."
+        },
+        {
+          "title": "Friday Dojos",
+          "period": "2015-2017",
+          "role": "Organizer & Facilitator",
+          "link": "https://trello.com/b/S4JAbiD1/fridaydojo",
+          "description": "Regular open coding dojos organized through Senpai Devs, hosted under the Agile Aragón community."
+        }
+      ]
+    },
+    {
+      "title": "AOS 2023 Jaca",
+      "role": "Organizer",
+      "organization": "Agile Spain",
+      "period": "Dec 2022 - Sep 2023",
+      "location": "Jaca, Spain",
+      "website": "https://agile-spain.org/aos-2023-jaca",
+      "featured": true,
+      "description": "Organized the national Agile Open Space 2023 event in Jaca, a self-organized conference bringing together the Spanish agile community.",
+      "links": [],
+      "activities": [],
+      "photos": [
+        {
+          "src": "AOS23 - Event organizers.jpeg",
+          "caption": "AOS23 - Event organizers",
+          "hero": false
+        }
+      ]
+    },
+    {
+      "title": "Women TechMakers Zaragoza 2017",
+      "role": "Speaker Mentor",
+      "organization": "Women TechMakers",
+      "period": "2017",
+      "location": "Zaragoza, Spain",
+      "website": null,
+      "description": "Mentored speaker for the first Women TechMakers Zaragoza conference, helping prepare and support technical presentations.",
+      "links": [
+        {
+          "title": "Twitter reference",
+          "url": "https://x.com/pherediagil/status/1591556770736267264"
+        }
+      ],
+      "activities": []
+    },
+    {
+      "title": "Senpai Devs",
+      "role": "Co-founder & Mentor",
+      "organization": "Senpai Devs",
+      "period": "2015 - 2017",
+      "location": "Zaragoza, Spain",
+      "website": "http://senpaidevs.github.io/",
+      "description": "Professional mentoring program co-created with Daniel Latorre and Néstor Salceda to improve programming skills. Introduced methodologies and practices including XP, Software Craft, DevOps, Lean Software Development, and TDD. Invited industry professionals to give talks, including Ujúe Agudo from BikoLabs on general topics, Alberto Gualis on TDD, and Daniel Torres Burriel on UX.",
+      "links": [
+        {
+          "title": "Made in Zaragoza article",
+          "url": "https://madeinzaragoza.es/blog/senpaidevs-mentorizacion-intensiva-de-programadores-para-programadores/"
+        },
+        {
+          "title": "Twitter archive",
+          "url": "https://mobile.twitter.com/senpaidevs"
+        }
+      ],
+      "activities": []
+    },
+    {
+      "title": "Jacathon 2014 - Best Innovative Idea Award",
+      "role": "Winner",
+      "organization": "Jacathon (Hackathon)",
+      "period": "2014",
+      "location": "Zaragoza, Spain",
+      "website": null,
+      "description": "Won the Best Innovative Idea award at Jacathon 2014 hackathon. Project focused on open data visualization and currently maintained as JodoCoders.",
+      "links": [
+        {
+          "title": "Medium article",
+          "url": "https://medium.com/@jrubr/40f0440c913e"
+        },
+        {
+          "title": "GitHub repository",
+          "url": "https://github.com/aragonopendata/JodoCoders"
+        }
+      ],
+      "activities": []
+    },
+    {
+      "title": "QCon London 2017",
+      "role": "Volunteer Crew Member",
+      "organization": "QCon Software Development Conferences",
+      "period": "Mar 2017",
+      "location": "London, UK",
+      "website": null,
+      "description": "Volunteer crew member helping with the organization of the 2017 QCon London Conference.",
+      "links": [],
+      "activities": []
+    },
+    {
+      "title": "Zagales Hacklab",
+      "role": "Collaborator",
+      "organization": "Zagales Hacklab",
+      "period": "2013 - 2017",
+      "location": "Zaragoza, Spain",
+      "website": "https://zagaleshacklab.wordpress.com/",
+      "description": "Collaborator in a community introducing technology to children through hands-on activities and workshops.",
+      "links": [],
+      "activities": [
+        {
+          "title": "Minecraft Competition",
+          "date": "2014-12-20",
+          "role": "Co-organizer",
+          "link": "https://zagaleshacklab.wordpress.com/2014/12/23/novedad-quieres-venir-a-jugar-al-minecraft/",
+          "description": "Co-organized and provided server infrastructure for a Minecraft competition led by the children themselves at eTopia."
+        },
+        {
+          "title": "Camel Race event",
+          "date": "2013-11-10",
+          "role": "Collaborator",
+          "link": "https://zagaleshacklab.wordpress.com/2013/11/10/carrera-de-camellos-lo-conseguimos/",
+          "description": "Collaborated in organizing a robotics event for children at eTopia."
+        }
+      ]
+    },
+    {
+      "title": "Hispalinux Aragón",
+      "role": "Regional Manager",
+      "organization": "Hispalinux",
+      "period": "2013 - 2016",
+      "location": "Zaragoza, Spain",
+      "website": null,
+      "description": "Managed the Hispalinux headquarters in the Aragón region, organizing courses and talks about Open Source, and coordinating collaborations with local associations including PHP developer group, OSLUZ, Drupal camp, DotNetters, and Agile Aragón.",
+      "links": [],
+      "activities": []
+    }
+  ]
 }

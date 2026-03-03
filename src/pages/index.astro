@@ -3,13 +3,20 @@
  * Speaking & Community JSON schema reference (src/data/speaking-community.json):
  *
  * conference_talks / workshops:
- *   { title, event, location, date (YYYY-MM-DD), video?, slides?, link?,
- *     photos?: [{ src, caption, hero? }], featured?, description? }
+ *   { title, event, location, date (YYYY-MM-DD), video?, slides?,
+ *     link?: string, links?: string[] | {title,url}[],
+ *     photos?: [{ src: filename, caption, hero? }], featured?, description? }
+ *
+ * media_podcasts:
+ *   { title, show, host?, date, type, link, article?, featured?, description? }
  *
  * community_organizing:
- *   { title, role, organization, period, location, website?,
- *     description?, links?: [{ title, url }],
- *     activities?: [{ title, date, role?, link?, description? }] }
+ *   { title, role, organization, period, location, website?, featured?,
+ *     description?, links?: {title,url}[],
+ *     activities?: [{ title, date?, period?, role?, link?, description? }],
+ *     photos?: [{ src: filename, caption, hero? }] }
+ *
+ * photos.src is a bare filename — resolved at build time via import.meta.glob
  */
 import Layout from '../layouts/Layout.astro';
 import { Image, Picture } from 'astro:assets';
@@ -23,9 +30,20 @@ import cas22Graphic from '../assets/photos/CAS22 - NoMeetings - w graphic record
 import cas22 from '../assets/photos/CAS22 - NoMeetings.jpeg';
 import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
 
+// Map photo filenames → Astro-optimized URLs (via the carousel imports)
+const photoMap: Record<string, string> = {
+  'SCBCN25 - Documenting APIs.jpeg': scbcn25.src,
+  'SCBCN24 - AI in Support teams.jpeg': scbcn24.src,
+  "SCBCN23 - We're capitalists.jpeg": scbcn23.src,
+  'SCBCN22 - NoMeetings Open Space.jpeg': scbcn22.src,
+  'CAS22 - NoMeetings - w graphic recorder.jpeg': cas22Graphic.src,
+  'CAS22 - NoMeetings.jpeg': cas22.src,
+  'AOS23 - Event organizers.jpeg': aos23.src,
+};
+
 import speakingData from '../data/speaking-community.json';
 
-const { conference_talks, workshops, community_organizing } = speakingData;
+const { conference_talks, workshops, media_podcasts, community_organizing } = speakingData;
 
 function sortByDate(items) {
   return [...items].sort((a, b) => {
@@ -51,6 +69,7 @@ function splitItems(items) {
 
 const talks = splitItems(conference_talks);
 const ws = splitItems(workshops);
+const media = splitItems(media_podcasts ?? []);
 const community = splitItems(community_organizing);
 ---
 
@@ -136,12 +155,13 @@ const community = splitItems(community_organizing);
                   </strong>
                   {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
                   {talk.description && <span class="item-description">{talk.description}</span>}
-                  {(talk.video || talk.slides || (talk.photos?.length > 0)) && (
+                  {(talk.video || talk.slides || talk.link || (talk.photos?.length > 0)) && (
                     <span class="item-links">
                       {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">Video</a>}
                       {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
+                      {talk.link && <a href={talk.link} target="_blank" rel="noopener noreferrer">Link</a>}
                       {talk.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(talk.photos)} aria-label={`View photos from ${talk.title}`}>
+                        <button class="photos-btn" data-photos={JSON.stringify(talk.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${talk.title}`}>
                           📷 {talk.photos.length} photo{talk.photos.length !== 1 ? 's' : ''}
                         </button>
                       )}
@@ -158,12 +178,13 @@ const community = splitItems(community_organizing);
                   </strong>
                   {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
                   {talk.description && <span class="item-description">{talk.description}</span>}
-                  {(talk.video || talk.slides || (talk.photos?.length > 0)) && (
+                  {(talk.video || talk.slides || talk.link || (talk.photos?.length > 0)) && (
                     <span class="item-links">
                       {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">Video</a>}
                       {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
+                      {talk.link && <a href={talk.link} target="_blank" rel="noopener noreferrer">Link</a>}
                       {talk.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(talk.photos)} aria-label={`View photos from ${talk.title}`}>
+                        <button class="photos-btn" data-photos={JSON.stringify(talk.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${talk.title}`}>
                           📷 {talk.photos.length} photo{talk.photos.length !== 1 ? 's' : ''}
                         </button>
                       )}
@@ -210,7 +231,7 @@ const community = splitItems(community_organizing);
                       {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
                       {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Link</a>}
                       {item.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(item.photos)} aria-label={`View photos from ${item.title}`}>
+                        <button class="photos-btn" data-photos={JSON.stringify(item.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${item.title}`}>
                           📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
                         </button>
                       )}
@@ -233,7 +254,7 @@ const community = splitItems(community_organizing);
                       {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
                       {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Link</a>}
                       {item.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(item.photos)} aria-label={`View photos from ${item.title}`}>
+                        <button class="photos-btn" data-photos={JSON.stringify(item.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${item.title}`}>
                           📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
                         </button>
                       )}
@@ -257,6 +278,60 @@ const community = splitItems(community_organizing);
         )}
       </div>
 
+      <!-- Media & Podcasts -->
+      <div class="subsection">
+        <h3>Media &amp; Podcasts</h3>
+        <ul class="talks-list-inline">
+          {(media_podcasts ?? []).length === 0 ? (
+            <li class="empty-state">Coming soon.</li>
+          ) : (
+            <>
+              {media.visible.map(item => (
+                <li class="talk">
+                  <strong>
+                    <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                  </strong>
+                  {' · '}{item.show}{item.host ? ` · with ${item.host}` : ''}{item.date ? ` · ${getYear(item.date)}` : ''}
+                  {item.description && <span class="item-description">{item.description}</span>}
+                  {(item.link || item.article) && (
+                    <span class="item-links">
+                      {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Listen</a>}
+                      {item.article && <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>}
+                    </span>
+                  )}
+                </li>
+              ))}
+              {media.hidden.map(item => (
+                <li class="talk" data-section="media">
+                  <strong>
+                    <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                  </strong>
+                  {' · '}{item.show}{item.host ? ` · with ${item.host}` : ''}{item.date ? ` · ${getYear(item.date)}` : ''}
+                  {item.description && <span class="item-description">{item.description}</span>}
+                  {(item.link || item.article) && (
+                    <span class="item-links">
+                      {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Listen</a>}
+                      {item.article && <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </>
+          )}
+        </ul>
+        {media.hidden.length > 0 && (
+          <button
+            class="show-toggle"
+            data-toggle
+            data-section="media"
+            data-total={media.hidden.length + media.visible.length}
+            data-label="items"
+          >
+            Show all {media.hidden.length + media.visible.length} items
+          </button>
+        )}
+      </div>
+
       <!-- Community Organizing -->
       <div class="subsection">
         <h3>Community Organizing</h3>
@@ -275,11 +350,16 @@ const community = splitItems(community_organizing);
                   {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}
                   {item.location && <span class="item-meta">{item.location}</span>}
                   {item.description && <span class="item-description">{item.description}</span>}
-                  {item.links?.length > 0 && (
+                  {(item.links?.length > 0 || item.photos?.length > 0) && (
                     <span class="item-links">
-                      {item.links.map(l => (
+                      {item.links?.map(l => (
                         <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
                       ))}
+                      {item.photos?.length > 0 && (
+                        <button class="photos-btn" data-photos={JSON.stringify(item.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${item.title || item.organization}`}>
+                          📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
+                        </button>
+                      )}
                     </span>
                   )}
                   {item.activities?.length > 0 && (
@@ -307,11 +387,16 @@ const community = splitItems(community_organizing);
                   {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}
                   {item.location && <span class="item-meta">{item.location}</span>}
                   {item.description && <span class="item-description">{item.description}</span>}
-                  {item.links?.length > 0 && (
+                  {(item.links?.length > 0 || item.photos?.length > 0) && (
                     <span class="item-links">
-                      {item.links.map(l => (
+                      {item.links?.map(l => (
                         <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
                       ))}
+                      {item.photos?.length > 0 && (
+                        <button class="photos-btn" data-photos={JSON.stringify(item.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${item.title || item.organization}`}>
+                          📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
+                        </button>
+                      )}
                     </span>
                   )}
                   {item.activities?.length > 0 && (
