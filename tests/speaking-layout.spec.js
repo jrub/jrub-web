@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * LAYOUT VALIDATION TEST - Speaking Page
+ * LAYOUT VALIDATION TEST - Speaking Section (single-page landing)
  *
  * Purpose: Validate spatial relationships using geometric measurements
  * Strategy: Use getBoundingClientRect() to get exact positions and sizes
@@ -35,16 +35,18 @@ function logLayout(carousel, title, container, talks) {
   console.log('===========================\n');
 }
 
-test.describe('Speaking Page Layout Requirements', () => {
+test.describe('Speaking Section Layout Requirements', () => {
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('/speaking');
+    await page.goto('/');
+    // Scroll to the speaking section so it is within the measured viewport
+    await page.locator('#speaking').scrollIntoViewIfNeeded();
     // Wait for carousel to be visible (ensures page is fully loaded)
     await page.locator('.photo-carousel').waitFor({ state: 'visible' });
   });
 
   /**
-   * REQUIREMENT 1: Carousel must be to the RIGHT of the title
+   * REQUIREMENT 1: Carousel must be to the RIGHT of the section title
    *
    * Validation: carousel.left > title.left
    * Why: "To the right" means higher X coordinate (further right on screen)
@@ -55,9 +57,9 @@ test.describe('Speaking Page Layout Requirements', () => {
    */
   test('carousel is positioned to the right of title', async ({ page }) => {
     const carousel = await getBoundingBox(page, '.photo-carousel');
-    const title = await getBoundingBox(page, '.content-container h1');
+    const title = await getBoundingBox(page, '#speaking h2');
     const talks = await getBoundingBox(page, '.talks-list-inline');
-    const container = await getBoundingBox(page, '.content-container');
+    const container = await getBoundingBox(page, '#speaking');
 
     logLayout(carousel, title, container, talks);
 
@@ -85,7 +87,7 @@ test.describe('Speaking Page Layout Requirements', () => {
    */
   test('carousel stays within container boundaries', async ({ page }) => {
     const carousel = await getBoundingBox(page, '.photo-carousel');
-    const container = await getBoundingBox(page, '.content-container');
+    const container = await getBoundingBox(page, '#speaking');
 
     console.log(`Carousel right: ${carousel.right.toFixed(0)}, Container right: ${container.right.toFixed(0)}`);
 
@@ -101,11 +103,11 @@ test.describe('Speaking Page Layout Requirements', () => {
    *
    * Thresholds:
    * - Desktop: >= 50% (carousel takes ~30%, margins take ~10%, text takes 50%+)
-   * - Mobile: >= 80% (carousel stacks above, so text gets most of the width)
+   * - Mobile: >= 40% (carousel floats right at 180px, text wraps beside it)
    */
-  test('talks list uses available width', async ({ page, browserName }) => {
+  test('talks list uses available width', async ({ page }) => {
     const talks = await getBoundingBox(page, '.talks-list-inline');
-    const container = await getBoundingBox(page, '.content-container');
+    const container = await getBoundingBox(page, '#speaking');
 
     const usagePercent = (talks.width / container.width) * 100;
     console.log(`Talks width usage: ${usagePercent.toFixed(1)}%`);
@@ -148,10 +150,10 @@ test.describe('Speaking Page Layout Requirements', () => {
    */
   test('complete layout spatial validation', async ({ page }) => {
     const carousel = await getBoundingBox(page, '.photo-carousel');
-    const title = await getBoundingBox(page, '.content-container h1');
-    const intro = await getBoundingBox(page, '.content-container .intro');
+    const title = await getBoundingBox(page, '#speaking h2');
+    const intro = await getBoundingBox(page, '#speaking .section-intro');
     const talks = await getBoundingBox(page, '.talks-list-inline');
-    const container = await getBoundingBox(page, '.content-container');
+    const container = await getBoundingBox(page, '#speaking');
 
     logLayout(carousel, title, container, talks);
 
@@ -166,15 +168,15 @@ test.describe('Speaking Page Layout Requirements', () => {
     expect(title.left, 'Title should start from left').toBeLessThan(carousel.left);
     expect(intro.left, 'Intro should start from left').toBeLessThan(carousel.left);
 
-    // 3. Talks list starts from the left edge
+    // 4. Talks list starts from the left edge of container
     expect(Math.abs(talks.left - container.left), 'Talks should start from container left').toBeLessThan(10);
 
-    // 4. Everything is within container
+    // 5. Everything is within container
     expect(carousel.right, 'Carousel within container').toBeLessThanOrEqual(container.right + 1);
     expect(title.right, 'Title within container').toBeLessThanOrEqual(container.right + 1);
     expect(talks.right, 'Talks within container').toBeLessThanOrEqual(container.right + 1);
 
-    // 5. No element has zero or negative dimensions
+    // 6. No element has zero or negative dimensions
     expect(carousel.width, 'Carousel has width').toBeGreaterThan(0);
     expect(title.width, 'Title has width').toBeGreaterThan(0);
     expect(talks.width, 'Talks has width').toBeGreaterThan(0);

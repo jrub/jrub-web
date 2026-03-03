@@ -122,11 +122,11 @@ const community = splitItems(community_organizing);
       <!-- Conference Talks -->
       <div class="subsection">
         <h3>Conference Talks</h3>
-        {conference_talks.length === 0 ? (
-          <p class="empty-state">Coming soon.</p>
-        ) : (
-          <>
-            <ul class="talks-list-inline">
+        <ul class="talks-list-inline">
+          {conference_talks.length === 0 ? (
+            <li class="empty-state">Coming soon.</li>
+          ) : (
+            <>
               {talks.visible.map(talk => (
                 <li class="talk">
                   <strong>
@@ -171,30 +171,30 @@ const community = splitItems(community_organizing);
                   )}
                 </li>
               ))}
-            </ul>
-            {talks.hidden.length > 0 && (
-              <button
-                class="show-toggle"
-                data-toggle
-                data-section="talks"
-                data-total={talks.hidden.length + talks.visible.length}
-                data-label="talks"
-              >
-                Show all {talks.hidden.length + talks.visible.length} talks
-              </button>
-            )}
-          </>
+            </>
+          )}
+        </ul>
+        {talks.hidden.length > 0 && (
+          <button
+            class="show-toggle"
+            data-toggle
+            data-section="talks"
+            data-total={talks.hidden.length + talks.visible.length}
+            data-label="talks"
+          >
+            Show all {talks.hidden.length + talks.visible.length} talks
+          </button>
         )}
       </div>
 
       <!-- Workshops & Facilitation -->
       <div class="subsection">
         <h3>Workshops &amp; Facilitation</h3>
-        {workshops.length === 0 ? (
-          <p class="empty-state">Coming soon.</p>
-        ) : (
-          <>
-            <ul class="talks-list-inline">
+        <ul class="talks-list-inline">
+          {workshops.length === 0 ? (
+            <li class="empty-state">Coming soon.</li>
+          ) : (
+            <>
               {ws.visible.map(item => (
                 <li class="talk">
                   <strong>
@@ -241,30 +241,30 @@ const community = splitItems(community_organizing);
                   )}
                 </li>
               ))}
-            </ul>
-            {ws.hidden.length > 0 && (
-              <button
-                class="show-toggle"
-                data-toggle
-                data-section="workshops"
-                data-total={ws.hidden.length + ws.visible.length}
-                data-label="workshops"
-              >
-                Show all {ws.hidden.length + ws.visible.length} workshops
-              </button>
-            )}
-          </>
+            </>
+          )}
+        </ul>
+        {ws.hidden.length > 0 && (
+          <button
+            class="show-toggle"
+            data-toggle
+            data-section="workshops"
+            data-total={ws.hidden.length + ws.visible.length}
+            data-label="workshops"
+          >
+            Show all {ws.hidden.length + ws.visible.length} workshops
+          </button>
         )}
       </div>
 
       <!-- Community Organizing -->
       <div class="subsection">
         <h3>Community Organizing</h3>
-        {community_organizing.length === 0 ? (
-          <p class="empty-state">Coming soon.</p>
-        ) : (
-          <>
-            <ul class="talks-list-inline">
+        <ul class="talks-list-inline">
+          {community_organizing.length === 0 ? (
+            <li class="empty-state">Coming soon.</li>
+          ) : (
+            <>
               {community.visible.map(item => (
                 <li class="talk">
                   <strong>
@@ -329,19 +329,19 @@ const community = splitItems(community_organizing);
                   )}
                 </li>
               ))}
-            </ul>
-            {community.hidden.length > 0 && (
-              <button
-                class="show-toggle"
-                data-toggle
-                data-section="community"
-                data-total={community.hidden.length + community.visible.length}
-                data-label="organizations"
-              >
-                Show all {community.hidden.length + community.visible.length} organizations
-              </button>
-            )}
-          </>
+            </>
+          )}
+        </ul>
+        {community.hidden.length > 0 && (
+          <button
+            class="show-toggle"
+            data-toggle
+            data-section="community"
+            data-total={community.hidden.length + community.visible.length}
+            data-label="organizations"
+          >
+            Show all {community.hidden.length + community.visible.length} organizations
+          </button>
         )}
       </div>
 
