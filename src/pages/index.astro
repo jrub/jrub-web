@@ -84,10 +84,10 @@ const community = splitItems(community_organizing);
         Software engineer with techno-activist leanings. 20 years working at the intersection of product, engineering, and knowledge management.
       </p>
       <p class="intro">
-        I've been part of startups from day one, served as CTO, led complex technical products… Known for championing <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>, helping distributed teams rethink collaboration beyond default rituals.
+        I've been part of startups from day one, served as CTO, and led complex technical products. Known for championing <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>, helping distributed teams rethink collaboration beyond default rituals.
       </p>
       <p class="intro">
-        Available for speaking at tech conferences and corporate events, defining and implementing AI strategies, and improving collaboration practices.
+        Available for speaking at tech conferences and corporate events. <a href="#contact">Get in touch →</a>
       </p>
     </section>
 
@@ -138,11 +138,7 @@ const community = splitItems(community_organizing);
             <>
               {talks.visible.map(talk => (
                 <li class="talk">
-                  <strong>
-                    {talk.video
-                      ? <a href={talk.video} target="_blank" rel="noopener noreferrer">{talk.title}</a>
-                      : talk.title}
-                  </strong>
+                  <strong>{talk.title}</strong>
                   {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
                   {(talk.video || talk.slides || talk.links?.length > 0) && (
                     <span class="item-links">
@@ -151,15 +147,17 @@ const community = splitItems(community_organizing);
                       {talk.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
                     </span>
                   )}
+                  {talk.description && (
+                    <details class="item-description">
+                      <summary>Details</summary>
+                      <p>{talk.description}</p>
+                    </details>
+                  )}
                 </li>
               ))}
               {talks.hidden.map(talk => (
                 <li class="talk" data-section="talks" style="display:none">
-                  <strong>
-                    {talk.video
-                      ? <a href={talk.video} target="_blank" rel="noopener noreferrer">{talk.title}</a>
-                      : talk.title}
-                  </strong>
+                  <strong>{talk.title}</strong>
                   {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
                   {(talk.video || talk.slides || talk.links?.length > 0) && (
                     <span class="item-links">
@@ -167,6 +165,12 @@ const community = splitItems(community_organizing);
                       {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
                       {talk.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
                     </span>
+                  )}
+                  {talk.description && (
+                    <details class="item-description">
+                      <summary>Details</summary>
+                      <p>{talk.description}</p>
+                    </details>
                   )}
                 </li>
               ))}
@@ -205,6 +209,12 @@ const community = splitItems(community_organizing);
                       {item.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
                     </span>
                   )}
+                  {item.description && (
+                    <details class="item-description">
+                      <summary>Details</summary>
+                      <p>{item.description}</p>
+                    </details>
+                  )}
                 </li>
               ))}
               {ws.hidden.map(item => (
@@ -217,6 +227,12 @@ const community = splitItems(community_organizing);
                       {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
                       {item.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
                     </span>
+                  )}
+                  {item.description && (
+                    <details class="item-description">
+                      <summary>Details</summary>
+                      <p>{item.description}</p>
+                    </details>
                   )}
                 </li>
               ))}
@@ -255,6 +271,12 @@ const community = splitItems(community_organizing);
                       <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>
                     </span>
                   )}
+                  {item.description && (
+                    <details class="item-description">
+                      <summary>Details</summary>
+                      <p>{item.description}</p>
+                    </details>
+                  )}
                 </li>
               ))}
               {media.hidden.map(item => (
@@ -267,6 +289,12 @@ const community = splitItems(community_organizing);
                     <span class="item-links">
                       <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>
                     </span>
+                  )}
+                  {item.description && (
+                    <details class="item-description">
+                      <summary>Details</summary>
+                      <p>{item.description}</p>
+                    </details>
                   )}
                 </li>
               ))}
@@ -301,14 +329,19 @@ const community = splitItems(community_organizing);
                       ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title || item.organization}</a>
                       : (item.title || item.organization)}
                   </strong>
-                  {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}
-                  {item.location && <span class="item-meta">{item.location}</span>}
+                  {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}{item.location ? ` · ${item.location}` : ''}
                   {item.links?.length > 0 && (
                     <span class="item-links">
                       {item.links.map(l => (
                         <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
                       ))}
                     </span>
+                  )}
+                  {item.description && (
+                    <details class="item-description">
+                      <summary>Details</summary>
+                      <p>{item.description}</p>
+                    </details>
                   )}
                   {item.activities?.length > 0 && (
                     <ul class="activities-list">
@@ -332,14 +365,19 @@ const community = splitItems(community_organizing);
                       ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title || item.organization}</a>
                       : (item.title || item.organization)}
                   </strong>
-                  {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}
-                  {item.location && <span class="item-meta">{item.location}</span>}
+                  {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}{item.location ? ` · ${item.location}` : ''}
                   {item.links?.length > 0 && (
                     <span class="item-links">
                       {item.links.map(l => (
                         <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
                       ))}
                     </span>
+                  )}
+                  {item.description && (
+                    <details class="item-description">
+                      <summary>Details</summary>
+                      <p>{item.description}</p>
+                    </details>
                   )}
                   {item.activities?.length > 0 && (
                     <ul class="activities-list">
@@ -365,9 +403,9 @@ const community = splitItems(community_organizing);
             data-toggle
             data-section="community"
             data-total={community.hidden.length + community.visible.length}
-            data-label="organizations"
+            data-label="items"
           >
-            Show all {community.hidden.length + community.visible.length} organizations
+            Show all {community.hidden.length + community.visible.length} items
           </button>
         )}
       </div>
@@ -486,7 +524,7 @@ const community = splitItems(community_organizing);
 
   .section-intro {
     font-size: 1.05rem;
-    color: var(--color-gray-medium);
+    color: var(--color-black);
     margin-bottom: 1.5rem;
   }
 
@@ -570,7 +608,7 @@ const community = splitItems(community_organizing);
   }
 
   .subsection h3 {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-black);
     margin-bottom: 1rem;
@@ -606,11 +644,26 @@ const community = splitItems(community_organizing);
     font-weight: 600;
   }
 
-  .item-meta {
-    display: block;
+  .item-description {
+    margin-top: 0.4rem;
+  }
+
+  .item-description summary {
+    font-size: 0.8rem;
+    color: var(--color-gray-medium);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .item-description summary:hover {
+    color: var(--color-turquoise);
+  }
+
+  .item-description p {
+    margin-top: 0.4rem;
     font-size: 0.9rem;
     color: var(--color-gray-medium);
-    margin-top: 0.2rem;
+    line-height: 1.5;
   }
 
   .item-links {
@@ -647,7 +700,7 @@ const community = splitItems(community_organizing);
     background: none;
     border: 1px solid currentColor;
     border-radius: 4px;
-    padding: 0.2rem 0.6rem;
+    padding: 0.35rem 0.8rem;
     cursor: pointer;
     color: var(--color-turquoise);
     font-size: 0.85rem;
