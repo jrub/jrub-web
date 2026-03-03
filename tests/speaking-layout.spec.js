@@ -18,7 +18,8 @@ import { test, expect } from '@playwright/test';
  * Returns: { x, y, width, height, top, right, bottom, left }
  */
 async function getBoundingBox(page, selector) {
-  const element = page.locator(selector);
+  // Use .first() to handle selectors that may match multiple elements
+  const element = page.locator(selector).first();
   await element.waitFor({ state: 'visible' });
   return await element.evaluate(el => el.getBoundingClientRect().toJSON());
 }
