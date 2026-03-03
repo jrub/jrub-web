@@ -1,64 +1,465 @@
 ---
+/*
+ * Speaking & Community JSON schema reference (src/data/speaking-community.json):
+ *
+ * conference_talks / workshops:
+ *   { title, event, location, date (YYYY-MM-DD), video?, slides?, link?,
+ *     photos?: [{ src, caption, hero? }], featured?, description? }
+ *
+ * community_organizing:
+ *   { title, role, organization, period, location, website?,
+ *     description?, links?: [{ title, url }],
+ *     activities?: [{ title, date, role?, link?, description? }] }
+ */
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import profileImage from '../../public/profile.jpg';
+
+import scbcn25 from '../assets/photos/SCBCN25 - Documenting APIs.jpeg';
+import scbcn24 from '../assets/photos/SCBCN24 - AI in Support teams.jpeg';
+import scbcn23 from '../assets/photos/SCBCN23 - We\'re capitalists.jpeg';
+import scbcn22 from '../assets/photos/SCBCN22 - NoMeetings Open Space.jpeg';
+import cas22Graphic from '../assets/photos/CAS22 - NoMeetings - w graphic recorder.jpeg';
+import cas22 from '../assets/photos/CAS22 - NoMeetings.jpeg';
+import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
+
+import speakingData from '../data/speaking-community.json';
+
+const { conference_talks, workshops, community_organizing } = speakingData;
+
+function sortByDate(items) {
+  return [...items].sort((a, b) => {
+    if (!a.date) return 1;
+    if (!b.date) return -1;
+    return new Date(b.date) - new Date(a.date);
+  });
+}
+
+function getYear(dateStr) {
+  if (!dateStr) return '';
+  return new Date(dateStr).getFullYear();
+}
+
+function splitItems(items) {
+  const sorted = sortByDate(items);
+  const featured = sorted.filter(i => i.featured === true);
+  const visible = featured.length > 0 ? featured : sorted.slice(0, 3);
+  const visibleSet = new Set(visible);
+  const hidden = sorted.filter(i => !visibleSet.has(i));
+  return { visible, hidden };
+}
+
+const talks = splitItems(conference_talks);
+const ws = splitItems(workshops);
+const community = splitItems(community_organizing);
 ---
 
 <Layout title="Javi Rubio">
   <div class="content-container">
+
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-header">
         <div>
           <h1>Javi Rubio</h1>
-          <p class="typed-roles">
-            <span id="typed-role"></span>
-          </p>
+          <p class="typed-roles"><span id="typed-role"></span></p>
           <p class="subtitle">Helping teams build better products, knowledge systems, and sustainable work cultures.</p>
         </div>
         <Image src={profileImage} alt="Javi Rubio" class="profile-photo" width={200} height={200} />
       </div>
+    </section>
 
+    <!-- ABOUT -->
+    <section class="about">
       <p class="intro">
-        20 years working at the intersection of product, engineering, and knowledge management. I've been part of startups from day one, served as CTO, led complex technical products, and built developer experience systems.
+        Software engineer with techno-activist leanings. 20 years working at the intersection of product, engineering, and knowledge management.
       </p>
-
       <p class="intro">
-        I speak at tech conferences and corporate events, organize communities, and work with organizations on AI strategy, collaboration practices, and sustainable work cultures.
+        I've been part of startups from day one, served as CTO, led complex technical products… Known for championing <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>, helping distributed teams rethink collaboration beyond default rituals.
       </p>
-
       <p class="intro">
-        Known for championing <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>, helping distributed teams rethink collaboration beyond default rituals.
+        Available for speaking at tech conferences and corporate events, defining and implementing AI strategies, and improving collaboration practices.
       </p>
     </section>
+
+    <!-- SPEAKING & COMMUNITY -->
+    <section id="speaking" class="speaking-section">
+      <h2>Speaking &amp; Community</h2>
+      <p class="section-intro">I regularly speak at tech conferences, facilitate workshops, and organize developer communities.</p>
+
+      <!-- Hero photo carousel -->
+      <div class="photo-carousel" aria-hidden="true">
+        <div class="photo-slide landscape">
+          <Picture src={scbcn25} alt="Speaking at SCBCN25" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN25 - Documenting APIs</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={scbcn24} alt="Speaking at SCBCN24" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN24 - AI in Support teams</span>
+        </div>
+        <div class="photo-slide landscape">
+          <Picture src={scbcn23} alt="Speaking at SCBCN23" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN23 - We're capitalists</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={scbcn22} alt="Speaking at SCBCN22" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN22 - NoMeetings Open Space</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={cas22Graphic} alt="Speaking at CAS22" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">CAS22 - NoMeetings & bgcampa</span>
+        </div>
+        <div class="photo-slide landscape">
+          <Picture src={cas22} alt="Speaking at CAS22" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+          <span class="photo-caption">CAS22 - NoMeetings</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={aos23} alt="AOS23 event organizers" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">AOS23 - Event organizers</span>
+        </div>
+      </div>
+
+      <!-- Conference Talks -->
+      <div class="subsection">
+        <h3>Conference Talks</h3>
+        {conference_talks.length === 0 ? (
+          <p class="empty-state">Coming soon.</p>
+        ) : (
+          <>
+            <ul class="talks-list-inline">
+              {talks.visible.map(talk => (
+                <li class="talk">
+                  <strong>
+                    {talk.video
+                      ? <a href={talk.video} target="_blank" rel="noopener noreferrer">{talk.title}</a>
+                      : talk.title}
+                  </strong>
+                  {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
+                  {talk.description && <span class="item-description">{talk.description}</span>}
+                  {(talk.video || talk.slides || (talk.photos?.length > 0)) && (
+                    <span class="item-links">
+                      {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">Video</a>}
+                      {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
+                      {talk.photos?.length > 0 && (
+                        <button class="photos-btn" data-photos={JSON.stringify(talk.photos)} aria-label={`View photos from ${talk.title}`}>
+                          📷 {talk.photos.length} photo{talk.photos.length !== 1 ? 's' : ''}
+                        </button>
+                      )}
+                    </span>
+                  )}
+                </li>
+              ))}
+              {talks.hidden.map(talk => (
+                <li class="talk" data-section="talks">
+                  <strong>
+                    {talk.video
+                      ? <a href={talk.video} target="_blank" rel="noopener noreferrer">{talk.title}</a>
+                      : talk.title}
+                  </strong>
+                  {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
+                  {talk.description && <span class="item-description">{talk.description}</span>}
+                  {(talk.video || talk.slides || (talk.photos?.length > 0)) && (
+                    <span class="item-links">
+                      {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">Video</a>}
+                      {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
+                      {talk.photos?.length > 0 && (
+                        <button class="photos-btn" data-photos={JSON.stringify(talk.photos)} aria-label={`View photos from ${talk.title}`}>
+                          📷 {talk.photos.length} photo{talk.photos.length !== 1 ? 's' : ''}
+                        </button>
+                      )}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+            {talks.hidden.length > 0 && (
+              <button
+                class="show-toggle"
+                data-toggle
+                data-section="talks"
+                data-total={talks.hidden.length + talks.visible.length}
+                data-label="talks"
+              >
+                Show all {talks.hidden.length + talks.visible.length} talks
+              </button>
+            )}
+          </>
+        )}
+      </div>
+
+      <!-- Workshops & Facilitation -->
+      <div class="subsection">
+        <h3>Workshops &amp; Facilitation</h3>
+        {workshops.length === 0 ? (
+          <p class="empty-state">Coming soon.</p>
+        ) : (
+          <>
+            <ul class="talks-list-inline">
+              {ws.visible.map(item => (
+                <li class="talk">
+                  <strong>
+                    {item.link
+                      ? <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                      : item.title}
+                  </strong>
+                  {' · '}{item.event}{item.date ? ` · ${getYear(item.date)}` : ''}
+                  {item.description && <span class="item-description">{item.description}</span>}
+                  {(item.video || item.slides || item.link || (item.photos?.length > 0)) && (
+                    <span class="item-links">
+                      {item.video && <a href={item.video} target="_blank" rel="noopener noreferrer">Video</a>}
+                      {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
+                      {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Link</a>}
+                      {item.photos?.length > 0 && (
+                        <button class="photos-btn" data-photos={JSON.stringify(item.photos)} aria-label={`View photos from ${item.title}`}>
+                          📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
+                        </button>
+                      )}
+                    </span>
+                  )}
+                </li>
+              ))}
+              {ws.hidden.map(item => (
+                <li class="talk" data-section="workshops">
+                  <strong>
+                    {item.link
+                      ? <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                      : item.title}
+                  </strong>
+                  {' · '}{item.event}{item.date ? ` · ${getYear(item.date)}` : ''}
+                  {item.description && <span class="item-description">{item.description}</span>}
+                  {(item.video || item.slides || item.link || (item.photos?.length > 0)) && (
+                    <span class="item-links">
+                      {item.video && <a href={item.video} target="_blank" rel="noopener noreferrer">Video</a>}
+                      {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
+                      {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Link</a>}
+                      {item.photos?.length > 0 && (
+                        <button class="photos-btn" data-photos={JSON.stringify(item.photos)} aria-label={`View photos from ${item.title}`}>
+                          📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
+                        </button>
+                      )}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+            {ws.hidden.length > 0 && (
+              <button
+                class="show-toggle"
+                data-toggle
+                data-section="workshops"
+                data-total={ws.hidden.length + ws.visible.length}
+                data-label="workshops"
+              >
+                Show all {ws.hidden.length + ws.visible.length} workshops
+              </button>
+            )}
+          </>
+        )}
+      </div>
+
+      <!-- Community Organizing -->
+      <div class="subsection">
+        <h3>Community Organizing</h3>
+        {community_organizing.length === 0 ? (
+          <p class="empty-state">Coming soon.</p>
+        ) : (
+          <>
+            <ul class="talks-list-inline">
+              {community.visible.map(item => (
+                <li class="talk">
+                  <strong>
+                    {item.website
+                      ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title || item.organization}</a>
+                      : (item.title || item.organization)}
+                  </strong>
+                  {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}
+                  {item.location && <span class="item-meta">{item.location}</span>}
+                  {item.description && <span class="item-description">{item.description}</span>}
+                  {item.links?.length > 0 && (
+                    <span class="item-links">
+                      {item.links.map(l => (
+                        <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
+                      ))}
+                    </span>
+                  )}
+                  {item.activities?.length > 0 && (
+                    <ul class="activities-list">
+                      {item.activities.map(act => (
+                        <li>
+                          {act.link
+                            ? <a href={act.link} target="_blank" rel="noopener noreferrer">{act.title}</a>
+                            : act.title}
+                          {act.date ? ` · ${getYear(act.date)}` : ''}
+                          {act.role ? ` · ${act.role}` : ''}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+              {community.hidden.map(item => (
+                <li class="talk" data-section="community">
+                  <strong>
+                    {item.website
+                      ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title || item.organization}</a>
+                      : (item.title || item.organization)}
+                  </strong>
+                  {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}
+                  {item.location && <span class="item-meta">{item.location}</span>}
+                  {item.description && <span class="item-description">{item.description}</span>}
+                  {item.links?.length > 0 && (
+                    <span class="item-links">
+                      {item.links.map(l => (
+                        <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
+                      ))}
+                    </span>
+                  )}
+                  {item.activities?.length > 0 && (
+                    <ul class="activities-list">
+                      {item.activities.map(act => (
+                        <li>
+                          {act.link
+                            ? <a href={act.link} target="_blank" rel="noopener noreferrer">{act.title}</a>
+                            : act.title}
+                          {act.date ? ` · ${getYear(act.date)}` : ''}
+                          {act.role ? ` · ${act.role}` : ''}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+            {community.hidden.length > 0 && (
+              <button
+                class="show-toggle"
+                data-toggle
+                data-section="community"
+                data-total={community.hidden.length + community.visible.length}
+                data-label="organizations"
+              >
+                Show all {community.hidden.length + community.visible.length} organizations
+              </button>
+            )}
+          </>
+        )}
+      </div>
+
+    </section>
+  </div>
+
+  <!-- Photo Lightbox Modal -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo gallery">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-inner">
+      <button class="lightbox-close" aria-label="Close gallery">✕</button>
+      <button class="lightbox-prev" aria-label="Previous photo">‹</button>
+      <div class="lightbox-photo-wrap">
+        <img id="lightbox-img" src="" alt="" />
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+        <p id="lightbox-counter" class="lightbox-counter"></p>
+      </div>
+      <button class="lightbox-next" aria-label="Next photo">›</button>
+    </div>
   </div>
 </Layout>
 
 <script>
   import Typed from 'typed.js';
 
-  const roles = [
-    'Tech Writer',
-    'Developer Relations',
-    'Chief Technical Officer',
-    'Associate Professor',
-    'Android Dev',
-    'Technical Coach',
-    'Technical Product Manager',
-    'Product Engineer'
-  ].sort(() => Math.random() - 0.5);
-
   new Typed('#typed-role', {
-    strings: roles,
+    strings: [
+      'Tech Writer',
+      'Developer Relations',
+      'Chief Technical Officer',
+      'Associate Professor',
+      'Android Dev',
+      'Technical Coach',
+      'Technical Product Manager',
+      'Product Engineer',
+    ],
     typeSpeed: 60,
     backSpeed: 30,
     backDelay: 1600,
     loop: true,
     showCursor: true,
-    cursorChar: '|'
+    cursorChar: '|',
+    shuffle: true,
+  });
+
+  // Show/hide subsection items
+  document.querySelectorAll('[data-toggle]').forEach(btn => {
+    const section = btn.dataset.section;
+    const label = btn.dataset.label;
+    const total = btn.dataset.total;
+
+    // Hide items on load
+    document.querySelectorAll(`[data-section="${section}"]`).forEach(item => {
+      item.style.display = 'none';
+    });
+
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.dataset.expanded === 'true';
+      document.querySelectorAll(`[data-section="${section}"]`).forEach(item => {
+        item.style.display = isExpanded ? 'none' : '';
+      });
+      btn.dataset.expanded = isExpanded ? 'false' : 'true';
+      btn.textContent = isExpanded ? `Show all ${total} ${label}` : 'Show less';
+    });
+  });
+
+  // Photo lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+
+  let photos = [];
+  let idx = 0;
+
+  function show(i) {
+    idx = i;
+    const p = photos[i];
+    lightboxImg.src = p.src;
+    lightboxImg.alt = p.caption || '';
+    lightboxCaption.textContent = p.caption || '';
+    lightboxCounter.textContent = `${i + 1} / ${photos.length}`;
+  }
+
+  function open(list, start) {
+    photos = list;
+    show(start);
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lightbox.querySelector('.lightbox-close').focus();
+  }
+
+  function close() {
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.photos-btn').forEach(btn => {
+    btn.addEventListener('click', () => open(JSON.parse(btn.dataset.photos), 0));
+  });
+
+  document.querySelector('.lightbox-close').addEventListener('click', close);
+  document.querySelector('.lightbox-overlay').addEventListener('click', close);
+  document.querySelector('.lightbox-prev').addEventListener('click', () => show((idx - 1 + photos.length) % photos.length));
+  document.querySelector('.lightbox-next').addEventListener('click', () => show((idx + 1) % photos.length));
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show((idx - 1 + photos.length) % photos.length);
+    if (e.key === 'ArrowRight') show((idx + 1) % photos.length);
   });
 </script>
 
 <style>
+  /* ── Hero ────────────────────────── */
   .hero {
     text-align: left;
   }
@@ -81,14 +482,8 @@ import profileImage from '../../public/profile.jpg';
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .typed-roles {
@@ -105,12 +500,297 @@ import profileImage from '../../public/profile.jpg';
     color: var(--color-black);
   }
 
-  /* Typed.js cursor styling */
   :global(.typed-cursor) {
     color: var(--color-magenta);
     font-weight: 300;
   }
 
+  /* ── Speaking section ─────────────── */
+  .speaking-section {
+    max-width: 1200px;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-gray-light);
+  }
+
+  /* Clearfix for carousel float */
+  .speaking-section::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .speaking-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--color-gray-medium);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── Carousel (preserved) ─────────── */
+  .photo-carousel {
+    float: right;
+    width: 360px;
+    height: 360px;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .photo-slide {
+    position: absolute;
+    opacity: 0;
+    animation: fadeSlide 28s infinite;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .photo-slide.portrait {
+    width: 280px;
+    height: 360px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .photo-slide.landscape {
+    width: 360px;
+    height: 230px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .photo-slide:nth-child(1) { animation-delay: 0s; }
+  .photo-slide:nth-child(2) { animation-delay: 4s; }
+  .photo-slide:nth-child(3) { animation-delay: 8s; }
+  .photo-slide:nth-child(4) { animation-delay: 12s; }
+  .photo-slide:nth-child(5) { animation-delay: 16s; }
+  .photo-slide:nth-child(6) { animation-delay: 20s; }
+  .photo-slide:nth-child(7) { animation-delay: 24s; }
+
+  .photo-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--color-gray-medium);
+    background: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @keyframes fadeSlide {
+    0%   { opacity: 0; }
+    2%   { opacity: 1; }
+    12%  { opacity: 1; }
+    14%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  /* ── Subsections ──────────────────── */
+  .subsection {
+    margin-top: 3rem;
+  }
+
+  .subsection h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: 1rem;
+  }
+
+  .empty-state {
+    color: var(--color-gray-medium);
+    font-style: italic;
+  }
+
+  .talks-list-inline {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .talk {
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .talk::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--color-gray-medium);
+  }
+
+  .talk strong {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .item-description,
+  .item-meta {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-gray-medium);
+    margin-top: 0.2rem;
+  }
+
+  .item-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .item-links a,
+  .photos-btn {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-turquoise);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .item-links a:hover,
+  .photos-btn:hover {
+    color: var(--color-magenta);
+    text-decoration: underline;
+  }
+
+  .activities-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    color: var(--color-gray-medium);
+  }
+
+  .show-toggle {
+    margin-top: 1rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-turquoise);
+    font-size: 0.9rem;
+    font-family: inherit;
+  }
+
+  .show-toggle:hover {
+    color: var(--color-magenta);
+    text-decoration: underline;
+  }
+
+  /* ── Lightbox ─────────────────────── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+  }
+
+  .lightbox.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .lightbox-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 90vw;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    transition: color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    color: var(--color-magenta);
+  }
+
+  #lightbox-img {
+    max-width: 75vw;
+    max-height: 80vh;
+    border-radius: 8px;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  .lightbox-caption {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .lightbox-counter {
+    color: #999;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 0.25rem;
+  }
+
+  /* ── Mobile ───────────────────────── */
   @media (max-width: 768px) {
     .hero-header {
       flex-direction: column;
@@ -125,12 +805,45 @@ import profileImage from '../../public/profile.jpg';
       order: -1;
     }
 
-    .typed-roles {
+    .typed-roles,
+    .subtitle {
       font-size: 1.1rem;
     }
 
-    .subtitle {
-      font-size: 1.1rem;
+    .photo-carousel {
+      width: 180px;
+      height: 180px;
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .photo-slide.portrait {
+      width: 140px;
+      height: 180px;
+    }
+
+    .photo-slide.landscape {
+      width: 180px;
+      height: 115px;
+    }
+
+    .talks-list-inline {
+      clear: both;
+    }
+
+    .lightbox-inner {
+      flex-direction: column;
+      max-width: 95vw;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      font-size: 2rem;
+    }
+
+    #lightbox-img {
+      max-width: 90vw;
+      max-height: 60vh;
     }
   }
 </style>
