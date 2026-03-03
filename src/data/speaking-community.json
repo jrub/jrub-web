@@ -56,7 +56,10 @@
       "language": "en",
       "video": null,
       "slides": null,
-      "link": "https://x.com/bcnswcraft/status/1716023511272079501",
+      "links": [
+        {"title": "Twitter", "url": "https://x.com/bcnswcraft/status/1716023511272079501"},
+        {"title": "Twitter (2)", "url": "https://x.com/bcnswcraft/status/1716023513268187489"}
+      ],
       "photos": [
         {
           "src": "SCBCN23 - We're capitalists.jpeg",
@@ -75,7 +78,7 @@
       "language": "es",
       "video": null,
       "slides": null,
-      "link": "https://x.com/Jessi_Redrado/status/1615428056226664469",
+      "links": [{"title": "Twitter", "url": "https://x.com/Jessi_Redrado/status/1615428056226664469"}],
       "photos": [],
       "featured": false,
       "description": "Corporate talk on #NoMeetings practices and rethinking collaboration for distributed teams at Adidas."
@@ -111,7 +114,7 @@
       "language": "en",
       "video": null,
       "slides": null,
-      "link": "https://www.meetup.com/lean-agile-coaching-meetup/events/288524259/",
+      "links": [{"title": "Meetup", "url": "https://www.meetup.com/lean-agile-coaching-meetup/events/288524259/"}],
       "photos": [],
       "featured": false,
       "description": "Online talk for the London-based Lean Agile Delivery & Coaching Network community on #NoMeetings practices."
@@ -124,7 +127,7 @@
       "language": "es",
       "video": null,
       "slides": "https://codingstones.github.io/slides-haize/",
-      "link": "https://medium.com/coding-stones/clean-architecture-tour-2016-2017-90bb205d443c",
+      "links": [{"title": "Article", "url": "https://medium.com/coding-stones/clean-architecture-tour-2016-2017-90bb205d443c"}],
       "photos": [],
       "featured": false,
       "description": "Clean Architecture applied to Android development. How to build an architecture that embraces change and postpones technical decisions."
@@ -152,7 +155,7 @@
       "type": "workshop",
       "video": null,
       "slides": "https://www.slideshare.net/slideshow/example-mapping-presentation-125817269/125817269",
-      "link": "https://x.com/jrubr/status/1073262158165757952",
+      "links": [{"title": "Twitter", "url": "https://x.com/jrubr/status/1073262158165757952"}],
       "photos": [],
       "featured": true,
       "description": "Interactive workshop exploring how team dynamics and communication patterns shape product outcomes through Example Mapping technique."
@@ -166,7 +169,7 @@
       "type": "workshop",
       "video": null,
       "slides": null,
-      "link": "https://www.meetup.com/agilearagon/events/253027811/",
+      "links": [{"title": "Meetup", "url": "https://www.meetup.com/agilearagon/events/253027811/"}],
       "photos": [],
       "featured": true,
       "description": "#NoEstimates practice: collaborative technique for breaking down user stories and discovering examples before development."
@@ -180,7 +183,7 @@
       "type": "workshop",
       "video": null,
       "slides": null,
-      "link": "https://medium.com/coding-stones/una-de-bdd-specification-by-example-y-cucumber-8345ccc71172",
+      "links": [{"title": "Article", "url": "https://medium.com/coding-stones/una-de-bdd-specification-by-example-y-cucumber-8345ccc71172"}],
       "photos": [],
       "featured": false,
       "description": "Two-day workshop co-facilitated with Dani Latorre on Behavior-Driven Development, collaborative specification through examples, and Cucumber automation for a multinational development team."
@@ -194,7 +197,7 @@
       "type": "workshop",
       "video": null,
       "slides": null,
-      "link": "https://www.meetup.com/agilearagon/events/268780252/",
+      "links": [{"title": "Meetup", "url": "https://www.meetup.com/agilearagon/events/268780252/"}],
       "photos": [],
       "featured": false,
       "description": "Experiment combining coding katas with visual thinking techniques to explore different learning approaches."
@@ -208,7 +211,7 @@
       "type": "course",
       "video": "https://www.youtube.com/watch?v=3jB6IzEFfic",
       "slides": null,
-      "link": "https://codely.com/en/courses/good-practices-of-bdd-with-gherkin-cucumber-behat-lk14",
+      "links": [{"title": "Course", "url": "https://codely.com/en/courses/good-practices-of-bdd-with-gherkin-cucumber-behat-lk14"}],
       "photos": [],
       "featured": false,
       "description": "Online course on BDD good practices with Gherkin, Cucumber, and Behat."
@@ -222,7 +225,7 @@
       "type": "workshop",
       "video": null,
       "slides": null,
-      "link": "https://zagaleshacklab.wordpress.com/2016/01/13/taller-de-minijuegos-con-processing/",
+      "links": [{"title": "Post", "url": "https://zagaleshacklab.wordpress.com/2016/01/13/taller-de-minijuegos-con-processing/"}],
       "photos": [],
       "featured": false,
       "description": "Hands-on workshop teaching kids game development fundamentals using Processing. Ran in 2015 and 2016 editions."
@@ -236,7 +239,7 @@
       "type": "facilitator",
       "video": null,
       "slides": null,
-      "link": "https://zagaleshacklab.wordpress.com/2017/06/09/ensenando-steam-a-nins-un-open-space-para-profs/",
+      "links": [{"title": "Post", "url": "https://zagaleshacklab.wordpress.com/2017/06/09/ensenando-steam-a-nins-un-open-space-para-profs/"}],
       "photos": [],
       "featured": false,
       "description": "Participated in an open space helping teachers explore STEAM education approaches for children."
@@ -250,7 +253,10 @@
       "type": "open_space",
       "video": null,
       "slides": null,
-      "link": "https://x.com/aaromnido/status/1573687521363562498",
+      "links": [
+        {"title": "Twitter", "url": "https://x.com/aaromnido/status/1573687521363562498"},
+        {"title": "Twitter (2)", "url": "https://x.com/saraclip/status/1573687076859613186"}
+      ],
       "photos": [],
       "featured": false,
       "description": "Facilitated open space session on #NoMeetings practices at Startup Open Space Zaragoza 2022."

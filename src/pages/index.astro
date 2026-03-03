@@ -30,16 +30,6 @@ import cas22Graphic from '../assets/photos/CAS22 - NoMeetings - w graphic record
 import cas22 from '../assets/photos/CAS22 - NoMeetings.jpeg';
 import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
 
-// Map photo filenames → Astro-optimized URLs (via the carousel imports)
-const photoMap: Record<string, string> = {
-  'SCBCN25 - Documenting APIs.jpeg': scbcn25.src,
-  'SCBCN24 - AI in Support teams.jpeg': scbcn24.src,
-  "SCBCN23 - We're capitalists.jpeg": scbcn23.src,
-  'SCBCN22 - NoMeetings Open Space.jpeg': scbcn22.src,
-  'CAS22 - NoMeetings - w graphic recorder.jpeg': cas22Graphic.src,
-  'CAS22 - NoMeetings.jpeg': cas22.src,
-  'AOS23 - Event organizers.jpeg': aos23.src,
-};
 
 import speakingData from '../data/speaking-community.json';
 
@@ -154,40 +144,28 @@ const community = splitItems(community_organizing);
                       : talk.title}
                   </strong>
                   {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
-                  {talk.description && <span class="item-description">{talk.description}</span>}
-                  {(talk.video || talk.slides || talk.link || (talk.photos?.length > 0)) && (
+                  {(talk.video || talk.slides || talk.links?.length > 0) && (
                     <span class="item-links">
                       {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">Video</a>}
                       {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
-                      {talk.link && <a href={talk.link} target="_blank" rel="noopener noreferrer">Link</a>}
-                      {talk.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(talk.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${talk.title}`}>
-                          📷 {talk.photos.length} photo{talk.photos.length !== 1 ? 's' : ''}
-                        </button>
-                      )}
+                      {talk.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
                     </span>
                   )}
                 </li>
               ))}
               {talks.hidden.map(talk => (
-                <li class="talk" data-section="talks">
+                <li class="talk" data-section="talks" style="display:none">
                   <strong>
                     {talk.video
                       ? <a href={talk.video} target="_blank" rel="noopener noreferrer">{talk.title}</a>
                       : talk.title}
                   </strong>
                   {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
-                  {talk.description && <span class="item-description">{talk.description}</span>}
-                  {(talk.video || talk.slides || talk.link || (talk.photos?.length > 0)) && (
+                  {(talk.video || talk.slides || talk.links?.length > 0) && (
                     <span class="item-links">
                       {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">Video</a>}
                       {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
-                      {talk.link && <a href={talk.link} target="_blank" rel="noopener noreferrer">Link</a>}
-                      {talk.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(talk.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${talk.title}`}>
-                          📷 {talk.photos.length} photo{talk.photos.length !== 1 ? 's' : ''}
-                        </button>
-                      )}
+                      {talk.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
                     </span>
                   )}
                 </li>
@@ -218,46 +196,26 @@ const community = splitItems(community_organizing);
             <>
               {ws.visible.map(item => (
                 <li class="talk">
-                  <strong>
-                    {item.link
-                      ? <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                      : item.title}
-                  </strong>
+                  <strong>{item.title}</strong>
                   {' · '}{item.event}{item.date ? ` · ${getYear(item.date)}` : ''}
-                  {item.description && <span class="item-description">{item.description}</span>}
-                  {(item.video || item.slides || item.link || (item.photos?.length > 0)) && (
+                  {(item.video || item.slides || item.links?.length > 0) && (
                     <span class="item-links">
                       {item.video && <a href={item.video} target="_blank" rel="noopener noreferrer">Video</a>}
                       {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
-                      {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Link</a>}
-                      {item.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(item.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${item.title}`}>
-                          📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
-                        </button>
-                      )}
+                      {item.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
                     </span>
                   )}
                 </li>
               ))}
               {ws.hidden.map(item => (
-                <li class="talk" data-section="workshops">
-                  <strong>
-                    {item.link
-                      ? <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                      : item.title}
-                  </strong>
+                <li class="talk" data-section="workshops" style="display:none">
+                  <strong>{item.title}</strong>
                   {' · '}{item.event}{item.date ? ` · ${getYear(item.date)}` : ''}
-                  {item.description && <span class="item-description">{item.description}</span>}
-                  {(item.video || item.slides || item.link || (item.photos?.length > 0)) && (
+                  {(item.video || item.slides || item.links?.length > 0) && (
                     <span class="item-links">
                       {item.video && <a href={item.video} target="_blank" rel="noopener noreferrer">Video</a>}
                       {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
-                      {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Link</a>}
-                      {item.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(item.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${item.title}`}>
-                          📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
-                        </button>
-                      )}
+                      {item.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
                     </span>
                   )}
                 </li>
@@ -292,26 +250,22 @@ const community = splitItems(community_organizing);
                     <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
                   </strong>
                   {' · '}{item.show}{item.host ? ` · with ${item.host}` : ''}{item.date ? ` · ${getYear(item.date)}` : ''}
-                  {item.description && <span class="item-description">{item.description}</span>}
-                  {(item.link || item.article) && (
+                  {item.article && (
                     <span class="item-links">
-                      {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Listen</a>}
-                      {item.article && <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>}
+                      <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>
                     </span>
                   )}
                 </li>
               ))}
               {media.hidden.map(item => (
-                <li class="talk" data-section="media">
+                <li class="talk" data-section="media" style="display:none">
                   <strong>
                     <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
                   </strong>
                   {' · '}{item.show}{item.host ? ` · with ${item.host}` : ''}{item.date ? ` · ${getYear(item.date)}` : ''}
-                  {item.description && <span class="item-description">{item.description}</span>}
-                  {(item.link || item.article) && (
+                  {item.article && (
                     <span class="item-links">
-                      {item.link && <a href={item.link} target="_blank" rel="noopener noreferrer">Listen</a>}
-                      {item.article && <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>}
+                      <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>
                     </span>
                   )}
                 </li>
@@ -349,17 +303,11 @@ const community = splitItems(community_organizing);
                   </strong>
                   {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}
                   {item.location && <span class="item-meta">{item.location}</span>}
-                  {item.description && <span class="item-description">{item.description}</span>}
-                  {(item.links?.length > 0 || item.photos?.length > 0) && (
+                  {item.links?.length > 0 && (
                     <span class="item-links">
-                      {item.links?.map(l => (
+                      {item.links.map(l => (
                         <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
                       ))}
-                      {item.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(item.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${item.title || item.organization}`}>
-                          📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
-                        </button>
-                      )}
                     </span>
                   )}
                   {item.activities?.length > 0 && (
@@ -378,7 +326,7 @@ const community = splitItems(community_organizing);
                 </li>
               ))}
               {community.hidden.map(item => (
-                <li class="talk" data-section="community">
+                <li class="talk" data-section="community" style="display:none">
                   <strong>
                     {item.website
                       ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title || item.organization}</a>
@@ -386,17 +334,11 @@ const community = splitItems(community_organizing);
                   </strong>
                   {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}
                   {item.location && <span class="item-meta">{item.location}</span>}
-                  {item.description && <span class="item-description">{item.description}</span>}
-                  {(item.links?.length > 0 || item.photos?.length > 0) && (
+                  {item.links?.length > 0 && (
                     <span class="item-links">
-                      {item.links?.map(l => (
+                      {item.links.map(l => (
                         <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
                       ))}
-                      {item.photos?.length > 0 && (
-                        <button class="photos-btn" data-photos={JSON.stringify(item.photos.map(p => ({...p, src: photoMap[p.src] ?? p.src})))} aria-label={`View photos from ${item.title || item.organization}`}>
-                          📷 {item.photos.length} photo{item.photos.length !== 1 ? 's' : ''}
-                        </button>
-                      )}
                     </span>
                   )}
                   {item.activities?.length > 0 && (
@@ -433,20 +375,6 @@ const community = splitItems(community_organizing);
     </section>
   </div>
 
-  <!-- Photo Lightbox Modal -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo gallery">
-    <div class="lightbox-overlay"></div>
-    <div class="lightbox-inner">
-      <button class="lightbox-close" aria-label="Close gallery">✕</button>
-      <button class="lightbox-prev" aria-label="Previous photo">‹</button>
-      <div class="lightbox-photo-wrap">
-        <img id="lightbox-img" src="" alt="" />
-        <p id="lightbox-caption" class="lightbox-caption"></p>
-        <p id="lightbox-counter" class="lightbox-counter"></p>
-      </div>
-      <button class="lightbox-next" aria-label="Next photo">›</button>
-    </div>
-  </div>
 </Layout>
 
 <script>
@@ -472,74 +400,20 @@ const community = splitItems(community_organizing);
     shuffle: true,
   });
 
-  // Show/hide subsection items
+  // Show/hide subsection items (hidden via inline style on load)
   document.querySelectorAll('[data-toggle]').forEach(btn => {
-    const section = btn.dataset.section;
-    const label = btn.dataset.label;
-    const total = btn.dataset.total;
-
-    // Hide items on load
-    document.querySelectorAll(`[data-section="${section}"]`).forEach(item => {
-      item.style.display = 'none';
-    });
+    const section = (btn as HTMLElement).dataset.section;
+    const label = (btn as HTMLElement).dataset.label;
+    const total = (btn as HTMLElement).dataset.total;
 
     btn.addEventListener('click', () => {
-      const isExpanded = btn.dataset.expanded === 'true';
+      const isExpanded = (btn as HTMLElement).dataset.expanded === 'true';
       document.querySelectorAll(`[data-section="${section}"]`).forEach(item => {
-        item.style.display = isExpanded ? 'none' : '';
+        (item as HTMLElement).style.display = isExpanded ? 'none' : '';
       });
-      btn.dataset.expanded = isExpanded ? 'false' : 'true';
+      (btn as HTMLElement).dataset.expanded = isExpanded ? 'false' : 'true';
       btn.textContent = isExpanded ? `Show all ${total} ${label}` : 'Show less';
     });
-  });
-
-  // Photo lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCaption = document.getElementById('lightbox-caption');
-  const lightboxCounter = document.getElementById('lightbox-counter');
-
-  let photos = [];
-  let idx = 0;
-
-  function show(i) {
-    idx = i;
-    const p = photos[i];
-    lightboxImg.src = p.src;
-    lightboxImg.alt = p.caption || '';
-    lightboxCaption.textContent = p.caption || '';
-    lightboxCounter.textContent = `${i + 1} / ${photos.length}`;
-  }
-
-  function open(list, start) {
-    photos = list;
-    show(start);
-    lightbox.classList.add('active');
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    lightbox.querySelector('.lightbox-close').focus();
-  }
-
-  function close() {
-    lightbox.classList.remove('active');
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  document.querySelectorAll('.photos-btn').forEach(btn => {
-    btn.addEventListener('click', () => open(JSON.parse(btn.dataset.photos), 0));
-  });
-
-  document.querySelector('.lightbox-close').addEventListener('click', close);
-  document.querySelector('.lightbox-overlay').addEventListener('click', close);
-  document.querySelector('.lightbox-prev').addEventListener('click', () => show((idx - 1 + photos.length) % photos.length));
-  document.querySelector('.lightbox-next').addEventListener('click', () => show((idx + 1) % photos.length));
-
-  document.addEventListener('keydown', e => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') show((idx - 1 + photos.length) % photos.length);
-    if (e.key === 'ArrowRight') show((idx + 1) % photos.length);
   });
 </script>
 
@@ -732,7 +606,6 @@ const community = splitItems(community_organizing);
     font-weight: 600;
   }
 
-  .item-description,
   .item-meta {
     display: block;
     font-size: 0.9rem;
@@ -747,20 +620,13 @@ const community = splitItems(community_organizing);
     margin-top: 0.3rem;
   }
 
-  .item-links a,
-  .photos-btn {
+  .item-links a {
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--color-turquoise);
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    font-family: inherit;
   }
 
-  .item-links a:hover,
-  .photos-btn:hover {
+  .item-links a:hover {
     color: var(--color-magenta);
     text-decoration: underline;
   }
@@ -779,100 +645,17 @@ const community = splitItems(community_organizing);
   .show-toggle {
     margin-top: 1rem;
     background: none;
-    border: none;
-    padding: 0;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
     cursor: pointer;
     color: var(--color-turquoise);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-family: inherit;
   }
 
   .show-toggle:hover {
     color: var(--color-magenta);
-    text-decoration: underline;
-  }
-
-  /* ── Lightbox ─────────────────────── */
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-  }
-
-  .lightbox.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .lightbox-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.9);
-  }
-
-  .lightbox-inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    max-width: 90vw;
-  }
-
-  .lightbox-close {
-    position: absolute;
-    top: -2.5rem;
-    right: 0;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0.25rem 0.5rem;
-    transition: color 0.2s;
-  }
-
-  .lightbox-prev,
-  .lightbox-next {
-    font-size: 3rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem;
-    line-height: 1;
-    transition: color 0.2s;
-    flex-shrink: 0;
-  }
-
-  .lightbox-close:hover,
-  .lightbox-prev:hover,
-  .lightbox-next:hover {
-    color: var(--color-magenta);
-  }
-
-  #lightbox-img {
-    max-width: 75vw;
-    max-height: 80vh;
-    border-radius: 8px;
-    display: block;
-    transition: opacity 0.3s ease;
-  }
-
-  .lightbox-caption {
-    color: #ccc;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    text-align: center;
-  }
-
-  .lightbox-counter {
-    color: #999;
-    font-size: 0.85rem;
-    text-align: center;
-    margin-top: 0.25rem;
   }
 
   /* ── Mobile ───────────────────────── */
@@ -914,21 +697,6 @@ const community = splitItems(community_organizing);
 
     .talks-list-inline {
       clear: both;
-    }
-
-    .lightbox-inner {
-      flex-direction: column;
-      max-width: 95vw;
-    }
-
-    .lightbox-prev,
-    .lightbox-next {
-      font-size: 2rem;
-    }
-
-    #lightbox-img {
-      max-width: 90vw;
-      max-height: 60vh;
     }
   }
 </style>
