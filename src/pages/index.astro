@@ -1,23 +1,4 @@
 ---
-/*
- * Speaking & Community JSON schema reference (src/data/speaking-community.json):
- *
- * conference_talks / workshops:
- *   { title, event, location, date (YYYY-MM-DD), video?, slides?,
- *     link?: string, links?: string[] | {title,url}[],
- *     photos?: [{ src: filename, caption, hero? }], featured?, description? }
- *
- * media_podcasts:
- *   { title, show, host?, date, type, link, article?, featured?, description? }
- *
- * community_organizing:
- *   { title, role, organization, period, location, website?, featured?,
- *     description?, links?: {title,url}[],
- *     activities?: [{ title, date?, period?, role?, link?, description? }],
- *     photos?: [{ src: filename, caption, hero? }] }
- *
- * photos.src is a bare filename — resolved at build time via import.meta.glob
- */
 import Layout from '../layouts/Layout.astro';
 import { Image, Picture } from 'astro:assets';
 import profileImage from '../../public/profile.jpg';
@@ -31,42 +12,16 @@ import cas22 from '../assets/photos/CAS22 - NoMeetings.jpeg';
 import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
 
 
-import speakingData from '../data/speaking-community.json';
+import speakingData from '../data/speaking.json';
 
-const { conference_talks, workshops, media_podcasts, community_organizing } = speakingData;
+const { talks, workshops, media, communities } = speakingData;
 
-function sortByDate(items) {
-  return [...items].sort((a, b) => {
-    if (!a.date) return 1;
-    if (!b.date) return -1;
-    return new Date(b.date) - new Date(a.date);
-  });
-}
-
-function getYear(dateStr) {
-  if (!dateStr) return '';
-  return new Date(dateStr).getFullYear();
-}
-
-function splitItems(items) {
-  const sorted = sortByDate(items);
-  const featured = sorted.filter(i => i.featured === true);
-  const visible = featured.length > 0 ? featured : sorted.slice(0, 3);
-  const visibleSet = new Set(visible);
-  const hidden = sorted.filter(i => !visibleSet.has(i));
-  return { visible, hidden };
-}
-
-const talks = splitItems(conference_talks);
-const ws = splitItems(workshops);
-const media = splitItems(media_podcasts ?? []);
-const community = splitItems(community_organizing);
+const getYear = d => new Date(d).getFullYear();
 ---
 
 <Layout title="Javi Rubio">
   <div class="content-container">
 
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-header">
         <div>
@@ -78,10 +33,9 @@ const community = splitItems(community_organizing);
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section class="about">
-      <p class="intro">
-        Software engineer with techno-activist leanings. 20 years working at the intersection of product, engineering, and knowledge management.
+      <p class="intro lead">
+        Generalist software engineer with techno-activist leanings. 20 years working at the intersection of product, engineering, and knowledge management.
       </p>
       <p class="intro">
         I've been part of startups from day one, served as CTO, and led complex technical products. Known for championing <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>, helping distributed teams rethink collaboration beyond default rituals.
@@ -91,12 +45,10 @@ const community = splitItems(community_organizing);
       </p>
     </section>
 
-    <!-- SPEAKING & COMMUNITY -->
     <section id="speaking" class="speaking-section">
-      <h2>Speaking &amp; Community</h2>
-      <p class="section-intro">I regularly speak at tech conferences, facilitate workshops, and organize developer communities.</p>
+      <h2>Public Speaking &amp; Tech Communities</h2>
+      <p class="section-intro">I regularly speak at tech conferences and corporate events, facilitate trainings and workshops, and collaborate with different tech communities.</p>
 
-      <!-- Hero photo carousel -->
       <div class="photo-carousel" aria-hidden="true">
         <div class="photo-slide landscape">
           <Picture src={scbcn25} alt="Speaking at SCBCN25" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
@@ -128,284 +80,175 @@ const community = splitItems(community_organizing);
         </div>
       </div>
 
-      <!-- Conference Talks -->
       <div class="subsection">
-        <h3>Conference Talks</h3>
+        <h3>Tech Conference Talks</h3>
         <ul class="talks-list-inline">
-          {conference_talks.length === 0 ? (
-            <li class="empty-state">Coming soon.</li>
-          ) : (
-            <>
-              {talks.visible.map(talk => (
-                <li class="talk">
-                  <strong>{talk.title}</strong>
-                  {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
-                  {(talk.video || talk.slides || talk.links?.length > 0) && (
-                    <span class="item-links">
-                      {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">Video</a>}
-                      {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
-                      {talk.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
-                    </span>
-                  )}
-                  {talk.description && (
-                    <details class="item-description">
-                      <summary>Details</summary>
-                      <p>{talk.description}</p>
-                    </details>
-                  )}
-                </li>
-              ))}
-              {talks.hidden.map(talk => (
-                <li class="talk" data-section="talks" style="display:none">
-                  <strong>{talk.title}</strong>
-                  {' · '}{talk.event}{talk.date ? ` · ${getYear(talk.date)}` : ''}
-                  {(talk.video || talk.slides || talk.links?.length > 0) && (
-                    <span class="item-links">
-                      {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">Video</a>}
-                      {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
-                      {talk.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
-                    </span>
-                  )}
-                  {talk.description && (
-                    <details class="item-description">
-                      <summary>Details</summary>
-                      <p>{talk.description}</p>
-                    </details>
-                  )}
-                </li>
-              ))}
-            </>
-          )}
+          {talks.map((talk, idx) => (
+                  <li class="talk"
+                      data-section={idx >= 4 ? 'talks' : undefined}
+                      style={idx >= 4 ? 'display:none' : undefined}>
+                    <strong>{talk.title}</strong>
+                    <p class="talk-meta">{talk.event} · {getYear(talk.date)}</p>
+                    <div class="item-footer">
+                      {talk.description && (
+                        <details class="item-description">
+                          <summary>About this talk</summary>
+                          <p>{talk.description}</p>
+                        </details>
+                      )}
+                      {talk.description && (talk.video || talk.slides || talk.links?.length > 0) && (
+                        <span class="item-sep" aria-hidden="true">·</span>
+                      )}
+                      {(talk.video || talk.slides || talk.links?.length > 0) && (
+                        <span class="item-links">
+                          {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">📹 Video</a>}
+                          {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">🖼️ Slides</a>}
+                          {talk.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))
+          }
         </ul>
-        {talks.hidden.length > 0 && (
-          <button
-            class="show-toggle"
-            data-toggle
-            data-section="talks"
-            data-total={talks.hidden.length + talks.visible.length}
-            data-label="talks"
-          >
-            Show all {talks.hidden.length + talks.visible.length} talks
+        {talks.length > 4 && (
+          <button class="show-toggle" data-toggle data-section="talks"
+            data-total={talks.length} data-label="talks">
+            Show all {talks.length} talks
           </button>
         )}
       </div>
 
-      <!-- Workshops & Facilitation -->
       <div class="subsection">
         <h3>Workshops &amp; Facilitation</h3>
         <ul class="talks-list-inline">
-          {workshops.length === 0 ? (
-            <li class="empty-state">Coming soon.</li>
-          ) : (
-            <>
-              {ws.visible.map(item => (
-                <li class="talk">
-                  <strong>{item.title}</strong>
-                  {' · '}{item.event}{item.date ? ` · ${getYear(item.date)}` : ''}
-                  {(item.video || item.slides || item.links?.length > 0) && (
-                    <span class="item-links">
-                      {item.video && <a href={item.video} target="_blank" rel="noopener noreferrer">Video</a>}
-                      {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
-                      {item.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
-                    </span>
-                  )}
-                  {item.description && (
-                    <details class="item-description">
-                      <summary>Details</summary>
-                      <p>{item.description}</p>
-                    </details>
-                  )}
-                </li>
-              ))}
-              {ws.hidden.map(item => (
-                <li class="talk" data-section="workshops" style="display:none">
-                  <strong>{item.title}</strong>
-                  {' · '}{item.event}{item.date ? ` · ${getYear(item.date)}` : ''}
-                  {(item.video || item.slides || item.links?.length > 0) && (
-                    <span class="item-links">
-                      {item.video && <a href={item.video} target="_blank" rel="noopener noreferrer">Video</a>}
-                      {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">Slides</a>}
-                      {item.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
-                    </span>
-                  )}
-                  {item.description && (
-                    <details class="item-description">
-                      <summary>Details</summary>
-                      <p>{item.description}</p>
-                    </details>
-                  )}
-                </li>
-              ))}
-            </>
-          )}
+          {workshops.map((item, idx) => (
+                  <li class="talk"
+                      data-section={idx >= 2 ? 'workshops' : undefined}
+                      style={idx >= 2 ? 'display:none' : undefined}>
+                    <strong>{item.title}</strong>
+                    <p class="talk-meta">{item.event} · {getYear(item.date)}</p>
+                    <div class="item-footer">
+                      {item.description && (
+                        <details class="item-description">
+                          <summary>About this workshop</summary>
+                          <p>{item.description}</p>
+                        </details>
+                      )}
+                      {item.description && (item.video || item.slides || item.links.length > 0) && (
+                        <span class="item-sep" aria-hidden="true">·</span>
+                      )}
+                      {(item.video || item.slides || item.links.length > 0) && (
+                        <span class="item-links">
+                          {item.video && <a href={item.video} target="_blank" rel="noopener noreferrer">📹 Video</a>}
+                          {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">🖼️ Slides</a>}
+                          {item.links.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))
+          }
         </ul>
-        {ws.hidden.length > 0 && (
-          <button
-            class="show-toggle"
-            data-toggle
-            data-section="workshops"
-            data-total={ws.hidden.length + ws.visible.length}
-            data-label="workshops"
-          >
-            Show all {ws.hidden.length + ws.visible.length} workshops
+        {workshops.length > 2 && (
+          <button class="show-toggle" data-toggle data-section="workshops"
+            data-total={workshops.length} data-label="workshops">
+            Show all {workshops.length} workshops
           </button>
         )}
       </div>
 
-      <!-- Media & Podcasts -->
       <div class="subsection">
-        <h3>Media &amp; Podcasts</h3>
+        <h3>Podcasts &amp; Radio interviews</h3>
         <ul class="talks-list-inline">
-          {(media_podcasts ?? []).length === 0 ? (
-            <li class="empty-state">Coming soon.</li>
-          ) : (
-            <>
-              {media.visible.map(item => (
-                <li class="talk">
-                  <strong>
-                    <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                  </strong>
-                  {' · '}{item.show}{item.host ? ` · with ${item.host}` : ''}{item.date ? ` · ${getYear(item.date)}` : ''}
-                  {item.article && (
-                    <span class="item-links">
-                      <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>
-                    </span>
-                  )}
-                  {item.description && (
-                    <details class="item-description">
-                      <summary>Details</summary>
-                      <p>{item.description}</p>
-                    </details>
-                  )}
-                </li>
-              ))}
-              {media.hidden.map(item => (
-                <li class="talk" data-section="media" style="display:none">
-                  <strong>
-                    <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                  </strong>
-                  {' · '}{item.show}{item.host ? ` · with ${item.host}` : ''}{item.date ? ` · ${getYear(item.date)}` : ''}
-                  {item.article && (
-                    <span class="item-links">
-                      <a href={item.article} target="_blank" rel="noopener noreferrer">Article</a>
-                    </span>
-                  )}
-                  {item.description && (
-                    <details class="item-description">
-                      <summary>Details</summary>
-                      <p>{item.description}</p>
-                    </details>
-                  )}
-                </li>
-              ))}
-            </>
-          )}
+          {media.map((item, idx) => (
+                  <li class="talk"
+                      data-section={idx >= 2 ? 'media' : undefined}
+                      style={idx >= 2 ? 'display:none' : undefined}>
+                    <strong>{item.title}</strong>
+                    <p class="talk-meta">{item.event} · {getYear(item.date)}</p>
+                    <div class="item-footer">
+                      {item.description && (
+                        <details class="item-description">
+                          <summary>About this episode</summary>
+                          <p>{item.description}</p>
+                        </details>
+                      )}
+                      {item.description && item.links.length > 0 && (
+                        <span class="item-sep" aria-hidden="true">·</span>
+                      )}
+                      {item.links.length > 0 && (
+                        <span class="item-links">
+                          {item.links.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))
+          }
         </ul>
-        {media.hidden.length > 0 && (
-          <button
-            class="show-toggle"
-            data-toggle
-            data-section="media"
-            data-total={media.hidden.length + media.visible.length}
-            data-label="items"
-          >
-            Show all {media.hidden.length + media.visible.length} items
+        {media.length > 2 && (
+          <button class="show-toggle" data-toggle data-section="media"
+            data-total={media.length} data-label="items">
+            Show all {media.length} items
           </button>
         )}
       </div>
 
-      <!-- Community Organizing -->
       <div class="subsection">
-        <h3>Community Organizing</h3>
+        <h3>Tech Communities</h3>
         <ul class="talks-list-inline">
-          {community_organizing.length === 0 ? (
-            <li class="empty-state">Coming soon.</li>
-          ) : (
-            <>
-              {community.visible.map(item => (
-                <li class="talk">
-                  <strong>
-                    {item.website
-                      ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title || item.organization}</a>
-                      : (item.title || item.organization)}
-                  </strong>
-                  {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}{item.location ? ` · ${item.location}` : ''}
-                  {item.links?.length > 0 && (
-                    <span class="item-links">
-                      {item.links.map(l => (
-                        <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
-                      ))}
-                    </span>
-                  )}
-                  {item.description && (
-                    <details class="item-description">
-                      <summary>Details</summary>
-                      <p>{item.description}</p>
-                    </details>
-                  )}
-                  {item.activities?.length > 0 && (
-                    <ul class="activities-list">
-                      {item.activities.map(act => (
-                        <li>
-                          {act.link
-                            ? <a href={act.link} target="_blank" rel="noopener noreferrer">{act.title}</a>
-                            : act.title}
-                          {act.date ? ` · ${getYear(act.date)}` : ''}
-                          {act.role ? ` · ${act.role}` : ''}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-              {community.hidden.map(item => (
-                <li class="talk" data-section="community" style="display:none">
-                  <strong>
-                    {item.website
-                      ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title || item.organization}</a>
-                      : (item.title || item.organization)}
-                  </strong>
-                  {' · '}{item.role}{item.period ? ` · ${item.period}` : ''}{item.location ? ` · ${item.location}` : ''}
-                  {item.links?.length > 0 && (
-                    <span class="item-links">
-                      {item.links.map(l => (
-                        <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
-                      ))}
-                    </span>
-                  )}
-                  {item.description && (
-                    <details class="item-description">
-                      <summary>Details</summary>
-                      <p>{item.description}</p>
-                    </details>
-                  )}
-                  {item.activities?.length > 0 && (
-                    <ul class="activities-list">
-                      {item.activities.map(act => (
-                        <li>
-                          {act.link
-                            ? <a href={act.link} target="_blank" rel="noopener noreferrer">{act.title}</a>
-                            : act.title}
-                          {act.date ? ` · ${getYear(act.date)}` : ''}
-                          {act.role ? ` · ${act.role}` : ''}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </>
-          )}
+          {communities.map((item, idx) => (
+                  <li class="talk"
+                      data-section={idx >= 2 ? 'community' : undefined}
+                      style={idx >= 2 ? 'display:none' : undefined}>
+                    <strong>
+                      {item.website
+                        ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                        : item.title}
+                    </strong>
+                    <p class="talk-meta">{item.role} · {item.period} · {item.location}</p>
+                    <div class="item-footer">
+                      {item.description && (
+                        <details class="item-description">
+                          <summary>About this</summary>
+                          <p>{item.description}</p>
+                        </details>
+                      )}
+                      {item.description && item.links.length > 0 && (
+                        <span class="item-sep" aria-hidden="true">·</span>
+                      )}
+                      {item.links.length > 0 && (
+                        <span class="item-links">
+                          {item.links.map(l => (
+                            <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
+                          ))}
+                        </span>
+                      )}
+                    </div>
+                    {item.activities.length > 0 && (
+                      <ul class="activities-list">
+                        {item.activities.map(act => (
+                          <li>
+                            {act.link
+                              ? <a href={act.link} target="_blank" rel="noopener noreferrer">{act.title}</a>
+                              : act.title}
+                            {act.date ? ` · ${getYear(act.date)}` : ''}
+                            {` · ${act.role}`}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))
+          }
         </ul>
-        {community.hidden.length > 0 && (
-          <button
-            class="show-toggle"
-            data-toggle
-            data-section="community"
-            data-total={community.hidden.length + community.visible.length}
+        {communities.length > 2 && (
+          <button class="show-toggle" data-toggle data-section="community"
+            data-total={communities.length}
             data-label="items"
           >
-            Show all {community.hidden.length + community.visible.length} items
+            Show all {communities.length} items
           </button>
         )}
       </div>
@@ -446,7 +289,7 @@ const community = splitItems(community_organizing);
 
     btn.addEventListener('click', () => {
       const isExpanded = (btn as HTMLElement).dataset.expanded === 'true';
-      document.querySelectorAll(`[data-section="${section}"]`).forEach(item => {
+      document.querySelectorAll(`li[data-section="${section}"]`).forEach(item => {
         (item as HTMLElement).style.display = isExpanded ? 'none' : '';
       });
       (btn as HTMLElement).dataset.expanded = isExpanded ? 'false' : 'true';
@@ -456,7 +299,6 @@ const community = splitItems(community_organizing);
 </script>
 
 <style>
-  /* ── Hero ────────────────────────── */
   .hero {
     text-align: left;
   }
@@ -502,7 +344,6 @@ const community = splitItems(community_organizing);
     font-weight: 300;
   }
 
-  /* ── Speaking section ─────────────── */
   .speaking-section {
     max-width: 1200px;
     margin-top: 4rem;
@@ -518,7 +359,8 @@ const community = splitItems(community_organizing);
   }
 
   .speaking-section h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: 400;
     margin-bottom: 0.75rem;
   }
 
@@ -528,7 +370,6 @@ const community = splitItems(community_organizing);
     margin-bottom: 1.5rem;
   }
 
-  /* ── Carousel (preserved) ─────────── */
   .photo-carousel {
     float: right;
     width: 360px;
@@ -602,7 +443,6 @@ const community = splitItems(community_organizing);
     100% { opacity: 0; }
   }
 
-  /* ── Subsections ──────────────────── */
   .subsection {
     margin-top: 3rem;
   }
@@ -611,12 +451,9 @@ const community = splitItems(community_organizing);
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-black);
+    border-bottom: 1px solid var(--color-gray-light);
+    padding-bottom: 0.5rem;
     margin-bottom: 1rem;
-  }
-
-  .empty-state {
-    color: var(--color-gray-medium);
-    font-style: italic;
   }
 
   .talks-list-inline {
@@ -624,39 +461,56 @@ const community = splitItems(community_organizing);
     padding-left: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
-  .talk {
-    padding-left: 1.5rem;
-    position: relative;
-  }
-
-  .talk::before {
-    content: "–";
-    position: absolute;
-    left: 0;
-    color: var(--color-gray-medium);
-  }
-
-  .talk strong {
+  .talk > strong {
+    display: block;
     font-size: 1.05rem;
     font-weight: 600;
   }
 
+  .talk-meta {
+    font-size: 0.9rem;
+    color: var(--color-gray-medium);
+    margin-top: 0.1rem;
+  }
+
+  .item-footer {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .item-sep {
+    color: var(--color-gray-medium);
+    font-size: 0.85rem;
+    user-select: none;
+  }
+
   .item-description {
-    margin-top: 0.4rem;
+    font-size: 0.85rem;
   }
 
   .item-description summary {
-    font-size: 0.8rem;
-    color: var(--color-gray-medium);
+    list-style: none;
+    color: var(--color-turquoise);
     cursor: pointer;
     user-select: none;
   }
 
-  .item-description summary:hover {
-    color: var(--color-turquoise);
+  .item-description summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .item-description summary::before {
+    content: "▸ ";
+  }
+
+  details.item-description[open] > summary::before {
+    content: "▾ ";
   }
 
   .item-description p {
@@ -670,7 +524,6 @@ const community = splitItems(community_organizing);
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 0.3rem;
   }
 
   .item-links a {
@@ -711,7 +564,6 @@ const community = splitItems(community_organizing);
     color: var(--color-magenta);
   }
 
-  /* ── Mobile ───────────────────────── */
   @media (max-width: 768px) {
     .hero-header {
       flex-direction: column;
@@ -732,24 +584,20 @@ const community = splitItems(community_organizing);
     }
 
     .photo-carousel {
-      width: 180px;
-      height: 180px;
-      margin-left: 1rem;
-      margin-bottom: 1rem;
+      float: none;
+      width: 100%;
+      height: 240px;
+      margin: 0 0 1.5rem 0;
+      border-radius: 8px;
     }
 
-    .photo-slide.portrait {
-      width: 140px;
-      height: 180px;
-    }
-
+    .photo-slide.portrait,
     .photo-slide.landscape {
-      width: 180px;
-      height: 115px;
-    }
-
-    .talks-list-inline {
-      clear: both;
+      width: 100%;
+      height: 240px;
+      top: 0;
+      left: 0;
+      transform: none;
     }
   }
 </style>
