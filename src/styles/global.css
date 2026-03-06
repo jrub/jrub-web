@@ -34,6 +34,7 @@ body {
 
 h1, h2 {
   color: var(--color-magenta);
+  font-family: 'Lora', serif;
 }
 
 a {
@@ -67,6 +68,10 @@ h1 {
   margin-bottom: 1.5rem;
   line-height: 1.7;
   text-align: justify;
+}
+
+.intro.lead {
+  font-size: 1.15rem;
 }
 
 /* Content links - consistent styling */

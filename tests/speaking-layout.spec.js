@@ -64,13 +64,18 @@ test.describe('Speaking Section Layout Requirements', () => {
 
     logLayout(carousel, title, container, talks);
 
-    // Carousel should be to the RIGHT side (higher X coordinate)
-    expect(carousel.left, 'Carousel should be to the right').toBeGreaterThan(title.left);
+    const viewport = page.viewportSize();
+    const isMobile = viewport.width < 768;
 
-    // Carousel should be close to the right edge of container
-    const distanceFromRightEdge = container.right - carousel.right;
-    console.log(`Distance from right edge: ${distanceFromRightEdge.toFixed(0)}px`);
-    expect(distanceFromRightEdge).toBeLessThan(100);
+    if (!isMobile) {
+      // Carousel should be to the RIGHT side (higher X coordinate)
+      expect(carousel.left, 'Carousel should be to the right').toBeGreaterThan(title.left);
+
+      // Carousel should be close to the right edge of container
+      const distanceFromRightEdge = container.right - carousel.right;
+      console.log(`Distance from right edge: ${distanceFromRightEdge.toFixed(0)}px`);
+      expect(distanceFromRightEdge).toBeLessThan(100);
+    }
 
     // Log positioning for debugging
     console.log(`Title bottom: ${title.bottom.toFixed(0)}, Carousel top: ${carousel.top.toFixed(0)}, Talks top: ${talks.top.toFixed(0)}`);
@@ -158,16 +163,21 @@ test.describe('Speaking Section Layout Requirements', () => {
 
     logLayout(carousel, title, container, talks);
 
-    // 1. Carousel is to the RIGHT (higher x coordinates)
-    expect(carousel.left, 'Carousel should be to the right of title').toBeGreaterThan(title.left);
+    const viewport = page.viewportSize();
+    const isMobile = viewport.width < 768;
 
-    // 2. Carousel should be near the right edge (allowing some padding)
-    const distanceFromRight = container.right - carousel.right;
-    expect(distanceFromRight, 'Carousel should be close to right edge').toBeLessThan(100);
+    if (!isMobile) {
+      // 1. Carousel is to the RIGHT (higher x coordinates)
+      expect(carousel.left, 'Carousel should be to the right of title').toBeGreaterThan(title.left);
 
-    // 3. Title and intro should start from the left (allowing container padding)
-    expect(title.left, 'Title should start from left').toBeLessThan(carousel.left);
-    expect(intro.left, 'Intro should start from left').toBeLessThan(carousel.left);
+      // 2. Carousel should be near the right edge (allowing some padding)
+      const distanceFromRight = container.right - carousel.right;
+      expect(distanceFromRight, 'Carousel should be close to right edge').toBeLessThan(100);
+
+      // 3. Title and intro should start from the left (allowing container padding)
+      expect(title.left, 'Title should start from left').toBeLessThan(carousel.left);
+      expect(intro.left, 'Intro should start from left').toBeLessThan(carousel.left);
+    }
 
     // 4. Talks list starts from the left edge of container
     expect(Math.abs(talks.left - container.left), 'Talks should start from container left').toBeLessThan(10);

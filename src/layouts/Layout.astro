@@ -29,6 +29,10 @@ const description = "Helping teams build better products, knowledge systems, and
     <meta property="twitter:image" content={new URL('/profile.jpg', Astro.url)} />
 
     <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -46,8 +50,7 @@ const description = "Helping teams build better products, knowledge systems, and
     </main>
 
     <footer id="contact">
-      <p class="footer-tagline">Helping teams build better products, knowledge systems, and sustainable work cultures.</p>
-      <p class="footer-email">Get in touch: <a href="mailto:hola@javirubio.net">hola@javirubio.net</a></p>
+      <p class="footer-email"><a href="mailto:hola@javirubio.net">hola@javirubio.net</a></p>
       <div class="footer-links">
         <a href="https://github.com/jrub" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -97,12 +100,11 @@ const description = "Helping teams build better products, knowledge systems, and
   .logo {
     font-weight: 600;
     font-size: 1.2rem;
-    color: var(--color-black);
+    color: var(--color-magenta);
   }
 
   .logo:hover {
     text-decoration: none;
-    color: var(--color-magenta);
   }
 
   .nav-links {
@@ -127,16 +129,14 @@ const description = "Helping teams build better products, knowledge systems, and
     text-align: center;
   }
 
-  .footer-tagline {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--color-black);
-    margin-bottom: 0.75rem;
-  }
-
   .footer-email {
     margin-bottom: 1.5rem;
-    color: var(--color-gray-medium);
+  }
+
+  .footer-email a {
+    color: var(--color-magenta);
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 
   .footer-links {
