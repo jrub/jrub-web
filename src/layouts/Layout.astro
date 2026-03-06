@@ -2,7 +2,6 @@
 import '../styles/global.css';
 const { title } = Astro.props;
 const description = "Helping teams build better products, knowledge systems, and sustainable work cultures. 20 years at the intersection of product, engineering, and knowledge management.";
-const currentPath = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -30,14 +29,18 @@ const currentPath = Astro.url.pathname;
     <meta property="twitter:image" content={new URL('/profile.jpg', Astro.url)} />
 
     <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
       <nav>
         <a href="/" class="logo">Javi Rubio</a>
         <div class="nav-links">
-          <a href="/speaking" class:list={[{ active: currentPath === '/speaking' || currentPath === '/speaking/' }]}>Speaking</a>
-          <a href="/contact" class:list={[{ active: currentPath === '/contact' || currentPath === '/contact/' }]}>Contact</a>
+          <a href="/#speaking">Speaking</a>
+          <a href="/#contact">Contact</a>
         </div>
       </nav>
     </header>
@@ -46,7 +49,8 @@ const currentPath = Astro.url.pathname;
       <slot />
     </main>
 
-    <footer>
+    <footer id="contact">
+      <p class="footer-email"><a href="mailto:hola@javirubio.net">hola@javirubio.net</a></p>
       <div class="footer-links">
         <a href="https://github.com/jrub" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -96,12 +100,11 @@ const currentPath = Astro.url.pathname;
   .logo {
     font-weight: 600;
     font-size: 1.2rem;
-    color: var(--color-black);
+    color: var(--color-magenta);
   }
 
   .logo:hover {
     text-decoration: none;
-    color: var(--color-magenta);
   }
 
   .nav-links {
@@ -113,11 +116,6 @@ const currentPath = Astro.url.pathname;
     color: var(--color-magenta);
   }
 
-  .nav-links a.active {
-    color: var(--color-magenta);
-    font-weight: 600;
-  }
-
   main {
     max-width: 1200px;
     margin: 0 auto;
@@ -126,9 +124,19 @@ const currentPath = Astro.url.pathname;
   }
 
   footer {
-    padding: 2rem;
+    padding: 3rem 2rem;
     border-top: 1px solid var(--color-gray-light);
     text-align: center;
+  }
+
+  .footer-email {
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-email a {
+    color: var(--color-magenta);
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 
   .footer-links {
@@ -166,7 +174,7 @@ const currentPath = Astro.url.pathname;
     }
 
     footer {
-      padding: 0.75rem 1rem;
+      padding: 2rem 1rem;
     }
 
     .footer-links {

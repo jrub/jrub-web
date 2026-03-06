@@ -1,60 +1,300 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import profileImage from '../../public/profile.jpg';
+
+import scbcn25 from '../assets/photos/SCBCN25 - Documenting APIs.jpeg';
+import scbcn24 from '../assets/photos/SCBCN24 - AI in Support teams.jpeg';
+import scbcn23 from '../assets/photos/SCBCN23 - We\'re capitalists.jpeg';
+import scbcn22 from '../assets/photos/SCBCN22 - NoMeetings Open Space.jpeg';
+import cas22Graphic from '../assets/photos/CAS22 - NoMeetings - w graphic recorder.jpeg';
+import cas22 from '../assets/photos/CAS22 - NoMeetings.jpeg';
+import aos23 from '../assets/photos/AOS23 - Event organizers.jpeg';
+
+
+import speakingData from '../data/speaking.json';
+
+const { talks, workshops, media, communities } = speakingData;
+
+const getYear = d => new Date(d).getFullYear();
 ---
 
 <Layout title="Javi Rubio">
   <div class="content-container">
+
     <section class="hero">
       <div class="hero-header">
         <div>
           <h1>Javi Rubio</h1>
-          <p class="typed-roles">
-            <span id="typed-role"></span>
-          </p>
+          <p class="typed-roles"><span id="typed-role"></span></p>
           <p class="subtitle">Helping teams build better products, knowledge systems, and sustainable work cultures.</p>
         </div>
         <Image src={profileImage} alt="Javi Rubio" class="profile-photo" width={200} height={200} />
       </div>
+    </section>
 
-      <p class="intro">
-        20 years working at the intersection of product, engineering, and knowledge management. I've been part of startups from day one, served as CTO, led complex technical products, and built developer experience systems.
+    <section class="about">
+      <p class="intro lead">
+        Generalist software engineer with techno-activist leanings. 20 years working at the intersection of product, engineering, and knowledge management.
       </p>
-
       <p class="intro">
-        I speak at tech conferences and corporate events, organize communities, and work with organizations on AI strategy, collaboration practices, and sustainable work cultures.
+        I've been part of startups from day one, served as CTO, and led complex technical products. Known for championing <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>, helping distributed teams rethink collaboration beyond default rituals.
       </p>
-
       <p class="intro">
-        Known for championing <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>, helping distributed teams rethink collaboration beyond default rituals.
+        Available for speaking at tech conferences and corporate events. <a href="#contact">Get in touch →</a>
       </p>
     </section>
+
+    <section id="speaking" class="speaking-section">
+      <h2>Public Speaking &amp; Tech Communities</h2>
+      <p class="section-intro">I regularly speak at tech conferences and corporate events, facilitate trainings and workshops, and collaborate with different tech communities.</p>
+
+      <div class="photo-carousel" aria-hidden="true">
+        <div class="photo-slide landscape">
+          <Picture src={scbcn25} alt="Speaking at SCBCN25" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN25 - Documenting APIs</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={scbcn24} alt="Speaking at SCBCN24" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN24 - AI in Support teams</span>
+        </div>
+        <div class="photo-slide landscape">
+          <Picture src={scbcn23} alt="Speaking at SCBCN23" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN23 - We're capitalists</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={scbcn22} alt="Speaking at SCBCN22" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">SCBCN22 - NoMeetings Open Space</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={cas22Graphic} alt="Speaking at CAS22" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">CAS22 - NoMeetings & bgcampa</span>
+        </div>
+        <div class="photo-slide landscape">
+          <Picture src={cas22} alt="Speaking at CAS22" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+          <span class="photo-caption">CAS22 - NoMeetings</span>
+        </div>
+        <div class="photo-slide portrait">
+          <Picture src={aos23} alt="AOS23 event organizers" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">AOS23 - Event organizers</span>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Tech Conference Talks</h3>
+        <ul class="talks-list-inline">
+          {talks.map((talk, idx) => (
+                  <li class="talk"
+                      data-section={idx >= 4 ? 'talks' : undefined}
+                      style={idx >= 4 ? 'display:none' : undefined}>
+                    <strong>{talk.title}</strong>
+                    <p class="talk-meta">{talk.event} · {getYear(talk.date)}</p>
+                    <div class="item-footer">
+                      {talk.description && (
+                        <details class="item-description">
+                          <summary>About this talk</summary>
+                          <p>{talk.description}</p>
+                        </details>
+                      )}
+                      {talk.description && (talk.video || talk.slides || talk.links?.length > 0) && (
+                        <span class="item-sep" aria-hidden="true">·</span>
+                      )}
+                      {(talk.video || talk.slides || talk.links?.length > 0) && (
+                        <span class="item-links">
+                          {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">📹 Video</a>}
+                          {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">🖼️ Slides</a>}
+                          {talk.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))
+          }
+        </ul>
+        {talks.length > 4 && (
+          <button class="show-toggle" data-toggle data-section="talks"
+            data-total={talks.length} data-label="talks">
+            Show all {talks.length} talks
+          </button>
+        )}
+      </div>
+
+      <div class="subsection">
+        <h3>Workshops &amp; Facilitation</h3>
+        <ul class="talks-list-inline">
+          {workshops.map((item, idx) => (
+                  <li class="talk"
+                      data-section={idx >= 2 ? 'workshops' : undefined}
+                      style={idx >= 2 ? 'display:none' : undefined}>
+                    <strong>{item.title}</strong>
+                    <p class="talk-meta">{item.event} · {getYear(item.date)}</p>
+                    <div class="item-footer">
+                      {item.description && (
+                        <details class="item-description">
+                          <summary>About this workshop</summary>
+                          <p>{item.description}</p>
+                        </details>
+                      )}
+                      {item.description && (item.video || item.slides || item.links.length > 0) && (
+                        <span class="item-sep" aria-hidden="true">·</span>
+                      )}
+                      {(item.video || item.slides || item.links.length > 0) && (
+                        <span class="item-links">
+                          {item.video && <a href={item.video} target="_blank" rel="noopener noreferrer">📹 Video</a>}
+                          {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">🖼️ Slides</a>}
+                          {item.links.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))
+          }
+        </ul>
+        {workshops.length > 2 && (
+          <button class="show-toggle" data-toggle data-section="workshops"
+            data-total={workshops.length} data-label="workshops">
+            Show all {workshops.length} workshops
+          </button>
+        )}
+      </div>
+
+      <div class="subsection">
+        <h3>Podcasts &amp; Radio interviews</h3>
+        <ul class="talks-list-inline">
+          {media.map((item, idx) => (
+                  <li class="talk"
+                      data-section={idx >= 2 ? 'media' : undefined}
+                      style={idx >= 2 ? 'display:none' : undefined}>
+                    <strong>{item.title}</strong>
+                    <p class="talk-meta">{item.event} · {getYear(item.date)}</p>
+                    <div class="item-footer">
+                      {item.description && (
+                        <details class="item-description">
+                          <summary>About this episode</summary>
+                          <p>{item.description}</p>
+                        </details>
+                      )}
+                      {item.description && item.links.length > 0 && (
+                        <span class="item-sep" aria-hidden="true">·</span>
+                      )}
+                      {item.links.length > 0 && (
+                        <span class="item-links">
+                          {item.links.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                ))
+          }
+        </ul>
+        {media.length > 2 && (
+          <button class="show-toggle" data-toggle data-section="media"
+            data-total={media.length} data-label="items">
+            Show all {media.length} items
+          </button>
+        )}
+      </div>
+
+      <div class="subsection">
+        <h3>Tech Communities</h3>
+        <ul class="talks-list-inline">
+          {communities.map((item, idx) => (
+                  <li class="talk"
+                      data-section={idx >= 2 ? 'community' : undefined}
+                      style={idx >= 2 ? 'display:none' : undefined}>
+                    <strong>
+                      {item.website
+                        ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                        : item.title}
+                    </strong>
+                    <p class="talk-meta">{item.role} · {item.period} · {item.location}</p>
+                    <div class="item-footer">
+                      {item.description && (
+                        <details class="item-description">
+                          <summary>About this</summary>
+                          <p>{item.description}</p>
+                        </details>
+                      )}
+                      {item.description && item.links.length > 0 && (
+                        <span class="item-sep" aria-hidden="true">·</span>
+                      )}
+                      {item.links.length > 0 && (
+                        <span class="item-links">
+                          {item.links.map(l => (
+                            <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
+                          ))}
+                        </span>
+                      )}
+                    </div>
+                    {item.activities.length > 0 && (
+                      <ul class="activities-list">
+                        {item.activities.map(act => (
+                          <li>
+                            {act.link
+                              ? <a href={act.link} target="_blank" rel="noopener noreferrer">{act.title}</a>
+                              : act.title}
+                            {act.date ? ` · ${getYear(act.date)}` : ''}
+                            {` · ${act.role}`}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))
+          }
+        </ul>
+        {communities.length > 2 && (
+          <button class="show-toggle" data-toggle data-section="community"
+            data-total={communities.length}
+            data-label="items"
+          >
+            Show all {communities.length} items
+          </button>
+        )}
+      </div>
+
+    </section>
   </div>
+
 </Layout>
 
 <script>
   import Typed from 'typed.js';
 
-  const roles = [
-    'Tech Writer',
-    'Developer Relations',
-    'Chief Technical Officer',
-    'Associate Professor',
-    'Android Dev',
-    'Technical Coach',
-    'Technical Product Manager',
-    'Product Engineer'
-  ].sort(() => Math.random() - 0.5);
-
   new Typed('#typed-role', {
-    strings: roles,
+    strings: [
+      'Tech Writer',
+      'Developer Relations',
+      'Chief Technical Officer',
+      'Associate Professor',
+      'Android Dev',
+      'Technical Coach',
+      'Technical Product Manager',
+      'Product Engineer',
+    ],
     typeSpeed: 60,
     backSpeed: 30,
     backDelay: 1600,
     loop: true,
     showCursor: true,
-    cursorChar: '|'
+    cursorChar: '|',
+    shuffle: true,
+  });
+
+  // Show/hide subsection items (hidden via inline style on load)
+  document.querySelectorAll('[data-toggle]').forEach(btn => {
+    const section = (btn as HTMLElement).dataset.section;
+    const label = (btn as HTMLElement).dataset.label;
+    const total = (btn as HTMLElement).dataset.total;
+
+    btn.addEventListener('click', () => {
+      const isExpanded = (btn as HTMLElement).dataset.expanded === 'true';
+      document.querySelectorAll(`li[data-section="${section}"]`).forEach(item => {
+        (item as HTMLElement).style.display = isExpanded ? 'none' : '';
+      });
+      (btn as HTMLElement).dataset.expanded = isExpanded ? 'false' : 'true';
+      btn.textContent = isExpanded ? `Show all ${total} ${label}` : 'Show less';
+    });
   });
 </script>
 
@@ -81,14 +321,8 @@ import profileImage from '../../public/profile.jpg';
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .typed-roles {
@@ -105,10 +339,229 @@ import profileImage from '../../public/profile.jpg';
     color: var(--color-black);
   }
 
-  /* Typed.js cursor styling */
   :global(.typed-cursor) {
     color: var(--color-magenta);
     font-weight: 300;
+  }
+
+  .speaking-section {
+    max-width: 1200px;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-gray-light);
+  }
+
+  /* Clearfix for carousel float */
+  .speaking-section::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .speaking-section h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--color-black);
+    margin-bottom: 1.5rem;
+  }
+
+  .photo-carousel {
+    float: right;
+    width: 360px;
+    height: 360px;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .photo-slide {
+    position: absolute;
+    opacity: 0;
+    animation: fadeSlide 28s infinite;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .photo-slide.portrait {
+    width: 280px;
+    height: 360px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .photo-slide.landscape {
+    width: 360px;
+    height: 230px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .photo-slide:nth-child(1) { animation-delay: 0s; }
+  .photo-slide:nth-child(2) { animation-delay: 4s; }
+  .photo-slide:nth-child(3) { animation-delay: 8s; }
+  .photo-slide:nth-child(4) { animation-delay: 12s; }
+  .photo-slide:nth-child(5) { animation-delay: 16s; }
+  .photo-slide:nth-child(6) { animation-delay: 20s; }
+  .photo-slide:nth-child(7) { animation-delay: 24s; }
+
+  .photo-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--color-gray-medium);
+    background: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @keyframes fadeSlide {
+    0%   { opacity: 0; }
+    2%   { opacity: 1; }
+    12%  { opacity: 1; }
+    14%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  .subsection {
+    margin-top: 3rem;
+  }
+
+  .subsection h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-black);
+    border-bottom: 1px solid var(--color-gray-light);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .talks-list-inline {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .talk > strong {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .talk-meta {
+    font-size: 0.9rem;
+    color: var(--color-gray-medium);
+    margin-top: 0.1rem;
+  }
+
+  .item-footer {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .item-sep {
+    color: var(--color-gray-medium);
+    font-size: 0.85rem;
+    user-select: none;
+  }
+
+  .item-description {
+    font-size: 0.85rem;
+  }
+
+  .item-description summary {
+    list-style: none;
+    color: var(--color-turquoise);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .item-description summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .item-description summary::before {
+    content: "▸ ";
+  }
+
+  details.item-description[open] > summary::before {
+    content: "▾ ";
+  }
+
+  .item-description p {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--color-gray-medium);
+    line-height: 1.5;
+  }
+
+  .item-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .item-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-turquoise);
+  }
+
+  .item-links a:hover {
+    color: var(--color-magenta);
+    text-decoration: underline;
+  }
+
+  .activities-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    color: var(--color-gray-medium);
+  }
+
+  .show-toggle {
+    margin-top: 1rem;
+    background: none;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    padding: 0.35rem 0.8rem;
+    cursor: pointer;
+    color: var(--color-turquoise);
+    font-size: 0.85rem;
+    font-family: inherit;
+  }
+
+  .show-toggle:hover {
+    color: var(--color-magenta);
   }
 
   @media (max-width: 768px) {
@@ -125,12 +578,26 @@ import profileImage from '../../public/profile.jpg';
       order: -1;
     }
 
-    .typed-roles {
+    .typed-roles,
+    .subtitle {
       font-size: 1.1rem;
     }
 
-    .subtitle {
-      font-size: 1.1rem;
+    .photo-carousel {
+      float: none;
+      width: 100%;
+      height: 240px;
+      margin: 0 0 1.5rem 0;
+      border-radius: 8px;
+    }
+
+    .photo-slide.portrait,
+    .photo-slide.landscape {
+      width: 100%;
+      height: 240px;
+      top: 0;
+      left: 0;
+      transform: none;
     }
   }
 </style>
