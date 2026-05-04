@@ -1,7 +1,18 @@
 ---
 import '../styles/global.css';
-const { title } = Astro.props;
-const description = "Helping teams build better products, knowledge systems, and sustainable work cultures. 20 years at the intersection of product, engineering, and knowledge management.";
+
+const {
+  title,
+  description = "Helping teams build better products, knowledge systems, and sustainable work cultures. 20 years at the intersection of product, engineering, and knowledge management.",
+  ogImage,
+  canonicalURL,
+  noindex = false,
+} = Astro.props;
+
+const resolvedCanonical = canonicalURL ?? new URL(Astro.url.pathname, Astro.site).toString();
+const resolvedOgImage = ogImage
+  ? new URL(ogImage, Astro.site).toString()
+  : new URL('/profile.jpg', Astro.site).toString();
 ---
 
 <!DOCTYPE html>
@@ -14,20 +25,24 @@ const description = "Helping teams build better products, knowledge systems, and
     <meta name="theme-color" content="#3A7E74" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={resolvedCanonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL('/profile.jpg', Astro.url)} />
+    <meta property="og:image" content={resolvedOgImage} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL('/profile.jpg', Astro.url)} />
+    <meta property="twitter:image" content={resolvedOgImage} />
+
+    <link rel="alternate" type="application/rss+xml" title="Javi Rubio — Blog" href="/rss.xml" />
 
     <title>{title}</title>
 
@@ -36,12 +51,15 @@ const description = "Helping teams build better products, knowledge systems, and
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <slot name="head" />
   </head>
   <body>
     <header>
       <nav>
         <a href="/" class="logo">Javi Rubio</a>
         <div class="nav-links">
+          <a href="/blog">Blog</a>
           <a href="/#speaking">Speaking</a>
           <a href="/#contact">Contact</a>
         </div>

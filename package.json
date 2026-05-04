@@ -12,6 +12,8 @@
     "test:headed": "playwright test --headed"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
     "astro": "^5.16.15",
     "typed.js": "^3.0.0"
   },

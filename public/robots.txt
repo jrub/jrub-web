@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /blog/_draft/
+
+Sitemap: https://javirubio.net/sitemap-index.xml
