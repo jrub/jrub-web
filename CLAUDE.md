@@ -146,6 +146,20 @@ npm run preview    # Preview build
 
 Playwright tests live in `tests/speaking-layout.spec.js`. They validate carousel positioning, spacing, and responsive behavior. **Tests must pass before merging.**
 
+## Blog Drafts
+
+Posts with `draft: true` in their frontmatter are excluded from `/blog/`, `/rss.xml`, and the sitemap. They build to `/blog/draft/[slug]/` so they can be shared for feedback without going public.
+
+The path `/blog/draft/*` is gated by a Netlify Edge Function (`netlify/edge-functions/draft-auth.js`) that requires HTTP Basic Auth. Credentials are read from `DRAFT_USER` and `DRAFT_PASSWORD` env vars in the Netlify dashboard (Site settings → Environment variables). If either is unset, the gate returns `503` for all draft requests.
+
+Workflow:
+1. Add a `.md` to `src/content/blog/` with `draft: true` in frontmatter.
+2. Push the branch — Netlify deploy preview builds the draft page.
+3. Share the URL with the reviewer; they'll be prompted for Basic Auth credentials.
+4. Flip `draft: false` (and remove or update `pubDate`) to publish.
+
+Locally (`npm run dev`), drafts are accessible at `/blog/draft/[slug]/` without auth, since edge functions only run on Netlify.
+
 ## AI Behavioral Rules
 
 1. **Prioritize simplicity** — if there's a simpler way, use it
