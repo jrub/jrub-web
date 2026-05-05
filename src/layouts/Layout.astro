@@ -7,6 +7,7 @@ const {
   ogImage,
   canonicalURL,
   noindex = false,
+  noCanonical = false,
 } = Astro.props;
 
 const resolvedCanonical = canonicalURL ?? new URL(Astro.url.pathname, Astro.site).toString();
@@ -25,7 +26,7 @@ const resolvedOgImage = ogImage
     <meta name="theme-color" content="#3A7E74" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={resolvedCanonical} />
+    {!noCanonical && <link rel="canonical" href={resolvedCanonical} />}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Open Graph / Facebook -->

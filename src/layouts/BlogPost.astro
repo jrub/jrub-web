@@ -2,7 +2,7 @@
 import Layout from './Layout.astro';
 import { Image } from 'astro:assets';
 
-const { post, readingTime, headings } = Astro.props;
+const { post, readingTime, headings, isDraft = false } = Astro.props;
 const { data } = post;
 const {
   title,
@@ -55,15 +55,24 @@ const articleSchema = {
   title={`${title} — Javi Rubio`}
   description={description}
   ogImage={ogImagePath}
-  canonicalURL={canonicalURL}
+  canonicalURL={isDraft ? undefined : canonicalURL}
+  noindex={isDraft}
+  noCanonical={isDraft}
 >
-  <script
-    slot="head"
-    type="application/ld+json"
-    set:html={JSON.stringify(articleSchema)}
-  />
+  {!isDraft && (
+    <script
+      slot="head"
+      type="application/ld+json"
+      set:html={JSON.stringify(articleSchema)}
+    />
+  )}
 
   <article class="content-container blog-post">
+    {isDraft && (
+      <p class="draft-banner" role="status">
+        <strong>Draft preview.</strong> Not indexed, not listed. Don't share publicly.
+      </p>
+    )}
     <header class="blog-post-header">
       <h1>{title}</h1>
       <p class="post-meta">

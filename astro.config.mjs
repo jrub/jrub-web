@@ -5,7 +5,11 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://javirubio.net',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/blog/draft/'),
+    }),
+  ],
   markdown: {
     shikiConfig: {
       theme: 'github-light',
