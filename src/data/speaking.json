@@ -1,5 +1,17 @@
 {
   "talks": [
+      {
+      "title": "Documenting APIs: new era, same craft",
+      "event": "Write The Docs Berlin",
+      "location": "Berlin, Germany",
+      "date": "2026-09-07",
+      "language": "en",
+      "video": "null",
+      "slides": null,
+      "photos": [],
+      "featured": true,
+      "description": "I'll be speaking at Berlin next September, come join! https://www.writethedocs.org/conf/berlin/2026"
+    },
     {
       "title": "Documenting APIs",
       "event": "Software Crafters Barcelona",
@@ -231,7 +243,21 @@
       ],
       "photos": [],
       "featured": false,
-      "description": "Facilitated open space session on #NoMeetings practices at Startup Open Space Zaragoza 2022."
+      "description": "Facilitated Open Space session on #NoMeetings practices at Startup Open Space Zaragoza 2022."
+    },
+    {
+      "title": "Organizational AI strategy",
+      "event": "SOSZ26 (Startup Open Space)",
+      "location": "Zaragoza, Spain",
+      "date": "2026-03-21",
+      "language": "es",
+      "type": "open_space",
+      "video": null,
+      "slides": null,
+      "links": [],
+      "photos": [],
+      "featured": false,
+      "description": "Facilitated Open Space session on Organizational AI strategy at Startup Open Space Zaragoza 2026."
     }
   ],
   "media": [
