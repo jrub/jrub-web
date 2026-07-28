@@ -84,7 +84,7 @@
       "description": "Rethinking collaboration beyond default meeting rituals for distributed teams. Practical strategies to reduce meeting overhead."
     },
     {
-      "title": "We're capitalists",
+      "title": "We're capitalists: Behavioral patterns in the Tech Industry.",
       "event": "Software Crafters Barcelona",
       "location": "Barcelona, Spain",
       "date": "2023-10-07",
@@ -103,7 +103,7 @@
         }
       ],
       "featured": false,
-      "description": "A critical look at the intersection of software craft and economic realities in the tech industry."
+      "description": "A critical look at how some capitalist patterns clash with Software Crafter's principles like XP"
     },
     {
       "title": "#NoMeetings at Adidas",
@@ -268,7 +268,7 @@
       "featured": true,
       "description": "In-depth interview on #NoMeetings philosophy, asynchronous work practices, remote collaboration strategies, and rethinking default meeting culture in distributed teams.",
       "links": [
-        {"title": "🎙️ Listen", "url": "https://open.spotify.com/episode/247Wbl9oyDMtJw0rstYMaz?si=94d6c885d00f4778"}
+        {"title": "🎙️ Listen", "url": "https://open.spotify.com/episode/247Wbl9oyDMtJw0rstYMaz"}
       ]
     },
     {
