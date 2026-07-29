@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+import portfolioData from '../data/portfolio.json';
+
+const { intro, caseStudies, professionalProducts, sideProjects } = portfolioData;
+
+const escapeHtml = str => str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const linkify = str => escapeHtml(str).replace(
+  /(https?:\/\/[^\s)]+)/g,
+  url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+);
+---
+
+<Layout title="Portfolio · Javi Rubio" description="Case studies and products built across engineering, product management, and developer relations.">
+  <div class="content-container">
+
+    <section class="portfolio-hero">
+      <h1>Portfolio</h1>
+      <p class="intro">{intro}</p>
+    </section>
+
+    <section class="case-studies">
+      <h2>Featured Case Studies</h2>
+      {caseStudies.map(cs => <CaseStudy cs={cs} />)}
+    </section>
+
+    <div class="subsection">
+      <h2>Professional Products</h2>
+      <ul class="talks-list-inline">
+        {professionalProducts.map(p => (
+          <li class="talk">
+            <strong>{p.title}</strong>
+            <p class="talk-meta" set:html={linkify(p.description)} />
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h2>Side Projects &amp; Open Source</h2>
+      <ul class="talks-list-inline">
+        {sideProjects.map(p => (
+          <li class="talk">
+            <strong>{p.title}</strong>
+            <p class="talk-meta" set:html={linkify(p.description)} />
+            {p.links.length > 0 && (
+              <p class="item-links">
+                {p.links.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+              </p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .portfolio-hero {
+    margin-bottom: 2rem;
+  }
+
+  .case-studies {
+    margin-top: 3rem;
+  }
+
+  .case-studies h2,
+  .subsection h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-gray-light);
+  }
+
+  .subsection {
+    margin-top: 3rem;
+  }
+
+  .talks-list-inline {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .talk > strong {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .talk-meta {
+    font-size: 0.9rem;
+    color: var(--color-gray-medium);
+    margin-top: 0.1rem;
+  }
+
+  .item-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .item-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-turquoise);
+  }
+
+  .item-links a:hover {
+    color: var(--color-magenta);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .case-studies h2,
+    .subsection h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>
