@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CaseStudy from '../components/CaseStudy.astro';
 import portfolioData from '../data/portfolio.json';
 
 const { intro, caseStudies, professionalProducts, sideProjects } = portfolioData;
@@ -21,24 +22,7 @@ const linkify = str => escapeHtml(str).replace(
 
     <section class="case-studies">
       <h2>Featured Case Studies</h2>
-      {caseStudies.map(cs => (
-        <article class="case-study" id={cs.slug}>
-          <h3>{cs.title}</h3>
-          <p class="case-meta">
-            <span class="meta-badge">{cs.period}</span>
-            <span class="meta-badge">{cs.role}</span>
-            <span class="meta-badge">{cs.tags}</span>
-          </p>
-          <p><strong>The problem.</strong> <span set:html={linkify(cs.problem)} /></p>
-          <p><strong>What I did.</strong> <span set:html={linkify(cs.whatIDid)} /></p>
-          <p><strong>The outcome.</strong> <span set:html={linkify(cs.outcome)} /></p>
-          {cs.links.length > 0 && (
-            <p class="item-links">
-              {cs.links.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
-            </p>
-          )}
-        </article>
-      ))}
+      {caseStudies.map(cs => <CaseStudy cs={cs} />)}
     </section>
 
     <div class="subsection">
@@ -91,44 +75,6 @@ const linkify = str => escapeHtml(str).replace(
     border-bottom: 1px solid var(--color-gray-light);
   }
 
-  .case-study {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-gray-light);
-  }
-
-  .case-study:first-of-type {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-  }
-
-  .case-study h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--color-black);
-    margin-bottom: 0.5rem;
-  }
-
-  .case-meta {
-    margin-bottom: 1rem;
-  }
-
-  .meta-badge {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: var(--color-gray-medium);
-    background: var(--color-gray-light);
-    padding: 0.15rem 0.6rem;
-    border-radius: 999px;
-    margin: 0 0.4rem 0.4rem 0;
-  }
-
-  .case-study p {
-    margin-bottom: 0.9rem;
-    line-height: 1.6;
-  }
-
   .subsection {
     margin-top: 3rem;
   }
@@ -175,10 +121,6 @@ const linkify = str => escapeHtml(str).replace(
     .case-studies h2,
     .subsection h2 {
       font-size: 1.3rem;
-    }
-
-    .case-study h3 {
-      font-size: 1.1rem;
     }
   }
 </style>

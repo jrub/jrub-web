@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaseStudy from '../../components/CaseStudy.astro';
+import portfolioData from '../../data/portfolio.json';
+
+export function getStaticPaths() {
+  return portfolioData.caseStudies.map(cs => ({
+    params: { slug: cs.slug },
+    props: { cs },
+  }));
+}
+
+const { cs } = Astro.props;
+---
+
+<Layout title={`${cs.title} · Javi Rubio`} description={`${cs.role} · ${cs.tags}`}>
+  <div class="content-container">
+    <p class="back-link"><a href="/portfolio">← Back to portfolio</a></p>
+    <CaseStudy cs={cs} headingTag="h1" showPermalink={false} />
+  </div>
+</Layout>
+
+<style>
+  .back-link {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+</style>
