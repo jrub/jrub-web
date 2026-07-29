@@ -1,0 +1,133 @@
+---
+import Layout from './Layout.astro';
+import { Image } from 'astro:assets';
+
+const { post, readingTime, headings, isDraft = false } = Astro.props;
+const { data } = post;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  tags,
+  heroImage,
+  heroImageAlt,
+  showToc,
+  canonicalURL,
+  originalSource,
+} = data;
+
+const dateFormatter = new Intl.DateTimeFormat('en', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const isoPub = new Date(pubDate).toISOString();
+const isoUpdated = updatedDate ? new Date(updatedDate).toISOString() : undefined;
+
+const postUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImagePath = heroImage?.src;
+
+const tocHeadings = (headings ?? []).filter((h) => h.depth === 2 || h.depth === 3);
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: isoPub,
+  ...(isoUpdated && { dateModified: isoUpdated }),
+  author: {
+    '@type': 'Person',
+    name: 'Javi Rubio',
+    url: 'https://javirubio.net',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': postUrl,
+  },
+  ...(canonicalURL && { sameAs: [canonicalURL] }),
+};
+---
+
+<Layout
+  title={`${title} — Javi Rubio`}
+  description={description}
+  ogImage={ogImagePath}
+  canonicalURL={isDraft ? undefined : canonicalURL}
+  noindex={isDraft}
+  noCanonical={isDraft}
+>
+  {!isDraft && (
+    <script
+      slot="head"
+      type="application/ld+json"
+      set:html={JSON.stringify(articleSchema)}
+    />
+  )}
+
+  <article class="content-container blog-post">
+    {isDraft && (
+      <p class="draft-banner" role="status">
+        <strong>Draft preview.</strong> Not indexed, not listed. Don't share publicly.
+      </p>
+    )}
+    <header class="blog-post-header">
+      <h1>{title}</h1>
+      <p class="post-meta">
+        <time datetime={isoPub}>{dateFormatter.format(pubDate)}</time>
+        <span class="post-meta-sep">·</span>
+        <span>{readingTime}</span>
+        {tags.length > 0 && (
+          <>
+            <span class="post-meta-sep">·</span>
+            <span class="post-tags-inline">
+              {tags.map((tag) => <span class="post-tag">{tag}</span>)}
+            </span>
+          </>
+        )}
+      </p>
+      {updatedDate && (
+        <p class="post-updated">
+          Updated <time datetime={isoUpdated}>{dateFormatter.format(updatedDate)}</time>
+        </p>
+      )}
+      {originalSource && canonicalURL && (
+        <p class="post-original">
+          Originally published on{' '}
+          <a href={canonicalURL} target="_blank" rel="noopener noreferrer">
+            {originalSource} →
+          </a>
+        </p>
+      )}
+    </header>
+
+    {heroImage && (
+      <Image
+        src={heroImage}
+        alt={heroImageAlt ?? ''}
+        class="blog-post-hero"
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 800px) 100vw, 800px"
+      />
+    )}
+
+    {showToc && tocHeadings.length > 0 && (
+      <nav class="toc" aria-label="Table of contents">
+        <p class="toc-title">On this page</p>
+        <ul>
+          {tocHeadings.map((h) => (
+            <li class={`toc-depth-${h.depth}`}>
+              <a href={`#${h.slug}`}>{h.text}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+
+    <div class="blog-post-content">
+      <slot />
+    </div>
+  </article>
+</Layout>

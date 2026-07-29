@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const dateFormatter = new Intl.DateTimeFormat('en', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+
+const description = "Writing on software, knowledge work, distributed teams, and #NoMeetings.";
+---
+
+<Layout title="Blog — Javi Rubio" description={description}>
+  <div class="content-container blog-list-container">
+    <header class="blog-index-header">
+      <h1>Blog</h1>
+      <p class="intro lead">{description}</p>
+      <p class="blog-rss-link">
+        <a href="/rss.xml">Subscribe via RSS →</a>
+      </p>
+    </header>
+
+    {posts.length === 0 ? (
+      <p class="intro">No posts yet — stay tuned.</p>
+    ) : (
+      <ul class="blog-list">
+        {posts.map((post) => (
+          <li class="blog-list-item">
+            <a href={`/blog/${post.id}/`} class="blog-list-link">
+              <h2>{post.data.title}</h2>
+            </a>
+            <p class="post-meta">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {dateFormatter.format(post.data.pubDate)}
+              </time>
+              {post.data.tags.length > 0 && (
+                <>
+                  <span class="post-meta-sep">·</span>
+                  <span class="post-tags-inline">
+                    {post.data.tags.map((tag) => <span class="post-tag">{tag}</span>)}
+                  </span>
+                </>
+              )}
+              {post.data.originalSource && (
+                <>
+                  <span class="post-meta-sep">·</span>
+                  <span class="post-original-mark">via {post.data.originalSource}</span>
+                </>
+              )}
+            </p>
+            <p class="blog-list-description">{post.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</Layout>
