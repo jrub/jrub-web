@@ -1,0 +1,131 @@
+{
+  "intro": "I've spent 20+ years building products across very different domains: secure messaging, banking, e-commerce, tax compliance, civic tech. Sometimes as an engineer, sometimes as a product manager, often as both at once. This portfolio collects that work, from professional products to hackathon experiments. The featured ones follow the same logic: the problem, what I did, and what came out of it.",
+  "caseStudies": [
+    {
+      "slug": "transparencia-es",
+      "title": "Transparencia ES: public procurement, explained to anyone",
+      "period": "2026",
+      "role": "Claude Agent Skill + conversational web app",
+      "tags": "Civic tech, open data",
+      "problem": "In Spain you have the right to know how public money is spent, but the data is scattered across a dozen portals behind expert jargon: CPV codes, contract types, tender IDs. Civio's journalists carry that knowledge in their heads; a normal citizen doesn't.",
+      "whatIDid": "Built at Ship for Good, the Software Crafters Barcelona hackathon for Fundación Civio, with Mercedes Egido. We designed two layers: a Claude Agent Skill as the brain, systematizing the journalists' tacit knowledge, translating jargon into plain language and open to community-contributed parsers for more transparency portals; and a conversational web UI that never invents and always links the official source.",
+      "outcome": "A working MVP in a weekend: the web runs on cached Zaragoza city council data, the skill queries live PLACSP data. The next step is what matters most: going from output to outcome, giving it real life beyond the hackathon.",
+      "links": [
+        { "title": "Demo", "url": "https://transparencia-es.lovable.app" },
+        { "title": "Repo", "url": "https://github.com/ship-for-good/civio-2026/tree/team-turquesa" },
+        { "title": "Skill", "url": "https://github.com/ship-for-good/civio-2026/tree/team-turquesa/skills/transparencia-es" }
+      ]
+    },
+    {
+      "slug": "quaderno-tax-registration-filing",
+      "title": "Quaderno: tax registration and filing in 50+ countries",
+      "period": "2025",
+      "role": "Technical Product Manager",
+      "tags": "Bootstrapped SaaS, ~15 people",
+      "problem": "Quaderno covered tax calculation and reporting, but not registration and filing: the part of the tax lifecycle where customers still had to go elsewhere. Sales were declining and we needed more LTV per customer. Filing requires precise manual work, per-jurisdiction expertise and legal responsibility, so operating it in-house was not viable.",
+      "whatIDid": "I proposed and validated the hypothesis of working with partners whose core business is filing. We started with manual per-country operation to validate the learnings before building. Then I designed the partner integration model (APIs, data flows, error handling) and the abstractions that captured what countries have in common while isolating what is specific, so adding a country became configuration instead of development, and implemented the integrations myself in the Rails codebase. I acted as the bridge between Sales, C-level and the external partners.",
+      "outcome": "In 8 months: hundreds of new tax registrations across 50+ countries, 10x LTV among the customers who adopted it, and the team did not need to scale. Supporting a new market went from weeks to days. It wasn't perfect, though: there's always a country that breaks your assumptions.",
+      "links": [
+        { "title": "Registration", "url": "https://quaderno.io/registration/" },
+        { "title": "Reporting & filing", "url": "https://quaderno.io/reporting-filing/" },
+        { "title": "Support guide I wrote", "url": "https://support.quaderno.io/article/1251-tax-compliance" }
+      ]
+    },
+    {
+      "slug": "quaderno-docs-connect",
+      "title": "developers.quaderno.io & Quaderno Connect: docs as a product",
+      "period": "2021 to 2025",
+      "role": "Lead Technical Writer, Developer Relations",
+      "tags": "Ruby on Rails, OpenAPI, rswag",
+      "problem": "Quaderno's API products needed self-service integration: with a ~15 people company, every integrator question that reached support was expensive, and outdated docs are worse than no docs. The stakes grew with Quaderno Connect (https://developers.quaderno.io/guides/connect/), the white-label API for platforms and marketplaces: complex integrations, a domain full of edge cases (taxes), and big prospects comparing us against alternatives like Stripe Tax.",
+      "whatIDid": "I built (and wrote!) the whole developer site (https://developers.quaderno.io) and evolved the API, treating both as products: OpenAPI reference, integration guides per user profile. Particularly proud of making the OpenAPI reference auto-generate from tests in the Rails codebase (rswag), which gave ownership to the whole team: keeping docs up to date became the path of least resistance. For Connect I owned the product side: reference and guides, hands-on support to integrators through implementation (including the complex tax-domain explanations), evolving and extending the API from their needs directly in the codebase, and working with Marketing on the landings and with Sales on positioning.",
+      "outcome": "Reduced integrator questions and became a huge selling point over competitors: large international marketplaces evaluating alternatives like Stripe Tax chose Quaderno, and they repeatedly credited the documentation and the implementation support. I gave a talk about this approach at Software Crafters Barcelona 2025, \"Documenting APIs\" (https://www.youtube.com/watch?v=IHIsuIlSiio), and I'm bringing an updated version to Write The Docs Berlin in September 2026.",
+      "links": []
+    },
+    {
+      "slug": "flywire-mvp",
+      "title": "Flywire: validating a new business line",
+      "period": "2016 to 2017",
+      "role": "Product Developer at Coding Stones",
+      "tags": "Ruby, Vue.js, Docker, Terraform",
+      "problem": "Flywire had a solid product for student-to-university payments and wanted to explore a new line: university-to-supplier payments. Lots of uncertainty about what the business actually needed, and a real risk of spending months building something that didn't fit.",
+      "whatIDid": "Instead of jumping to the full solution, we ran a Lean Inception with their team: identified users, mapped needs into a shared User Story Map, and prioritized an MVP that would validate the business case before committing the full budget. Each story went through Example Mapping into BDD acceptance tests, with an internal dashboard visualizing real progress from the tests.",
+      "outcome": "We delivered something smaller and rougher than the client initially expected. In exchange, they learned fast and adjusted before the big investment. Business case validated; Flywire continued the full development in-house, and later became the first Spanish startup to debut on the Nasdaq.",
+      "links": []
+    }
+  ],
+  "professionalProducts": [
+    {
+      "title": "Quaderno Support Center",
+      "description": "created and ran support.quaderno.io (https://support.quaderno.io) in three languages (EN/ES/FR): an editorial product with its own voice and tone, metrics and automations, run by the Support team I led. (2022-24.)",
+      "links": []
+    },
+    {
+      "title": "Funidelia WMS",
+      "description": "as CTO of the largest e-commerce in Aragon, I led the in-house development of a Warehouse Management System in Node.js, including the team's adoption of the stack. It enabled opening new warehouses. (2018-19.)",
+      "links": []
+    },
+    {
+      "title": "Haize",
+      "description": "a minimalist navigation compass for urban cyclists, one of the innovative product builds I joined at Coding Stones. I wrote about its architecture in \"Clean Architecture Tour 2016-2017\" (https://medium.com/coding-stones/clean-architecture-tour-2016-2017-90bb205d443c). (2016-17.)",
+      "links": []
+    },
+    {
+      "title": "Iberia apps",
+      "description": "two corporate image Android apps for the airline, both shipped to Google Play at the time (no longer live), in collaboration with the design studio unboring.net. \"Prepare for the trip\": immerse in your destination's culture through movies, music and literature. \"Selfies\": record selfies during the trip and get a video after your return. (Freelance, 2014-15.)",
+      "links": []
+    },
+    {
+      "title": "Ee-Respon",
+      "description": "citizen reporting system for the Andorra government: iPhone and Android apps plus a Ruby backoffice for government officials. (Freelance, 2014-15.)",
+      "links": []
+    },
+    {
+      "title": "Zuppex",
+      "description": "Sevenclick's secure messaging product, competing with Blackberry, then the leader in the space. I owned the Android app and the J2EE backend connection to S/MIME secure email. (2008-10.)",
+      "links": []
+    },
+    {
+      "title": "Tenderoo & BioId",
+      "description": "voice biometrics as a second authentication factor for LATAM banking systems, exposed as SaaS REST APIs (Symfony2); and BioId, a ZRTP-secured voice network (Android apps plus Asterisk/FreeSwitch servers). (2010-13.)",
+      "links": []
+    }
+  ],
+  "sideProjects": [
+    {
+      "title": "wallapop-to-vinted",
+      "description": "Python tool migrating Wallapop listings to Vinted: reverse-engineered internal API plus Patchright browser automation. Built in April 2026 with Claude Code.",
+      "links": [
+        { "title": "Repo", "url": "https://github.com/jrub/wallapop-to-vinted" }
+      ]
+    },
+    {
+      "title": "LaAgendica",
+      "description": "event discovery app for Zaragoza on the city council's open data. Born at the ZgzAppStore hackathon (March 2015) and shipped to Google Play, App Store (Ionic) and web. No longer maintained.",
+      "links": [
+        { "title": "Repo", "url": "https://github.com/jrub/LaAgendica" }
+      ]
+    },
+    {
+      "title": "CRAS",
+      "description": "web app visualizing Aragon's rural school clusters using Aragón Open Data datasets (Python, Flask, MySQL). Built at Jacathon 2014, awarded Best Innovative Idea.",
+      "links": [
+        { "title": "Repo", "url": "https://github.com/aragonopendata/JodoCoders" }
+      ]
+    },
+    {
+      "title": "Leancook",
+      "description": "recipe search engine on Rails and Elasticsearch over the openrecipes public dataset, built in 48 hours at RailsRumble 2014.",
+      "links": [
+        { "title": "Repo", "url": "https://github.com/jrub/leancook" }
+      ]
+    },
+    {
+      "title": "NASA SpaceApps Challenge 2014",
+      "description": "Leaflet.js map overlaying NASA's live wildfire WMS layer on OpenStreetMap.",
+      "links": [
+        { "title": "Repo", "url": "https://github.com/jrub/spaceapps2014" }
+      ]
+    }
+  ]
+}
