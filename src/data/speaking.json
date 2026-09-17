@@ -2,15 +2,24 @@
   "talks": [
       {
       "title": "Documenting APIs: new era, same craft",
-      "event": "Write The Docs Berlin",
+      "event": "Write The Docs Berlin 2026",
       "location": "Berlin, Germany",
       "date": "2026-09-07",
       "language": "en",
       "video": null,
       "slides": null,
-      "photos": [],
+      "photos": [
+        {
+          "src": "https://live.staticflickr.com/65535/55515650189_eca7fcd586_c.jpg",
+          "caption": "#WTD26 - Documenting APIs: new era, same craft",
+          "hero": true
+        }
+      ],
       "featured": true,
-      "description": "I'll be speaking at Berlin next September, come join! https://www.writethedocs.org/conf/berlin/2026"
+      "description": "In my talk, we went through a bit of the history of APIs and API docs to understand today's ecosystem. Then we looked at it through two lenses: engineering 🔍 (the closer to the code, the better) and product 🔍 (know your users, and AI is now one of them).",
+      "links": [
+        {"title": "📝 LinkedIn post", "url": "https://www.linkedin.com/feed/update/urn:li:activity:7503872721458536448/"}
+      ]
     },
     {
       "title": "Documenting APIs",
@@ -28,7 +37,7 @@
         }
       ],
       "featured": true,
-      "description": "Documentation is the API interface to the world. In an ecosystem full of standards and fragmented tooling, how to apply a product lens to API documentation?"
+      "description": "Documentation is the API's interface to the world. In an ecosystem full of standards and fragmented tooling, how to apply a product lens to API documentation?"
     },
     {
       "title": "AI in support teams",
@@ -195,7 +204,7 @@
       "type": "workshop",
       "video": null,
       "slides": null,
-      "links": [{"title": "📝 Article", "url": "https://medium.com/coding-stones/una-de-bdd-specification-by-example-y-cucumber-8345ccc71172"}],
+      "links": [{"title": "📝 Medium article", "url": "https://medium.com/coding-stones/una-de-bdd-specification-by-example-y-cucumber-8345ccc71172"}],
       "photos": [],
       "featured": false,
       "description": "Two-day workshop co-facilitated with Dani Latorre on Behavior-Driven Development, collaborative specification through examples, and Cucumber automation for a multinational development team."
@@ -268,7 +277,8 @@
       "featured": true,
       "description": "In-depth interview on #NoMeetings philosophy, asynchronous work practices, remote collaboration strategies, and rethinking default meeting culture in distributed teams.",
       "links": [
-        {"title": "🎙️ Listen", "url": "https://open.spotify.com/episode/247Wbl9oyDMtJw0rstYMaz"}
+        {"title": "🎙️ Listen on Spotify", "url": "https://open.spotify.com/episode/247Wbl9oyDMtJw0rstYMaz"},
+        {"title": "🎙️ Listen on YouTube", "url": "https://www.youtube.com/watch?v=WBsX8eg78gQ"}
       ]
     },
     {
@@ -278,8 +288,8 @@
       "featured": true,
       "description": "One-hour interview discussing the Coding Stones team origin, Agile and Extreme Programming practices, cooperative-style business philosophy, and approach to working as a small independent team. Co-interviewed with Dani Latorre.",
       "links": [
-        {"title": "📻 Listen", "url": "https://www.ivoox.com/pymes-trastos-pgm-009-2017-11-28-audios-mp3_rf_22331413_1.html"},
-        {"title": "📝 Article", "url": "https://medium.com/coding-stones/entrevista-en-pymes-y-trastos-35a18ba9a9af"}
+        {"title": "📻 Listen on iVoox", "url": "https://www.ivoox.com/pymes-trastos-pgm-009-2017-11-28-audios-mp3_rf_22331413_1.html"},
+        {"title": "📝 Medium article", "url": "https://medium.com/coding-stones/entrevista-en-pymes-y-trastos-35a18ba9a9af"}
       ]
     },
     {
@@ -289,8 +299,8 @@
       "featured": false,
       "description": "Radio segment discussing the security features of Telegram versus WhatsApp messaging platforms.",
       "links": [
-        {"title": "📻 Listen", "url": "https://www.ivoox.com/en/buscador-el-telegram-es-mas-seguro-que-audios-mp3_rf_2816918_1.html"},
-        {"title": "📝 Article", "url": "https://www.ondacero.es/podcast/programas/rosa-vientos/buscador/buscador-telegram-mas-seguro-que-whatsapp_201402105542f2ebd7fef20c58b78122.html"}
+        {"title": "📻 Listen on iVoox", "url": "https://www.ivoox.com/en/buscador-el-telegram-es-mas-seguro-que-audios-mp3_rf_2816918_1.html"},
+        {"title": "📝 Official post", "url": "https://www.ondacero.es/podcast/programas/rosa-vientos/buscador/buscador-telegram-mas-seguro-que-whatsapp_201402105542f2ebd7fef20c58b78122.html"}
       ]
     },
     {
@@ -340,7 +350,7 @@
       "location": "Jaca, Spain",
       "website": "https://agile-spain.org/aos-2023-jaca",
       "featured": true,
-      "description": "Organized the national Agile Open Space 2023 event in Jaca, a self-organized conference bringing together the Spanish agile community.",
+      "description": "Organized the national Agile Open Space 2023 event in Jaca, an unconference bringing together the Spanish agile community.",
       "links": [],
       "activities": [],
       "photos": [
@@ -377,7 +387,7 @@
       "description": "Professional mentoring program co-created with Daniel Latorre and Néstor Salceda to improve programming skills. Introduced methodologies and practices including XP, Software Craft, DevOps, Lean Software Development, and TDD. Invited industry professionals to give talks, including Ujúe Agudo from BikoLabs on general topics, Alberto Gualis on TDD, and Daniel Torres Burriel on UX.",
       "links": [
         {
-          "title": "📝 Made in Zaragoza",
+          "title": "📝 Made in Zaragoza blog article",
           "url": "https://madeinzaragoza.es/blog/senpaidevs-mentorizacion-intensiva-de-programadores-para-programadores/"
         },
         {
@@ -390,31 +400,31 @@
     {
       "title": "Jacathon 2014 - Best Innovative Idea Award",
       "role": "Winner",
-      "organization": "Jacathon (Hackathon)",
+      "organization": "Aragón Open Data",
       "period": "2014",
       "location": "Zaragoza, Spain",
       "website": null,
-      "description": "Won the Best Innovative Idea award at Jacathon 2014 hackathon. Project focused on open data visualization and currently maintained as JodoCoders.",
+      "description": "Won the Best Innovative Idea award at \"Jacathon 2014\" civic open data hackathon. web app visualizing Aragon's rural school clusters (CRAs) using Aragón Open Data datasets. Python (Flask), MySQL, Vagrant-provisioned dev environment. ",
       "links": [
         {
-          "title": "📝 Medium",
+          "title": "📝 Medium article",
           "url": "https://medium.com/@jrubr/40f0440c913e"
         },
         {
-          "title": "💻 GitHub",
+          "title": "💻 GitHub repo",
           "url": "https://github.com/aragonopendata/JodoCoders"
         }
       ],
       "activities": []
     },
     {
-      "title": "QCon London 2017",
+      "title": "QCon London 2016",
       "role": "Volunteer Crew Member",
       "organization": "QCon Software Development Conferences",
-      "period": "Mar 2017",
+      "period": "Mar 2016",
       "location": "London, UK",
       "website": null,
-      "description": "Volunteer crew member helping with the organization of the 2017 QCon London Conference.",
+      "description": "Volunteer crew member helping with the organization of the 2016 QCon London Conference.",
       "links": [],
       "activities": []
     },
@@ -445,7 +455,7 @@
         {
           "title": "Mini-games workshop with Processing",
           "date": "2016-01-16",
-          "role": "Facilitator",
+          "role": "Organizer and teacher",
           "link": "https://zagaleshacklab.wordpress.com/2016/01/13/taller-de-minijuegos-con-processing/",
           "description": "Hands-on workshop teaching kids game development fundamentals using Processing. Ran in 2015 and 2016 editions at Primera Pantalla conference."
         }
