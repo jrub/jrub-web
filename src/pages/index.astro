@@ -4,6 +4,7 @@ import { Image, Picture } from 'astro:assets';
 import profileImage from '../../public/profile.jpg';
 
 import wtd26 from '../assets/photos/WTD26-berlin-speakers-jazz-medium-res.jpg';
+import wtd26Sketchnote from '../../public/talks/WTD26-berlin-sketchnote.jpg';
 import scbcn25 from '../assets/photos/SCBCN25 - Documenting APIs.jpeg';
 import scbcn24 from '../assets/photos/SCBCN24 - AI in Support teams.jpeg';
 import scbcn23 from '../assets/photos/SCBCN23 - We\'re capitalists.jpeg';
@@ -54,6 +55,10 @@ const getYear = d => new Date(d).getFullYear();
         <div class="photo-slide landscape">
           <Picture src={wtd26} alt="Speaking at WTD26" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
           <span class="photo-caption">WTD26 - Documenting APIs: new era, same craft</span>
+        </div>
+        <div class="photo-slide portrait contain">
+          <Picture src={wtd26Sketchnote} alt="Sketchnote of the WTD26 talk by Dennis Dawson" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+          <span class="photo-caption">WTD26 - Sketchnote by Dennis Dawson</span>
         </div>
         <div class="photo-slide landscape">
           <Picture src={scbcn25} alt="Speaking at SCBCN25" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
@@ -389,7 +394,7 @@ const getYear = d => new Date(d).getFullYear();
   .photo-slide {
     position: absolute;
     opacity: 0;
-    animation: fadeSlide 32s infinite;
+    animation: fadeSlide 36s infinite;
     border-radius: 12px;
     overflow: hidden;
   }
@@ -418,12 +423,19 @@ const getYear = d => new Date(d).getFullYear();
   .photo-slide:nth-child(6) { animation-delay: 20s; }
   .photo-slide:nth-child(7) { animation-delay: 24s; }
   .photo-slide:nth-child(8) { animation-delay: 28s; }
+  .photo-slide:nth-child(9) { animation-delay: 32s; }
 
   .photo-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  /* Drawings must be seen whole, not cropped */
+  .photo-slide.contain img {
+    object-fit: contain;
+    background: var(--color-gray-light);
   }
 
   .photo-caption {
@@ -441,12 +453,13 @@ const getYear = d => new Date(d).getFullYear();
     text-overflow: ellipsis;
   }
 
+  /* Percentages of the 36s cycle: ~4s per slide with a short crossfade */
   @keyframes fadeSlide {
-    0%   { opacity: 0; }
-    2%   { opacity: 1; }
-    12%  { opacity: 1; }
-    14%  { opacity: 0; }
-    100% { opacity: 0; }
+    0%     { opacity: 0; }
+    1.8%   { opacity: 1; }
+    10.7%  { opacity: 1; }
+    12.4%  { opacity: 0; }
+    100%   { opacity: 0; }
   }
 
   .subsection {
