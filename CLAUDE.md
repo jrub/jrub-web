@@ -119,12 +119,14 @@ Each item supports:
 - **Adding a slide:** bump the `fadeSlide` duration (4s × slides), add its `nth-child` delay, and recalculate the keyframe percentages so each slide keeps the same timing
 - Use the `contain` class for drawings (e.g. sketchnotes) so they are never cropped
 - Desktop: floats right, text wraps left; Mobile: stacks above, full width
+- Pauses on hover and keyboard focus (CSS only)
 - Vanilla JS, no libraries
 - **Tested:** Playwright tests validate layout geometry — must NOT break them
 
 ### Photo Lightbox
 - A transparent button over the carousel opens the currently visible slide in a native `<dialog>`
 - Each slide's `data-full` holds the original image URL, loaded only on click
+- ‹ › buttons, ← → keys and swipe move between photos (wrapping around)
 - Closes with Escape, the × button, or a click on the backdrop
 
 ## Development Guidelines
