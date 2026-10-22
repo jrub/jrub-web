@@ -1,6 +1,21 @@
 {
   "talks": [
-      {
+    {
+      "title": "Documenting APIs for AIs",
+      "event": "Software Crafters Barcelona",
+      "location": "Barcelona, Spain",
+      "date": "2026-10-17",
+      "language": "en",
+      "video": null,
+      "slides": "/talks/SCBCN26-documenting-apis-for-ais.pdf",
+      "photos": [],
+      "featured": true,
+      "description": "Lightning talk. The main insight is that good docs for humans are not necessarily good for AI agents. The slides are loaded with useful resources to dig deeper into the Docs for AIs world and into Technical Writing. Dev site maintainers, go check the \"What to do on Monday\" slide!",
+      "links": [
+        {"title": "📝 LinkedIn post", "url": "https://www.linkedin.com/feed/update/urn:li:activity:7517902144822202369/"}
+      ]
+    },
+    {
       "title": "Documenting APIs: new era, same craft",
       "event": "Write The Docs Berlin 2026",
       "location": "Berlin, Germany",
