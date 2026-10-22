@@ -51,44 +51,53 @@ const getYear = d => new Date(d).getFullYear();
       <h2>Public Speaking &amp; Tech Communities</h2>
       <p class="section-intro">I regularly speak at tech conferences and corporate events, facilitate trainings and workshops, and collaborate with different tech communities.</p>
 
-      <div class="photo-carousel" aria-hidden="true">
-        <div class="photo-slide landscape">
-          <Picture src={wtd26} alt="Speaking at WTD26" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
-          <span class="photo-caption">WTD26 - Documenting APIs: new era, same craft</span>
+      <div class="photo-carousel">
+        <div aria-hidden="true">
+          <div class="photo-slide landscape" data-full={wtd26.src}>
+            <Picture src={wtd26} alt="Speaking at WTD26" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+            <span class="photo-caption">WTD26 - Documenting APIs: new era, same craft</span>
+          </div>
+          <div class="photo-slide portrait contain" data-full={wtd26Sketchnote.src}>
+            <Picture src={wtd26Sketchnote} alt="Sketchnote of the WTD26 talk by Dennis Dawson" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+            <span class="photo-caption">WTD26 - Sketchnote by Dennis Dawson</span>
+          </div>
+          <div class="photo-slide landscape" data-full={scbcn25.src}>
+            <Picture src={scbcn25} alt="Speaking at SCBCN25" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+            <span class="photo-caption">SCBCN25 - Documenting APIs</span>
+          </div>
+          <div class="photo-slide portrait" data-full={scbcn24.src}>
+            <Picture src={scbcn24} alt="Speaking at SCBCN24" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+            <span class="photo-caption">SCBCN24 - AI in Support teams</span>
+          </div>
+          <div class="photo-slide landscape" data-full={scbcn23.src}>
+            <Picture src={scbcn23} alt="Speaking at SCBCN23" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+            <span class="photo-caption">SCBCN23 - We're capitalists</span>
+          </div>
+          <div class="photo-slide portrait" data-full={scbcn22.src}>
+            <Picture src={scbcn22} alt="Speaking at SCBCN22" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+            <span class="photo-caption">SCBCN22 - NoMeetings Open Space</span>
+          </div>
+          <div class="photo-slide portrait" data-full={cas22Graphic.src}>
+            <Picture src={cas22Graphic} alt="Speaking at CAS22" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+            <span class="photo-caption">CAS22 - NoMeetings & bgcampa</span>
+          </div>
+          <div class="photo-slide landscape" data-full={cas22.src}>
+            <Picture src={cas22} alt="Speaking at CAS22" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+            <span class="photo-caption">CAS22 - NoMeetings</span>
+          </div>
+          <div class="photo-slide portrait" data-full={aos23.src}>
+            <Picture src={aos23} alt="AOS23 event organizers" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
+            <span class="photo-caption">AOS23 - Event organizers</span>
+          </div>
         </div>
-        <div class="photo-slide portrait contain">
-          <Picture src={wtd26Sketchnote} alt="Sketchnote of the WTD26 talk by Dennis Dawson" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
-          <span class="photo-caption">WTD26 - Sketchnote by Dennis Dawson</span>
-        </div>
-        <div class="photo-slide landscape">
-          <Picture src={scbcn25} alt="Speaking at SCBCN25" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
-          <span class="photo-caption">SCBCN25 - Documenting APIs</span>
-        </div>
-        <div class="photo-slide portrait">
-          <Picture src={scbcn24} alt="Speaking at SCBCN24" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
-          <span class="photo-caption">SCBCN24 - AI in Support teams</span>
-        </div>
-        <div class="photo-slide landscape">
-          <Picture src={scbcn23} alt="Speaking at SCBCN23" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
-          <span class="photo-caption">SCBCN23 - We're capitalists</span>
-        </div>
-        <div class="photo-slide portrait">
-          <Picture src={scbcn22} alt="Speaking at SCBCN22" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
-          <span class="photo-caption">SCBCN22 - NoMeetings Open Space</span>
-        </div>
-        <div class="photo-slide portrait">
-          <Picture src={cas22Graphic} alt="Speaking at CAS22" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
-          <span class="photo-caption">CAS22 - NoMeetings & bgcampa</span>
-        </div>
-        <div class="photo-slide landscape">
-          <Picture src={cas22} alt="Speaking at CAS22" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
-          <span class="photo-caption">CAS22 - NoMeetings</span>
-        </div>
-        <div class="photo-slide portrait">
-          <Picture src={aos23} alt="AOS23 event organizers" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
-          <span class="photo-caption">AOS23 - Event organizers</span>
-        </div>
+        <button type="button" class="photo-enlarge" aria-label="Enlarge photo"></button>
       </div>
+
+      <dialog class="lightbox">
+        <img alt="" />
+        <p class="lightbox-caption"></p>
+        <form method="dialog"><button class="lightbox-close" aria-label="Close">×</button></form>
+      </dialog>
 
       <div class="subsection">
         <h3>Tech Conference Talks</h3>
@@ -306,6 +315,26 @@ const getYear = d => new Date(d).getFullYear();
       btn.textContent = isExpanded ? `Show all ${total} ${label}` : 'Show less';
     });
   });
+
+  // Slides crossfade in CSS, so the photo to enlarge is the most visible one at click time
+  const lightbox = document.querySelector('.lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+  const opacity = el => Number(getComputedStyle(el).opacity);
+
+  document.querySelector('.photo-enlarge').addEventListener('click', () => {
+    const slide = [...document.querySelectorAll('.photo-slide')]
+      .reduce((a, b) => opacity(b) > opacity(a) ? b : a);
+    lightboxImg.src = slide.dataset.full;
+    lightboxImg.alt = slide.querySelector('img').alt;
+    lightboxCaption.textContent = slide.querySelector('.photo-caption').textContent;
+    lightbox.showModal();
+  });
+
+  // Clicks on the backdrop land on the dialog itself
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) lightbox.close();
+  });
 </script>
 
 <style>
@@ -454,6 +483,66 @@ const getYear = d => new Date(d).getFullYear();
   }
 
   /* Percentages of the 36s cycle: ~4s per slide with a short crossfade */
+  .photo-enlarge {
+    position: absolute;
+    inset: 0;
+    background: none;
+    border: 0;
+    cursor: zoom-in;
+  }
+
+  .photo-enlarge:focus-visible {
+    outline: 2px solid var(--color-magenta);
+    outline-offset: -2px;
+    border-radius: 12px;
+  }
+
+  .lightbox {
+    margin: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(26, 26, 26, 0.9);
+  }
+
+  .lightbox img {
+    display: block;
+    max-width: 95vw;
+    max-height: 85vh;
+    object-fit: contain;
+  }
+
+  .lightbox-caption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(26, 26, 26, 0.6);
+    color: var(--color-white);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .lightbox-close:hover {
+    background: var(--color-magenta);
+  }
+
   @keyframes fadeSlide {
     0%     { opacity: 0; }
     1.8%   { opacity: 1; }
