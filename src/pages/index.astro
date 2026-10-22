@@ -96,6 +96,8 @@ const getYear = d => new Date(d).getFullYear();
       <dialog class="lightbox">
         <img alt="" />
         <p class="lightbox-caption"></p>
+        <button type="button" class="lightbox-nav lightbox-prev" data-step="-1" aria-label="Previous photo">‹</button>
+        <button type="button" class="lightbox-nav lightbox-next" data-step="1" aria-label="Next photo">›</button>
         <form method="dialog"><button class="lightbox-close" aria-label="Close">×</button></form>
       </dialog>
 
@@ -316,19 +318,42 @@ const getYear = d => new Date(d).getFullYear();
     });
   });
 
-  // Slides crossfade in CSS, so the photo to enlarge is the most visible one at click time
   const lightbox = document.querySelector('.lightbox');
   const lightboxImg = lightbox.querySelector('img');
   const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+  const slides = [...document.querySelectorAll('.photo-slide')];
   const opacity = el => Number(getComputedStyle(el).opacity);
+  let current = 0;
 
-  document.querySelector('.photo-enlarge').addEventListener('click', () => {
-    const slide = [...document.querySelectorAll('.photo-slide')]
-      .reduce((a, b) => opacity(b) > opacity(a) ? b : a);
+  // Wraps around at both ends
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+    const slide = slides[current];
     lightboxImg.src = slide.dataset.full;
     lightboxImg.alt = slide.querySelector('img').alt;
     lightboxCaption.textContent = slide.querySelector('.photo-caption').textContent;
+  }
+
+  // Slides crossfade in CSS, so the photo to enlarge is the most visible one at click time
+  document.querySelector('.photo-enlarge').addEventListener('click', () => {
+    showSlide(slides.reduce((best, slide, i) => opacity(slide) > opacity(slides[best]) ? i : best, 0));
     lightbox.showModal();
+  });
+
+  lightbox.querySelectorAll('[data-step]').forEach(btn => {
+    btn.addEventListener('click', () => showSlide(current + Number(btn.dataset.step)));
+  });
+
+  lightbox.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') showSlide(current - 1);
+    if (e.key === 'ArrowRight') showSlide(current + 1);
+  });
+
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+  lightbox.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) showSlide(current + (dx < 0 ? 1 : -1));
   });
 
   // Clicks on the backdrop land on the dialog itself
@@ -524,10 +549,9 @@ const getYear = d => new Date(d).getFullYear();
     text-align: center;
   }
 
-  .lightbox-close {
+  .lightbox-close,
+  .lightbox-nav {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
     width: 2.5rem;
     height: 2.5rem;
     border: 0;
@@ -539,7 +563,21 @@ const getYear = d => new Date(d).getFullYear();
     cursor: pointer;
   }
 
-  .lightbox-close:hover {
+  .lightbox-close {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .lightbox-nav {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .lightbox-prev { left: 0.5rem; }
+  .lightbox-next { right: 0.5rem; }
+
+  .lightbox-close:hover,
+  .lightbox-nav:hover {
     background: var(--color-magenta);
   }
 
