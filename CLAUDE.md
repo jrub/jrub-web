@@ -75,10 +75,12 @@ Personal website for Javi Rubio — software engineer, speaker, and techno-activ
 │   └── styles/
 │       └── global.css       # All styles, CSS variables
 ├── public/
+│   ├── talks/               # Slides PDFs, sketchnotes (served as-is)
 │   ├── profile.jpg
 │   └── favicon.ico
 └── tests/
-    └── speaking-layout.spec.js   # Playwright tests (geometry validation)
+    ├── speaking-layout.spec.js   # Playwright tests (geometry validation)
+    └── photo-lightbox.spec.js    # Playwright test (carousel lightbox)
 ```
 
 ## Content & Data
@@ -95,7 +97,9 @@ Each item supports:
 - `photos[]` — Array of `{ src, caption }` objects
 - `links[]` — Additional references
 
-**To add new content:** update `speaking.json` only. No code changes needed (data-driven). Add photos to `src/assets/photos/[event-slug]/`.
+**To add new content:** update `speaking.json` only. No code changes needed (data-driven). Add photos to `src/assets/photos/`.
+
+**Talk materials** (slides PDFs, sketchnotes) go in `public/talks/` with URL-safe names (`EVENT-slug.ext`, e.g. `SCBCN26-documenting-apis-for-ais.pdf`) and are linked root-relative from the JSON (`"slides": "/talks/…"`).
 
 ### Site Structure (Single Page)
 1. **Hero:** Name + profile photo + typed roles
@@ -110,15 +114,18 @@ Each item supports:
 ## Photo Carousel
 
 - **Location:** Top of Speaking & Community section
-- **Shows ALL photos** from all items in `speaking.json`
-- **Auto-advances** — CSS `fadeSlide` animation
+- **Hand-written slides** in `index.astro` (not generated from `speaking.json`)
+- **Auto-advances** — CSS `fadeSlide` animation, ~4s per slide
+- **Adding a slide:** bump the `fadeSlide` duration (4s × slides), add its `nth-child` delay, and recalculate the keyframe percentages so each slide keeps the same timing
+- Use the `contain` class for drawings (e.g. sketchnotes) so they are never cropped
 - Desktop: floats right, text wraps left; Mobile: stacks above, full width
 - Vanilla JS, no libraries
 - **Tested:** Playwright tests validate layout geometry — must NOT break them
 
-### Event Lightbox
-- Items with `photos[]` show `[📷 N photos]` link
-- Click opens modal lightbox with manual carousel (no auto-advance)
+### Photo Lightbox
+- A transparent button over the carousel opens the currently visible slide in a native `<dialog>`
+- Each slide's `data-full` holds the original image URL, loaded only on click
+- Closes with Escape, the × button, or a click on the backdrop
 
 ## Development Guidelines
 
@@ -144,7 +151,7 @@ npm run build      # Build locally
 npm run preview    # Preview build
 ```
 
-Playwright tests live in `tests/speaking-layout.spec.js`. They validate carousel positioning, spacing, and responsive behavior. **Tests must pass before merging.**
+Playwright tests live in `tests/`. `speaking-layout.spec.js` validates carousel positioning, spacing, and responsive behavior; `photo-lightbox.spec.js` checks the lightbox opens and closes. **Tests must pass before merging.**
 
 ## AI Behavioral Rules
 
