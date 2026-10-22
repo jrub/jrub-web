@@ -88,10 +88,10 @@ const getYear = d => new Date(d).getFullYear();
       <div class="subsection">
         <h3>Tech Conference Talks</h3>
         <ul class="talks-list-inline">
-          {talks.map((talk, idx) => (
+          {talks.map(talk => (
                   <li class="talk"
-                      data-section={idx >= 4 ? 'talks' : undefined}
-                      style={idx >= 4 ? 'display:none' : undefined}>
+                      data-section={!talk.featured ? 'talks' : undefined}
+                      style={!talk.featured ? 'display:none' : undefined}>
                     <strong>{talk.title}</strong>
                     <p class="talk-meta">{talk.event} · {getYear(talk.date)}</p>
                     <div class="item-footer">
@@ -116,7 +116,7 @@ const getYear = d => new Date(d).getFullYear();
                 ))
           }
         </ul>
-        {talks.length > 4 && (
+        {talks.some(t => !t.featured) && (
           <button class="show-toggle" data-toggle data-section="talks"
             data-total={talks.length} data-label="talks">
             Show all {talks.length} talks
@@ -127,10 +127,10 @@ const getYear = d => new Date(d).getFullYear();
       <div class="subsection">
         <h3>Workshops &amp; Facilitation</h3>
         <ul class="talks-list-inline">
-          {workshops.map((item, idx) => (
+          {workshops.map(item => (
                   <li class="talk"
-                      data-section={idx >= 2 ? 'workshops' : undefined}
-                      style={idx >= 2 ? 'display:none' : undefined}>
+                      data-section={!item.featured ? 'workshops' : undefined}
+                      style={!item.featured ? 'display:none' : undefined}>
                     <strong>{item.title}</strong>
                     <p class="talk-meta">{item.event} · {getYear(item.date)}</p>
                     <div class="item-footer">
@@ -155,7 +155,7 @@ const getYear = d => new Date(d).getFullYear();
                 ))
           }
         </ul>
-        {workshops.length > 2 && (
+        {workshops.some(i => !i.featured) && (
           <button class="show-toggle" data-toggle data-section="workshops"
             data-total={workshops.length} data-label="workshops">
             Show all {workshops.length} workshops
@@ -166,10 +166,10 @@ const getYear = d => new Date(d).getFullYear();
       <div class="subsection">
         <h3>Podcasts &amp; Radio interviews</h3>
         <ul class="talks-list-inline">
-          {media.map((item, idx) => (
+          {media.map(item => (
                   <li class="talk"
-                      data-section={idx >= 2 ? 'media' : undefined}
-                      style={idx >= 2 ? 'display:none' : undefined}>
+                      data-section={!item.featured ? 'media' : undefined}
+                      style={!item.featured ? 'display:none' : undefined}>
                     <strong>{item.title}</strong>
                     <p class="talk-meta">{item.event} · {getYear(item.date)}</p>
                     <div class="item-footer">
@@ -192,7 +192,7 @@ const getYear = d => new Date(d).getFullYear();
                 ))
           }
         </ul>
-        {media.length > 2 && (
+        {media.some(i => !i.featured) && (
           <button class="show-toggle" data-toggle data-section="media"
             data-total={media.length} data-label="items">
             Show all {media.length} items
@@ -203,10 +203,10 @@ const getYear = d => new Date(d).getFullYear();
       <div class="subsection">
         <h3>Tech Communities</h3>
         <ul class="talks-list-inline">
-          {communities.map((item, idx) => (
+          {communities.map(item => (
                   <li class="talk"
-                      data-section={idx >= 2 ? 'community' : undefined}
-                      style={idx >= 2 ? 'display:none' : undefined}>
+                      data-section={!item.featured ? 'community' : undefined}
+                      style={!item.featured ? 'display:none' : undefined}>
                     <strong>
                       {item.website
                         ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title}</a>
@@ -248,7 +248,7 @@ const getYear = d => new Date(d).getFullYear();
                 ))
           }
         </ul>
-        {communities.length > 2 && (
+        {communities.some(i => !i.featured) && (
           <button class="show-toggle" data-toggle data-section="community"
             data-total={communities.length}
             data-label="items"

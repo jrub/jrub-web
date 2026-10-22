@@ -51,7 +51,7 @@
           "hero": true
         }
       ],
-      "featured": true,
+      "featured": false,
       "description": "Documentation is the API's interface to the world. In an ecosystem full of standards and fragmented tooling, how to apply a product lens to API documentation?"
     },
     {
