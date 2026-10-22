@@ -453,6 +453,12 @@ const getYear = d => new Date(d).getFullYear();
     overflow: hidden;
   }
 
+  /* Let people look at a photo without it changing; resumes where it left off */
+  .photo-carousel:hover .photo-slide,
+  .photo-carousel:focus-within .photo-slide {
+    animation-play-state: paused;
+  }
+
   .photo-slide.portrait {
     width: 280px;
     height: 360px;
