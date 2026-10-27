@@ -75,7 +75,7 @@ Personal website for Javi Rubio — software engineer, speaker, and techno-activ
 │   └── styles/
 │       └── global.css       # All styles, CSS variables
 ├── public/
-│   ├── talks/               # Slides PDFs, sketchnotes (served as-is)
+│   ├── talks/               # Slides PDFs (served as-is)
 │   ├── profile.jpg
 │   └── favicon.ico
 └── tests/
@@ -99,7 +99,7 @@ Each item supports:
 
 **To add new content:** update `speaking.json` only. No code changes needed (data-driven). Add photos to `src/assets/photos/`.
 
-**Talk materials** (slides PDFs, sketchnotes) go in `public/talks/` with URL-safe names (`EVENT-slug.ext`, e.g. `SCBCN26-documenting-apis-for-ais.pdf`) and are linked root-relative from the JSON (`"slides": "/talks/…"`).
+**Talk materials** (slides PDFs) go in `public/talks/` with URL-safe names (`EVENT-slug.ext`, e.g. `SCBCN26-documenting-apis-for-ais.pdf`) and are linked root-relative from the JSON (`"slides": "/talks/…"`).
 
 ### Site Structure (Single Page)
 1. **Hero:** Name + profile photo + typed roles
