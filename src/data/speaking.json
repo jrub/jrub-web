@@ -5,7 +5,7 @@
       "event": "Software Crafters Barcelona",
       "location": "Barcelona, Spain",
       "date": "2026-10-17",
-      "language": "en",
+      "language": "es",
       "video": null,
       "slides": "/talks/SCBCN26-documenting-apis-for-ais.pdf",
       "photos": [],
@@ -83,7 +83,10 @@
       "slides": null,
       "photos": [],
       "featured": true,
-      "description": "Strategies for managing knowledge at scale in enterprise environments, making information accessible and actionable."
+      "description": "Strategies for managing knowledge at scale in enterprise environments, making information accessible and actionable.",
+      "links": [
+        {"title": "📝 LinkedIn post", "url": "https://www.linkedin.com/feed/update/urn:li:activity:7264944550052298752/"}
+      ]
     },
     {
       "title": "#NoMeetings: How to have fewer, more efficient meetings",
@@ -304,8 +307,9 @@
       "featured": true,
       "description": "One-hour interview discussing the Coding Stones team origin, Agile and Extreme Programming practices, cooperative-style business philosophy, and approach to working as a small independent team. Co-interviewed with Dani Latorre.",
       "links": [
-        {"title": "📻 Listen on iVoox", "url": "https://www.ivoox.com/pymes-trastos-pgm-009-2017-11-28-audios-mp3_rf_22331413_1.html"},
-        {"title": "📝 Medium article", "url": "https://medium.com/coding-stones/entrevista-en-pymes-y-trastos-35a18ba9a9af"}
+        {"title": "📻 Listen on iVoox", "url": "https://www.ivoox.com/22331413"},
+        {"title": "📝 Medium article", "url": "https://medium.com/coding-stones/entrevista-en-pymes-y-trastos-35a18ba9a9af"},
+        {"title": "📝 LinkedIn post", "url": "https://www.linkedin.com/feed/update/urn:li:activity:6970408984847523840/"}
       ]
     },
     {
@@ -397,7 +401,7 @@
       "title": "Senpai Devs",
       "role": "Co-founder & Mentor",
       "organization": "Senpai Devs",
-      "period": "2015 - 2017",
+      "period": "2015",
       "location": "Zaragoza, Spain",
       "website": "http://senpaidevs.github.io/",
       "description": "Professional mentoring program co-created with Daniel Latorre and Néstor Salceda to improve programming skills. Introduced methodologies and practices including XP, Software Craft, DevOps, Lean Software Development, and TDD. Invited industry professionals to give talks, including Ujúe Agudo from BikoLabs on general topics, Alberto Gualis on TDD, and Daniel Torres Burriel on UX.",
