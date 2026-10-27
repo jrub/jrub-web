@@ -44,7 +44,7 @@
       "date": "2025-10-25",
       "language": "en",
       "video": "https://www.youtube.com/watch?v=IHIsuIlSiio",
-      "slides": null,
+      "slides": "/talks/SCBCN25-documenting-apis.pdf",
       "photos": [
         {
           "src": "SCBCN25 - Documenting APIs.jpeg",
@@ -62,7 +62,7 @@
       "date": "2024-10-26",
       "language": "en",
       "video": "https://www.youtube.com/watch?v=HsPIX0tNlO8",
-      "slides": null,
+      "slides": "/talks/SCBCN24-ai-in-support-teams.pdf",
       "photos": [
         {
           "src": "SCBCN24 - AI in Support teams.jpeg",
@@ -80,7 +80,7 @@
       "date": "2024-11-15",
       "language": "es",
       "video": null,
-      "slides": null,
+      "slides": "/talks/CAS24-enterprise-knowledge-management.pdf",
       "photos": [],
       "featured": true,
       "description": "Strategies for managing knowledge at scale in enterprise environments, making information accessible and actionable.",
@@ -118,7 +118,7 @@
       "date": "2023-10-07",
       "language": "en",
       "video": null,
-      "slides": null,
+      "slides": "/talks/SCBCN23-were-capitalists.pdf",
       "links": [
         {"title": "𝕏 Twitter", "url": "https://x.com/bcnswcraft/status/1716023511272079501"},
         {"title": "𝕏 Twitter (2)", "url": "https://x.com/bcnswcraft/status/1716023513268187489"}
