@@ -81,7 +81,18 @@
       "language": "es",
       "video": null,
       "slides": "/talks/CAS24-enterprise-knowledge-management.pdf",
-      "photos": [],
+      "photos": [
+        {
+          "src": "CAS24-onboarding-quote.jpg",
+          "caption": "#CAS24 - Enterprise knowledge management",
+          "hero": true
+        },
+        {
+          "src": "CAS24-fifth-discipline.jpg",
+          "caption": "#CAS24 - Learning organizations",
+          "hero": false
+        }
+      ],
       "featured": true,
       "description": "Strategies for managing knowledge at scale in enterprise environments, making information accessible and actionable.",
       "links": [
