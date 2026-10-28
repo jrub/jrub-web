@@ -457,15 +457,11 @@ const displayUrl = url => {
     color: var(--color-magenta);
     font-size: 1.05rem;
     font-weight: 600;
-  }
-
-  /* Buttons fill from left to right on hover */
-  .cta a {
-    background: linear-gradient(var(--color-magenta), var(--color-magenta)) left / 0 100% no-repeat;
+    background: none;
   }
 
   .cta a:hover {
-    background-size: 100% 100%;
+    background-color: var(--color-magenta);
     color: var(--color-white);
   }
 
@@ -770,20 +766,15 @@ const displayUrl = url => {
     font-family: inherit;
   }
 
-  .show-toggle {
-    background: linear-gradient(var(--color-turquoise), var(--color-turquoise)) left / 0 100% no-repeat;
-  }
-
   .show-toggle:hover {
-    background-size: 100% 100%;
-    color: var(--color-white);
+    color: var(--color-magenta);
   }
 
   @media (prefers-reduced-motion: no-preference) {
     .cta a,
     .show-toggle,
     .item-description summary {
-      transition: background-size 0.2s ease-out, color 0.2s ease-out;
+      transition: color 0.2s ease-out, background-color 0.2s ease-out;
     }
   }
 

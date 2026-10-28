@@ -38,7 +38,7 @@ Personal website for Javi Rubio — software engineer, technical writer, and eng
 ### Visual Design
 - Minimalist aesthetic inspired by francesc.net, danilat.com, myowncommonsense.com, decrevel.dev
 - Large, readable text with clear hierarchy; generous whitespace; mobile-first responsive
-- **Animations:** Minimal. The photo carousel (`fadeSlide`) and profile photo `fadeIn` are intentional design choices — do NOT propose removing them. Only add new animations if explicitly requested. Hover transitions (underline drawn left to right, buttons filling) are short and only run under `prefers-reduced-motion: no-preference`.
+- **Animations:** Minimal. The photo carousel (`fadeSlide`) and profile photo `fadeIn` are intentional design choices — do NOT propose removing them. Only add new animations if explicitly requested. Hover transitions (underline drawn left to right, button colours fading) are short and only run under `prefers-reduced-motion: no-preference`.
 - Accessible: semantic HTML, keyboard navigation, proper ARIA labels
 
 ### Site Language
