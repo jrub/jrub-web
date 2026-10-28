@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image, Picture } from 'astro:assets';
+import IconLink from '../components/IconLink.astro';
 import profileImage from '../../public/profile.jpg';
 
 import wtd26 from '../assets/photos/WTD26-berlin-speakers-jazz-medium-res.jpg';
@@ -21,6 +22,18 @@ import speakingData from '../data/speaking.json';
 const { talks, workshops, media, communities } = speakingData;
 
 const getYear = d => new Date(d).getFullYear();
+
+// Link titles in the JSON start with an emoji: "📝 LinkedIn post"
+const splitTitle = title => {
+  const space = title.indexOf(' ');
+  return { icon: title.slice(0, space), label: title.slice(space + 1) };
+};
+
+// Readable website: host plus path, without "www." or a trailing slash
+const displayUrl = url => {
+  const { hostname, pathname } = new URL(url);
+  return hostname.replace(/^www\./, '') + pathname.replace(/\/$/, '');
+};
 ---
 
 <Layout title="Javi Rubio">
@@ -137,9 +150,9 @@ const getYear = d => new Date(d).getFullYear();
                       )}
                       {(talk.video || talk.slides || talk.links?.length > 0) && (
                         <span class="item-links">
-                          {talk.video && <a href={talk.video} target="_blank" rel="noopener noreferrer">📹 Video</a>}
-                          {talk.slides && <a href={talk.slides} target="_blank" rel="noopener noreferrer">🖼️ Slides</a>}
-                          {talk.links?.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+                          {talk.video && <IconLink href={talk.video} icon="📹" label="Video" />}
+                          {talk.slides && <IconLink href={talk.slides} icon="🖼️" label="Slides" />}
+                          {talk.links?.map(l => <IconLink href={l.url} {...splitTitle(l.title)} />)}
                         </span>
                       )}
                     </div>
@@ -176,9 +189,9 @@ const getYear = d => new Date(d).getFullYear();
                       )}
                       {(item.video || item.slides || item.links.length > 0) && (
                         <span class="item-links">
-                          {item.video && <a href={item.video} target="_blank" rel="noopener noreferrer">📹 Video</a>}
-                          {item.slides && <a href={item.slides} target="_blank" rel="noopener noreferrer">🖼️ Slides</a>}
-                          {item.links.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+                          {item.video && <IconLink href={item.video} icon="📹" label="Video" />}
+                          {item.slides && <IconLink href={item.slides} icon="🖼️" label="Slides" />}
+                          {item.links.map(l => <IconLink href={l.url} {...splitTitle(l.title)} />)}
                         </span>
                       )}
                     </div>
@@ -215,7 +228,7 @@ const getYear = d => new Date(d).getFullYear();
                       )}
                       {item.links.length > 0 && (
                         <span class="item-links">
-                          {item.links.map(l => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>)}
+                          {item.links.map(l => <IconLink href={l.url} {...splitTitle(l.title)} />)}
                         </span>
                       )}
                     </div>
@@ -253,11 +266,9 @@ const getYear = d => new Date(d).getFullYear();
                       {(item.website || item.links.length > 0) && (
                         <span class="item-links">
                           {item.website && (
-                            <a href={item.website} target="_blank" rel="noopener noreferrer">🌐 {new URL(item.website).hostname.replace(/^www\./, '')}</a>
+                            <IconLink href={item.website} icon="🌐" label={displayUrl(item.website)} />
                           )}
-                          {item.links.map(l => (
-                            <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
-                          ))}
+                          {item.links.map(l => <IconLink href={l.url} {...splitTitle(l.title)} />)}
                         </span>
                       )}
                     </div>
@@ -714,15 +725,11 @@ const getYear = d => new Date(d).getFullYear();
     display: contents;
   }
 
-  .item-links a {
+  /* :global reaches the links rendered by the IconLink component */
+  .item-links :global(a) {
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--color-turquoise);
-  }
-
-  .item-links a:hover {
-    color: var(--color-magenta);
-    text-decoration: underline;
   }
 
   .activities-list {

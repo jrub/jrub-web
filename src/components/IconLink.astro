@@ -1,0 +1,5 @@
+---
+// External link with a leading emoji; only the label gets the hover underline
+const { href, icon, label } = Astro.props;
+---
+<a class="icon-link" href={href} target="_blank" rel="noopener noreferrer"><span aria-hidden="true">{icon}</span> <span class="label">{label}</span></a>
