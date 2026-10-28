@@ -297,14 +297,16 @@ const getYear = d => new Date(d).getFullYear();
 
   new Typed('#typed-role', {
     strings: [
-      'Tech Writer',
-      'Developer Relations',
+      // Ordered by what to highlight; ^ adds a pause after typing (ms)
+      'Software Engineer^2000',
+      'Technical Writer',
+      'Engineering Leader',
       'Chief Technical Officer',
+      'Technical Coach',
+      'Developer Relations',
+      'Technical Product Manager',
       'Associate Professor',
       'Android Dev',
-      'Technical Coach',
-      'Technical Product Manager',
-      'Product Engineer',
     ],
     typeSpeed: 60,
     backSpeed: 30,
@@ -312,7 +314,7 @@ const getYear = d => new Date(d).getFullYear();
     loop: true,
     showCursor: true,
     cursorChar: '|',
-    shuffle: true,
+    shuffle: false,
   });
 
   // Show/hide subsection items (hidden via inline style on load)
