@@ -459,10 +459,14 @@ const displayUrl = url => {
     font-weight: 600;
   }
 
+  /* Buttons fill from left to right on hover */
+  .cta a {
+    background: linear-gradient(var(--color-magenta), var(--color-magenta)) left / 0 100% no-repeat;
+  }
+
   .cta a:hover {
-    background: var(--color-magenta);
+    background-size: 100% 100%;
     color: var(--color-white);
-    text-decoration: none;
   }
 
   .photo-carousel {
@@ -766,8 +770,21 @@ const displayUrl = url => {
     font-family: inherit;
   }
 
+  .show-toggle {
+    background: linear-gradient(var(--color-turquoise), var(--color-turquoise)) left / 0 100% no-repeat;
+  }
+
   .show-toggle:hover {
-    color: var(--color-magenta);
+    background-size: 100% 100%;
+    color: var(--color-white);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cta a,
+    .show-toggle,
+    .item-description summary {
+      transition: background-size 0.2s ease-out, color 0.2s ease-out;
+    }
   }
 
   @media (max-width: 768px) {
