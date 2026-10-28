@@ -685,6 +685,7 @@ const displayUrl = url => {
     font-size: 0.85rem;
   }
 
+  /* Not a link: it changes colour on hover, but never gets underlined */
   .item-description summary {
     list-style: none;
     color: var(--color-turquoise);
@@ -692,16 +693,26 @@ const displayUrl = url => {
     user-select: none;
   }
 
+  .item-description summary:hover {
+    color: var(--color-magenta);
+  }
+
   .item-description summary::-webkit-details-marker {
     display: none;
   }
 
-  .item-description summary::before {
-    content: "▸ ";
+  .item-description summary::before,
+  .activities-list li::before {
+    content: "▸";
+    display: inline-block;
+    width: 0.9em;
+    font-size: 1.5em;
+    line-height: 0;
+    vertical-align: -0.05em;
   }
 
   details.item-description[open] > summary::before {
-    content: "▾ ";
+    content: "▾";
   }
 
   /* An open description takes the whole row, so links start on a clean line */
@@ -733,8 +744,8 @@ const displayUrl = url => {
   }
 
   .activities-list {
-    list-style: disc;
-    padding-left: 1.5rem;
+    list-style: none;
+    padding-left: 0;
     margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
