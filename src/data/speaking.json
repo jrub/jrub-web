@@ -53,7 +53,7 @@
         }
       ],
       "featured": false,
-      "description": "A quick history of APIs and their docs, and why OpenAPI wasn't the silver bullet. Then, the product lens: your API is a product, and so are its docs. Keep docs close to the code, so they ship whenever the API changes. Know your users and write guides for their goals. And remember developers value predictability: sandbox, versioning policy, changelog and clear communication of breaking changes."
+      "description": "A quick history of APIs and their docs, and why OpenAPI wasn't the silver bullet. Then, the product lens: **your API is a product, and so are its docs**. Keep docs close to the code, so they ship whenever the API changes. Know your users and write guides for their goals. And remember **developers value predictability**: sandbox, versioning policy, changelog and clear communication of breaking changes."
     },
     {
       "title": "AI in support teams",
@@ -71,7 +71,7 @@
         }
       ],
       "featured": true,
-      "description": "An experiment at Quaderno. People have always praised our support, and we didn't want to hand it over to an AI. So the AI only wrote drafts for our support team, never answering customers. After two months the conclusion was clear: spotting hallucinations added a huge cognitive load. We turned automatic drafts off, and the month after, nobody asked for a single one."
+      "description": "An experiment at Quaderno. People have always praised our support, and we didn't want to hand it over to an AI. So the AI only wrote drafts for our support team, never answering customers. After two months the conclusion was clear: **spotting hallucinations added a huge cognitive load**. We turned automatic drafts off, and the month after, nobody asked for a single one."
     },
     {
       "title": "Enterprise knowledge management",
@@ -94,7 +94,7 @@
         }
       ],
       "featured": true,
-      "description": "Company docs seen as a small universe. The sun is the company culture. The planets are each team's subculture: their principles and processes. Satellites are docs about a specific knowledge area, plus what lives in work management tools, like the product backlog. Meetings, with their decision logs and working agreements, are meteorites: some end up being part of a planet, some don't. And Earth is the user-facing docs. How to improve it? Start documenting onboardings. Tag every \"I can't find it\" and act on it, to build a better information architecture. Link work management with knowledge management. And treat docs as complete, not finished: a living organism, like a plant.",
+      "description": "Company docs seen as a small universe. **The sun** is the company culture. **The planets** are each team's subculture: their principles and processes. **Satellites** are docs about a specific knowledge area, plus what lives in work management tools, like the product backlog. Meetings, with their decision logs and working agreements, are **meteorites**: some end up being part of a planet, some don't. And **Earth** is the user-facing docs. How to improve it? **Start documenting onboardings.** Tag every \"I can't find it\" and act on it, to build a better information architecture. Link work management with knowledge management. And treat docs as **complete, not finished**: a living organism, like a plant.",
       "links": [
         {"title": "📝 LinkedIn post", "url": "https://www.linkedin.com/feed/update/urn:li:activity:7264944550052298752/"}
       ]
@@ -120,7 +120,7 @@
         }
       ],
       "featured": true,
-      "description": "Why do we have so many meetings, and why do so many feel useless? Agendas, timeboxes and notes are just the tip of the iceberg. The roots are cultural: ego, politics, mistrust. My proposal to start changing it: make an inventory of your meetings, classify them by type, and discuss as a team which ones could go async. I shared how we do it at Quaderno, with \"async-backed\" meetings where everybody writes in the notes before the call. And different meeting types need different skills, like written communication, decision-making or learning. Skills can be trained!"
+      "description": "Why do we have so many meetings, and why do so many feel useless? Agendas, timeboxes and notes are just the tip of the iceberg. The roots are cultural: ego, politics, mistrust. My proposal to start changing it: **make an inventory of your meetings**, classify them by type, and discuss as a team which ones could go async. I shared how we do it at Quaderno, with **\"async-backed\" meetings** where everybody writes in the notes before the call. And different meeting types need different skills, like written communication, decision-making or learning. **Skills can be trained!**"
     },
     {
       "title": "We're capitalists: Behavioral patterns in the Tech Industry.",
@@ -193,7 +193,7 @@
       "slides": "https://codingstones.github.io/cas2016-devops/",
       "photos": [],
       "featured": false,
-      "description": "With <a href=\"https://www.linkedin.com/in/nestorsalceda/\" target=\"_blank\" rel=\"noopener noreferrer\">Néstor Salceda</a>. Devs (vampires) and sysadmins (werewolves) have been at war forever, wasting their superpowers fighting each other. We broke down what it takes to deliver software, and looked at DevOps practices through the <strong>Lean Software Development principles</strong>. Then we put on our economist hats: risk, time to market, cost, value and debt. What does one hour of downtime cost your business?"
+      "description": "With [Néstor Salceda](https://www.linkedin.com/in/nestorsalceda/). Devs (vampires) and sysadmins (werewolves) have been at war forever, wasting their superpowers fighting each other. We broke down what it takes to deliver software, and looked at DevOps practices through the **Lean Software Development principles**. Then we put on our economist hats: risk, time to market, cost, value and debt. **What does one hour of downtime cost your business?**"
     }
   ],
   "workshops": [
@@ -209,7 +209,7 @@
       "links": [{"title": "𝕏 Twitter", "url": "https://x.com/jrubr/status/1073262158165757952"}],
       "photos": [],
       "featured": true,
-      "description": "Workshop with José A. Nieto, going from strategy to executable specs. We started with high-level maps like Impact Mapping, then moved to the product backlog with User Story Mapping, customer journeys included. The core of the workshop was a hands-on Example Mapping, with an airline that wants pets to fly in the cabin with their owners: for each story, which examples are valid and which aren't. Finally, those examples become acceptance tests in natural language with Gherkin and Cucumber. A living, executable product spec: tests go green as the examples are covered."
+      "description": "Workshop with José A. Nieto, going **from strategy to executable specs**. We started with high-level maps like **Impact Mapping**, then moved to the product backlog with **User Story Mapping**, customer journeys included. The core of the workshop was a hands-on **Example Mapping**, with an airline that wants pets to fly in the cabin with their owners: for each story, which examples are valid and which aren't. Finally, those examples become acceptance tests in natural language with **Gherkin and Cucumber**. A living, executable product spec: tests go green as the examples are covered."
     },
     {
       "title": "Example Mapping workshop",
@@ -316,7 +316,7 @@
       "event": "The Coding Stones: alternative business models in tech",
       "date": "2017-11-28",
       "featured": true,
-      "description": "One-hour interview with Dani Latorre and me, by Antonio Cubillo, about Coding Stones: how we started as an independent team, how we work with clients and among ourselves, Agile and Extreme Programming, how we split the money cooperative-style, and why a small team doesn't need to scale.",
+      "description": "One-hour interview with Dani Latorre and me, by Antonio Cubillo, about **Coding Stones**: how we started as an independent team, how we work with clients and among ourselves, **Agile and Extreme Programming**, how we split the money **cooperative-style**, and why a small team doesn't need to scale.",
       "links": [
         {"title": "📻 Listen on iVoox", "url": "https://www.ivoox.com/22331413"},
         {"title": "📝 Medium article", "url": "https://medium.com/coding-stones/entrevista-en-pymes-y-trastos-35a18ba9a9af"},
