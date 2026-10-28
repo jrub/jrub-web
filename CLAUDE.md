@@ -96,6 +96,7 @@ Each item supports:
 - `language: "en"|"es"` — Event language (shown as badge)
 - `photos[]` — Array of `{ src, caption }` objects
 - `links[]` — Additional references
+- `description` — Rendered as HTML, so it can carry inline `<strong>` or `<a>` tags
 
 **To add new content:** update `speaking.json` only. No code changes needed (data-driven). Add photos to `src/assets/photos/`.
 
