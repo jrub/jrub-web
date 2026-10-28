@@ -29,6 +29,11 @@ const splitTitle = title => {
   return { icon: title.slice(0, space), label: title.slice(space + 1) };
 };
 
+// Descriptions use a tiny Markdown subset: **bold** and [text](url)
+const markdown = text => text
+  .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+  .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+
 // Readable website: host plus path, without "www." or a trailing slash
 const displayUrl = url => {
   const { hostname, pathname } = new URL(url);
@@ -142,7 +147,7 @@ const displayUrl = url => {
                       {talk.description && (
                         <details class="item-description">
                           <summary>About this talk</summary>
-                          <p set:html={talk.description} />
+                          <p set:html={markdown(talk.description)} />
                         </details>
                       )}
                       {talk.description && (talk.video || talk.slides || talk.links?.length > 0) && (
@@ -181,7 +186,7 @@ const displayUrl = url => {
                       {item.description && (
                         <details class="item-description">
                           <summary>About this workshop</summary>
-                          <p set:html={item.description} />
+                          <p set:html={markdown(item.description)} />
                         </details>
                       )}
                       {item.description && (item.video || item.slides || item.links.length > 0) && (
@@ -220,7 +225,7 @@ const displayUrl = url => {
                       {item.description && (
                         <details class="item-description">
                           <summary>About this episode</summary>
-                          <p set:html={item.description} />
+                          <p set:html={markdown(item.description)} />
                         </details>
                       )}
                       {item.description && item.links.length > 0 && (
@@ -257,7 +262,7 @@ const displayUrl = url => {
                       {item.description && (
                         <details class="item-description">
                           <summary>About this</summary>
-                          <p set:html={item.description} />
+                          <p set:html={markdown(item.description)} />
                         </details>
                       )}
                       {item.description && (item.website || item.links.length > 0) && (
