@@ -98,7 +98,7 @@ Each item supports:
 - `language: "en"|"es"` — Event language (shown as badge)
 - `photos[]` — Array of `{ src, caption }` objects
 - `links[]` — Additional references. Titles start with an emoji and a space (`"📝 LinkedIn post"`): the template splits them so the emoji is never underlined
-- `description` — Rendered as HTML, so it can carry inline `<strong>` or `<a>` tags
+- `description` — Supports a tiny Markdown subset: `**bold**` and `[text](url)`. Use bold sparingly, to help scan long texts
 
 **To add new content:** update `speaking.json` only. No code changes needed (data-driven). Add photos to `src/assets/photos/`.
 
