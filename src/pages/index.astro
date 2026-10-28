@@ -5,6 +5,8 @@ import profileImage from '../../public/profile.jpg';
 
 import wtd26 from '../assets/photos/WTD26-berlin-speakers-jazz-medium-res.jpg';
 import wtd26Sketchnote from '../assets/photos/WTD26-berlin-sketchnote.jpg';
+import cas24Onboarding from '../assets/photos/CAS24-onboarding-quote.jpg';
+import cas24FifthDiscipline from '../assets/photos/CAS24-fifth-discipline.jpg';
 import scbcn25 from '../assets/photos/SCBCN25 - Documenting APIs.jpeg';
 import scbcn24 from '../assets/photos/SCBCN24 - AI in Support teams.jpeg';
 import scbcn23 from '../assets/photos/SCBCN23 - We\'re capitalists.jpeg';
@@ -64,6 +66,14 @@ const getYear = d => new Date(d).getFullYear();
           <div class="photo-slide landscape" data-full={scbcn25.src}>
             <Picture src={scbcn25} alt="Speaking at SCBCN25" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
             <span class="photo-caption">SCBCN25 - Documenting APIs</span>
+          </div>
+          <div class="photo-slide landscape" data-full={cas24Onboarding.src}>
+            <Picture src={cas24Onboarding} alt="Speaking at CAS24 about documenting onboardings" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+            <span class="photo-caption">CAS24 - Enterprise knowledge management</span>
+          </div>
+          <div class="photo-slide landscape" data-full={cas24FifthDiscipline.src}>
+            <Picture src={cas24FifthDiscipline} alt="Speaking at CAS24 about learning organizations" widths={[360, 720]} sizes="360px" formats={['avif', 'webp']} />
+            <span class="photo-caption">CAS24 - Learning organizations</span>
           </div>
           <div class="photo-slide portrait" data-full={scbcn24.src}>
             <Picture src={scbcn24} alt="Speaking at SCBCN24" widths={[280, 560]} sizes="280px" formats={['avif', 'webp']} />
@@ -448,7 +458,7 @@ const getYear = d => new Date(d).getFullYear();
   .photo-slide {
     position: absolute;
     opacity: 0;
-    animation: fadeSlide 36s infinite;
+    animation: fadeSlide 44s infinite;
     border-radius: 12px;
     overflow: hidden;
   }
@@ -484,6 +494,8 @@ const getYear = d => new Date(d).getFullYear();
   .photo-slide:nth-child(7) { animation-delay: 24s; }
   .photo-slide:nth-child(8) { animation-delay: 28s; }
   .photo-slide:nth-child(9) { animation-delay: 32s; }
+  .photo-slide:nth-child(10) { animation-delay: 36s; }
+  .photo-slide:nth-child(11) { animation-delay: 40s; }
 
   .photo-slide img {
     width: 100%;
@@ -589,9 +601,9 @@ const getYear = d => new Date(d).getFullYear();
 
   @keyframes fadeSlide {
     0%     { opacity: 0; }
-    1.8%   { opacity: 1; }
-    10.7%  { opacity: 1; }
-    12.4%  { opacity: 0; }
+    1.48%  { opacity: 1; }
+    8.75%  { opacity: 1; }
+    10.15% { opacity: 0; }
     100%   { opacity: 0; }
   }
 
