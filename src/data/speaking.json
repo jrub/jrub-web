@@ -10,7 +10,7 @@
       "slides": "/talks/SCBCN26-documenting-apis-for-ais.pdf",
       "photos": [],
       "featured": true,
-      "description": "Lightning talk. The main insight is that good docs for humans are not necessarily good for AI agents. The slides are loaded with useful resources to dig deeper into the Docs for AIs world and into Technical Writing. Dev site maintainers, go check the \"What to do on Monday\" slide!",
+      "description": "Good docs for humans are not necessarily good for AI agents. The slides are loaded with resources to dig deeper into the Docs for AIs world and into Technical Writing. Dev site maintainers, go check the \"What to do on Monday\" slide!",
       "links": [
         {"title": "📝 LinkedIn post", "url": "https://www.linkedin.com/feed/update/urn:li:activity:7517902144822202369/"}
       ]
@@ -31,7 +31,7 @@
         }
       ],
       "featured": true,
-      "description": "In my talk, we went through a bit of the history of APIs and API docs to understand today's ecosystem. Then we looked at it through two lenses: engineering 🔍 (the closer to the code, the better) and product 🔍 (know your users, and AI is now one of them).",
+      "description": "We went through a bit of the history of APIs and API docs to understand today's ecosystem. Then we looked at it through two lenses: engineering 🔍 (the closer to the code, the better) and product 🔍 (know your users, and AI is now one of them).",
       "links": [
         {"title": "📝 LinkedIn post", "url": "https://www.linkedin.com/feed/update/urn:li:activity:7503872721458536448/"},
         {"title": "🎨 Sketchnote by Dennis Dawson", "url": "https://lnkd.in/p/e4YyvnJv"}
@@ -53,7 +53,7 @@
         }
       ],
       "featured": false,
-      "description": "Documentation is the API's interface to the world. In an ecosystem full of standards and fragmented tooling, how to apply a product lens to API documentation?"
+      "description": "A quick history of APIs and their docs, and why OpenAPI wasn't the silver bullet. Then, the product lens: your API is a product, and so are its docs. Keep docs close to the code, so they ship whenever the API changes. Know your users and write guides for their goals. And remember developers value predictability: sandbox, versioning policy, changelog and clear communication of breaking changes."
     },
     {
       "title": "AI in support teams",
@@ -71,7 +71,7 @@
         }
       ],
       "featured": true,
-      "description": "Exploring how AI can enhance support team workflows and customer experience without losing the human touch."
+      "description": "An experiment at Quaderno. People have always praised our support, and we didn't want to hand it over to an AI. So the AI only wrote drafts for our support team, never answering customers. After two months the conclusion was clear: spotting hallucinations added a huge cognitive load. We turned automatic drafts off, and the month after, nobody asked for a single one."
     },
     {
       "title": "Enterprise knowledge management",
@@ -94,7 +94,7 @@
         }
       ],
       "featured": true,
-      "description": "Strategies for managing knowledge at scale in enterprise environments, making information accessible and actionable.",
+      "description": "Company docs seen as a small universe. The sun is the company culture. The planets are each team's subculture: their principles and processes. Satellites are docs about a specific knowledge area, plus what lives in work management tools, like the product backlog. Meetings, with their decision logs and working agreements, are meteorites: some end up being part of a planet, some don't. And Earth is the user-facing docs. How to improve it? Start documenting onboardings. Tag every \"I can't find it\" and act on it, to build a better information architecture. Link work management with knowledge management. And treat docs as complete, not finished: a living organism, like a plant.",
       "links": [
         {"title": "📝 LinkedIn post", "url": "https://www.linkedin.com/feed/update/urn:li:activity:7264944550052298752/"}
       ]
@@ -120,7 +120,7 @@
         }
       ],
       "featured": true,
-      "description": "Rethinking collaboration beyond default meeting rituals for distributed teams. Practical strategies to reduce meeting overhead."
+      "description": "Why do we have so many meetings, and why do so many feel useless? Agendas, timeboxes and notes are just the tip of the iceberg. The roots are cultural: ego, politics, mistrust. My proposal to start changing it: make an inventory of your meetings, classify them by type, and discuss as a team which ones could go async. I shared how we do it at Quaderno, with \"async-backed\" meetings where everybody writes in the notes before the call. And different meeting types need different skills, like written communication, decision-making or learning. Skills can be trained!"
     },
     {
       "title": "We're capitalists: Behavioral patterns in the Tech Industry.",
@@ -142,11 +142,11 @@
         }
       ],
       "featured": false,
-      "description": "A critical look at how some capitalist patterns clash with Software Crafter's principles like XP"
+      "description": "How the tech industry's obsession with growth and productivity clashes with Software Craft values like sustainable pace. Hero culture, doubling teams just to lay people off later, buying silver bullets instead of fixing root causes, features nobody needs. You aren't responsible for all of it, but you can act within your sphere of influence."
     },
     {
-      "title": "#NoMeetings at Adidas",
-      "event": "Adidas (corporate talk)",
+      "title": "#NoMeetings",
+      "event": "Agile Aragón (hosted by Adidas)",
       "location": "Zaragoza, Spain",
       "date": "2023-01-17",
       "language": "es",
@@ -155,7 +155,7 @@
       "links": [{"title": "𝕏 Twitter", "url": "https://x.com/Jessi_Redrado/status/1615428056226664469"}],
       "photos": [],
       "featured": false,
-      "description": "Corporate talk on #NoMeetings practices and rethinking collaboration for distributed teams at Adidas."
+      "description": "#NoMeetings talk for the Agile Aragón community, at the Adidas offices."
     },
     {
       "title": "#NoMeetings",
@@ -168,7 +168,7 @@
       "links": [{"title": "📅 Meetup", "url": "https://www.meetup.com/lean-agile-coaching-meetup/events/288524259/"}],
       "photos": [],
       "featured": false,
-      "description": "Online talk for the London-based Lean Agile Delivery & Coaching Network community on #NoMeetings practices."
+      "description": "#NoMeetings talk for the Lean Agile Delivery & Coaching Network, a London-based community."
     },
     {
       "title": "Haize: Creating an Android architecture that adapts to change",
@@ -178,10 +178,10 @@
       "language": "es",
       "video": null,
       "slides": "https://codingstones.github.io/slides-haize/",
-      "links": [{"title": "📝 Article", "url": "https://medium.com/coding-stones/clean-architecture-tour-2016-2017-90bb205d443c"}],
+      "links": [{"title": "📝 Clean Architecture tour", "url": "https://medium.com/coding-stones/clean-architecture-tour-2016-2017-90bb205d443c"}],
       "photos": [],
       "featured": false,
-      "description": "Clean Architecture applied to Android development. How to build an architecture that embraces change and postpones technical decisions."
+      "description": "How we applied Clean Architecture to an Android app, so it could adapt to change and postpone technical decisions. Part of our Coding Stones Clean Architecture tour (2016-2017)."
     },
     {
       "title": "DevOps: From the trenches to the boardroom",
@@ -193,7 +193,7 @@
       "slides": "https://codingstones.github.io/cas2016-devops/",
       "photos": [],
       "featured": false,
-      "description": "Bridging the gap between technical DevOps practices and organizational leadership."
+      "description": "With <a href=\"https://www.linkedin.com/in/nestorsalceda/\" target=\"_blank\" rel=\"noopener noreferrer\">Néstor Salceda</a>. Devs (vampires) and sysadmins (werewolves) have been at war forever, wasting their superpowers fighting each other. We broke down what it takes to deliver software, and looked at DevOps practices through the <strong>Lean Software Development principles</strong>. Then we put on our economist hats: risk, time to market, cost, value and debt. What does one hour of downtime cost your business?"
     }
   ],
   "workshops": [
@@ -209,7 +209,7 @@
       "links": [{"title": "𝕏 Twitter", "url": "https://x.com/jrubr/status/1073262158165757952"}],
       "photos": [],
       "featured": true,
-      "description": "Workshop co-facilitated with José A. Nieto on agile collaboration techniques: Example Mapping for refining user stories, Impact Mapping for business objectives, and User Story Mapping. Covered tools like Cucumber, TeamUp Labs, and Hiptest for living documentation and executable specifications."
+      "description": "Workshop with José A. Nieto, going from strategy to executable specs. We started with high-level maps like Impact Mapping, then moved to the product backlog with User Story Mapping, customer journeys included. The core of the workshop was a hands-on Example Mapping, with an airline that wants pets to fly in the cabin with their owners: for each story, which examples are valid and which aren't. Finally, those examples become acceptance tests in natural language with Gherkin and Cucumber. A living, executable product spec: tests go green as the examples are covered."
     },
     {
       "title": "Example Mapping workshop",
@@ -223,7 +223,7 @@
       "links": [{"title": "📅 Meetup", "url": "https://www.meetup.com/agilearagon/events/253027811/"}],
       "photos": [],
       "featured": true,
-      "description": "#NoEstimates practice: collaborative technique for breaking down user stories and discovering examples before development."
+      "description": "Hands-on Example Mapping: taking each user story and finding, as a team, the examples of what's valid and what isn't, before writing any code. The only useful part of estimating is the conversation around a feature. Example Mapping sparks that same conversation, and leaves examples that can become living tests. Hence the #NoEstimates angle."
     },
     {
       "title": "BDD, Specification by Example & Cucumber workshop",
@@ -251,7 +251,7 @@
       "links": [{"title": "📅 Meetup", "url": "https://www.meetup.com/agilearagon/events/268780252/"}],
       "photos": [],
       "featured": false,
-      "description": "Experiment combining coding katas with visual thinking techniques to explore different learning approaches."
+      "description": "A breakfast experiment combining coding katas with visual thinking, to explore how to learn better during the software lifecycle using learning science."
     },
     {
       "title": "Good Practices of BDD with Gherkin",
@@ -282,10 +282,10 @@
       ],
       "photos": [],
       "featured": false,
-      "description": "Facilitated Open Space session on #NoMeetings practices at Startup Open Space Zaragoza 2022."
+      "description": "Facilitated an Open Space session on #NoMeetings at Startup Open Space Zaragoza."
     },
     {
-      "title": "Organizational AI strategy",
+      "title": "Organizational AI strategy and adoption",
       "event": "SOSZ26 (Startup Open Space)",
       "location": "Zaragoza, Spain",
       "date": "2026-03-21",
@@ -296,7 +296,7 @@
       "links": [],
       "photos": [],
       "featured": false,
-      "description": "Facilitated Open Space session on Organizational AI strategy at Startup Open Space Zaragoza 2026."
+      "description": "Facilitated an Open Space session on how organizations approach AI strategy and adoption. People were still identifying and naming what's happening in our industry: the identity crisis of those who loved programming, or the mental exhaustion of constant context switching across more tasks, instead of getting into the state of flow."
     }
   ],
   "media": [
@@ -305,7 +305,7 @@
       "event": "Episode 47: #NoMeetings with Javier Rubio",
       "date": "2023-03-20",
       "featured": true,
-      "description": "In-depth interview on #NoMeetings philosophy, asynchronous work practices, remote collaboration strategies, and rethinking default meeting culture in distributed teams.",
+      "description": "In-depth interview, in Spanish, on #NoMeetings, async work and remote collaboration.",
       "links": [
         {"title": "🎙️ Listen on Spotify", "url": "https://open.spotify.com/episode/247Wbl9oyDMtJw0rstYMaz"},
         {"title": "🎙️ Listen on YouTube", "url": "https://www.youtube.com/watch?v=WBsX8eg78gQ"}
@@ -316,7 +316,7 @@
       "event": "The Coding Stones: alternative business models in tech",
       "date": "2017-11-28",
       "featured": true,
-      "description": "One-hour interview discussing the Coding Stones team origin, Agile and Extreme Programming practices, cooperative-style business philosophy, and approach to working as a small independent team. Co-interviewed with Dani Latorre.",
+      "description": "One-hour interview with Dani Latorre and me, by Antonio Cubillo, about Coding Stones: how we started as an independent team, how we work with clients and among ourselves, Agile and Extreme Programming, how we split the money cooperative-style, and why a small team doesn't need to scale.",
       "links": [
         {"title": "📻 Listen on iVoox", "url": "https://www.ivoox.com/22331413"},
         {"title": "📝 Medium article", "url": "https://medium.com/coding-stones/entrevista-en-pymes-y-trastos-35a18ba9a9af"},
@@ -328,7 +328,7 @@
       "event": "Telegram vs WhatsApp security",
       "date": "2014-02-10",
       "featured": false,
-      "description": "Radio segment discussing the security features of Telegram versus WhatsApp messaging platforms.",
+      "description": "Explaining Telegram vs WhatsApp security to a general audience, on Spanish national radio.",
       "links": [
         {"title": "📻 Listen on iVoox", "url": "https://www.ivoox.com/en/buscador-el-telegram-es-mas-seguro-que-audios-mp3_rf_2816918_1.html"},
         {"title": "📝 Official post", "url": "https://www.ondacero.es/podcast/programas/rosa-vientos/buscador/buscador-telegram-mas-seguro-que-whatsapp_201402105542f2ebd7fef20c58b78122.html"}
@@ -339,7 +339,7 @@
       "event": "The Cookie Law: what websites must tell you about tracking",
       "date": "2013-09-30",
       "featured": false,
-      "description": "Radio segment explaining the new Cookie Law and its implications for websites and users.",
+      "description": "Explaining the new Cookie Law to a general audience: what websites must tell you about tracking.",
       "links": [
         {"title": "📻 Listen", "url": "https://www.ivoox.com/en/buscador-la-realidad-cookies-audios-mp3_rf_2401549_1.html"}
       ]
@@ -348,13 +348,13 @@
   "communities": [
     {
       "title": "Agile Aragón",
-      "role": "Co-organizer",
+      "role": "Community lead",
       "organization": "Agile Aragón",
       "period": "2015 - 2023",
       "location": "Zaragoza, Spain",
       "website": "https://www.meetup.com/agilearagon/",
       "featured": true,
-      "description": "Co-organizer of the agile methodologies community in Aragón. Managed internal community operations, shared social media management, and facilitated workshops and activities.",
+      "description": "Local agile community in Aragón, Spain. I was part of the core organizer team for years, and facilitated events like the Friday Dojos, the Global Day of Code Retreat or the Birras Ágiles.",
       "links": [],
       "activities": [
         {
@@ -362,7 +362,7 @@
           "date": "2018-11-17",
           "role": "Facilitator",
           "link": "https://www.meetup.com/agilearagon/events/256114280/",
-          "description": "Facilitated the annual global event focused on practicing software craft through deliberate practice, hosted by Vueling."
+          "description": "Facilitated this yearly global day of deliberate practice. That year's edition was hosted by Vueling."
         },
         {
           "title": "Friday Dojos",
@@ -399,7 +399,7 @@
       "period": "2017",
       "location": "Zaragoza, Spain",
       "website": null,
-      "description": "Mentored speaker for the first Women TechMakers Zaragoza conference, helping prepare and support technical presentations.",
+      "description": "Mentored Patricia Heredia for her talk at the first Women TechMakers Zaragoza. She gave it together with Valeria Corrales, then a kid, now a well-known STEM influencer.",
       "links": [
         {
           "title": "𝕏 Twitter reference",
@@ -415,7 +415,7 @@
       "period": "2015",
       "location": "Zaragoza, Spain",
       "website": "http://senpaidevs.github.io/",
-      "description": "Professional mentoring program co-created with Daniel Latorre and Néstor Salceda to improve programming skills. Introduced methodologies and practices including XP, Software Craft, DevOps, Lean Software Development, and TDD. Invited industry professionals to give talks, including Ujúe Agudo from BikoLabs on general topics, Alberto Gualis on TDD, and Daniel Torres Burriel on UX.",
+      "description": "Mentoring program for developers, co-created with Daniel Latorre and Néstor Salceda: XP, Software Craft, DevOps, Lean and TDD. Guest speakers included Ujúe Agudo (BikoLabs), Alberto Gualis on TDD and Daniel Torres Burriel on UX.",
       "links": [
         {
           "title": "📝 Made in Zaragoza blog article",
@@ -435,7 +435,7 @@
       "period": "2014",
       "location": "Zaragoza, Spain",
       "website": null,
-      "description": "Won the Best Innovative Idea award at \"Jacathon 2014\" civic open data hackathon. web app visualizing Aragon's rural school clusters (CRAs) using Aragón Open Data datasets. Python (Flask), MySQL, Vagrant-provisioned dev environment. ",
+      "description": "Best Innovative Idea award at this civic open data hackathon. We built a web app mapping Aragón's rural school clusters (CRAs) from Aragón Open Data, with Python (Flask) and MySQL.",
       "links": [
         {
           "title": "📝 Medium article",
@@ -455,7 +455,7 @@
       "period": "Mar 2016",
       "location": "London, UK",
       "website": null,
-      "description": "Volunteer crew member helping with the organization of the 2016 QCon London Conference.",
+      "description": "Volunteer crew member at QCon London 2016.",
       "links": [],
       "activities": []
     },
@@ -466,7 +466,7 @@
       "period": "2013 - 2017",
       "location": "Zaragoza, Spain",
       "website": "https://zagaleshacklab.wordpress.com/",
-      "description": "Collaborator in a community introducing technology to children through hands-on activities and workshops.",
+      "description": "Introducing technology to kids through hands-on workshops.",
       "links": [],
       "activities": [
         {
@@ -494,12 +494,12 @@
     },
     {
       "title": "Hispalinux Aragón",
-      "role": "Regional Manager",
+      "role": "Regional lead",
       "organization": "Hispalinux",
       "period": "2013 - 2016",
       "location": "Zaragoza, Spain",
       "website": null,
-      "description": "Managed the Hispalinux headquarters in the Aragón region, organizing courses and talks about Open Source, and coordinating collaborations with local associations including PHP developer group, OSLUZ, Drupal camp, DotNetters, and Agile Aragón.",
+      "description": "Ran the association's venue in Aragón, with open source courses and talks for local communities: the PHP group, OSLUZ, Drupal Camp, DotNetters and Agile Aragón.",
       "links": [],
       "activities": []
     }
