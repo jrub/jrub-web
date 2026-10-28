@@ -236,11 +236,7 @@ const getYear = d => new Date(d).getFullYear();
                   <li class="talk"
                       data-section={!item.featured ? 'community' : undefined}
                       style={!item.featured ? 'display:none' : undefined}>
-                    <strong>
-                      {item.website
-                        ? <a href={item.website} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                        : item.title}
-                    </strong>
+                    <strong>{item.title}</strong>
                     <p class="talk-meta">{item.role} · {item.period} · {item.location}</p>
                     <div class="item-footer">
                       {item.description && (
@@ -249,11 +245,14 @@ const getYear = d => new Date(d).getFullYear();
                           <p set:html={item.description} />
                         </details>
                       )}
-                      {item.description && item.links.length > 0 && (
+                      {item.description && (item.website || item.links.length > 0) && (
                         <span class="item-sep" aria-hidden="true">·</span>
                       )}
-                      {item.links.length > 0 && (
+                      {(item.website || item.links.length > 0) && (
                         <span class="item-links">
+                          {item.website && (
+                            <a href={item.website} target="_blank" rel="noopener noreferrer">🌐 {new URL(item.website).hostname.replace(/^www\./, '')}</a>
+                          )}
                           {item.links.map(l => (
                             <a href={l.url} target="_blank" rel="noopener noreferrer">{l.title}</a>
                           ))}
