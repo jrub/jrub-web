@@ -116,12 +116,12 @@
       "event": "Software Crafters Barcelona",
       "location": "Barcelona, Spain",
       "date": "2023-10-07",
-      "language": "en",
+      "language": "es",
       "video": null,
       "slides": "/talks/SCBCN23-were-capitalists.pdf",
       "links": [
-        {"title": "𝕏 Twitter", "url": "https://x.com/bcnswcraft/status/1716023511272079501"},
-        {"title": "𝕏 Twitter (2)", "url": "https://x.com/bcnswcraft/status/1716023513268187489"}
+        {"title": "𝕏 Twitter", "url": "https://x.com/manelpnavarro/status/1716026721860784214"},
+        {"title": "𝕏 Twitter (2)", "url": "https://x.com/bcnswcraft/status/1716023511272079501"}
       ],
       "photos": [
         {
@@ -179,7 +179,7 @@
       "date": "2016-11-11",
       "language": "es",
       "video": "https://www.youtube.com/watch?v=1fs9DPdTKS8",
-      "slides": null,
+      "slides": "https://codingstones.github.io/cas2016-devops/",
       "photos": [],
       "featured": false,
       "description": "Bridging the gap between technical DevOps practices and organizational leadership."
