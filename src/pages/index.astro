@@ -124,7 +124,7 @@ const getYear = d => new Date(d).getFullYear();
                       {talk.description && (
                         <details class="item-description">
                           <summary>About this talk</summary>
-                          <p>{talk.description}</p>
+                          <p set:html={talk.description} />
                         </details>
                       )}
                       {talk.description && (talk.video || talk.slides || talk.links?.length > 0) && (
@@ -163,7 +163,7 @@ const getYear = d => new Date(d).getFullYear();
                       {item.description && (
                         <details class="item-description">
                           <summary>About this workshop</summary>
-                          <p>{item.description}</p>
+                          <p set:html={item.description} />
                         </details>
                       )}
                       {item.description && (item.video || item.slides || item.links.length > 0) && (
@@ -202,7 +202,7 @@ const getYear = d => new Date(d).getFullYear();
                       {item.description && (
                         <details class="item-description">
                           <summary>About this episode</summary>
-                          <p>{item.description}</p>
+                          <p set:html={item.description} />
                         </details>
                       )}
                       {item.description && item.links.length > 0 && (
@@ -243,7 +243,7 @@ const getYear = d => new Date(d).getFullYear();
                       {item.description && (
                         <details class="item-description">
                           <summary>About this</summary>
-                          <p>{item.description}</p>
+                          <p set:html={item.description} />
                         </details>
                       )}
                       {item.description && item.links.length > 0 && (
