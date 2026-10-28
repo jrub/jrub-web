@@ -696,6 +696,8 @@ const displayUrl = url => {
     color: var(--color-turquoise);
     cursor: pointer;
     user-select: none;
+    /* Mobile browsers flash a blue box across the whole row on tap */
+    -webkit-tap-highlight-color: transparent;
   }
 
   .item-description summary:hover {
