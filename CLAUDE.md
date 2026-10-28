@@ -38,7 +38,7 @@ Personal website for Javi Rubio — software engineer, technical writer, and eng
 ### Visual Design
 - Minimalist aesthetic inspired by francesc.net, danilat.com, myowncommonsense.com, decrevel.dev
 - Large, readable text with clear hierarchy; generous whitespace; mobile-first responsive
-- **Animations:** Minimal. The photo carousel (`fadeSlide`) and profile photo `fadeIn` are intentional design choices — do NOT propose removing them. Only add new animations if explicitly requested.
+- **Animations:** Minimal. The photo carousel (`fadeSlide`) and profile photo `fadeIn` are intentional design choices — do NOT propose removing them. Only add new animations if explicitly requested. Hover transitions (underline drawn left to right, buttons filling) are short and only run under `prefers-reduced-motion: no-preference`.
 - Accessible: semantic HTML, keyboard navigation, proper ARIA labels
 
 ### Site Language
@@ -66,6 +66,8 @@ Personal website for Javi Rubio — software engineer, technical writer, and eng
 ├── src/
 │   ├── assets/
 │   │   └── photos/          # Conference/event photos (Astro-optimized)
+│   ├── components/
+│   │   └── IconLink.astro   # Emoji + label link (only the label is underlined)
 │   ├── data/
 │   │   └── speaking.json    # All speaking/community data
 │   ├── layouts/
@@ -95,7 +97,7 @@ Each item supports:
 - `featured: boolean` — Show by default vs. hidden until "Show all"
 - `language: "en"|"es"` — Event language (shown as badge)
 - `photos[]` — Array of `{ src, caption }` objects
-- `links[]` — Additional references
+- `links[]` — Additional references. Titles start with an emoji and a space (`"📝 LinkedIn post"`): the template splits them so the emoji is never underlined
 - `description` — Rendered as HTML, so it can carry inline `<strong>` or `<a>` tags
 
 **To add new content:** update `speaking.json` only. No code changes needed (data-driven). Add photos to `src/assets/photos/`.
