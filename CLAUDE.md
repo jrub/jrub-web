@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Personal website for Javi Rubio — software engineer, speaker, and techno-activist. Single-page landing focused on legitimacy, presence, and showcasing speaking/community work. Built with simplicity and maintainability as core principles.
+Personal website for Javi Rubio — software engineer, technical writer, and engineering leader. Single-page landing focused on legitimacy, presence, and showcasing speaking/community work. Built with simplicity and maintainability as core principles.
 
 - **Live site:** https://javirubio.net
 - **Repository:** https://github.com/jrub/jrub-web
