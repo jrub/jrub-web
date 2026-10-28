@@ -102,34 +102,21 @@ test.describe('Speaking Section Layout Requirements', () => {
   });
 
   /**
-   * REQUIREMENT 3: Talks list must use available width effectively
+   * REQUIREMENT 3: Talks list wraps around the carousel, not beside it
    *
-   * Validation: talks.width >= containerWidth * threshold
-   * Why: Ensures text uses the space not occupied by the carousel
-   *
-   * Thresholds:
-   * - Desktop: >= 50% (carousel takes ~30%, margins take ~10%, text takes 50%+)
-   * - Mobile: >= 40% (carousel floats right at 180px, text wraps beside it)
+   * Validation: talks.right ≈ container.right
+   * Why: A block list spans the full width and only its lines get shorter
+   * next to the float. A flex (or any new formatting context) list sits
+   * beside the carousel as a narrow column along its whole height, so
+   * titles wrap even below the carousel, where there is room.
    */
-  test('talks list uses available width', async ({ page }) => {
+  test('talks list wraps around the carousel', async ({ page }) => {
     const talks = await getBoundingBox(page, '.talks-list-inline');
     const container = await getBoundingBox(page, '#speaking');
 
-    const usagePercent = (talks.width / container.width) * 100;
-    console.log(`Talks width usage: ${usagePercent.toFixed(1)}%`);
+    console.log(`Talks right: ${talks.right.toFixed(0)}, Container right: ${container.right.toFixed(0)}`);
 
-    // Get viewport width to determine mobile vs desktop
-    const viewport = page.viewportSize();
-    const isMobile = viewport.width < 768;
-
-    if (isMobile) {
-      // Mobile: talks should use the available width (after carousel float)
-      // At least 40% of container (since carousel takes up ~50%)
-      expect(talks.width).toBeGreaterThanOrEqual(container.width * 0.40);
-    } else {
-      // Desktop: talks should use at least half the width
-      expect(talks.width).toBeGreaterThanOrEqual(container.width * 0.50);
-    }
+    expect(Math.abs(container.right - talks.right)).toBeLessThan(10);
   });
 
   /**
