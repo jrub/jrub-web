@@ -48,8 +48,9 @@ const getYear = d => new Date(d).getFullYear();
         Known for advocating <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>: healthier remote work, with fewer meetings and better async collaboration. Because the most effective way to change how people behave is to change the system they are in, turning better ways of working into the <strong>path of least resistance</strong>.
       </p>
       <p class="intro">
-        I'm <strong>now looking for my next job</strong>, and always happy to speak at conferences and companies. <a href="#contact">Get in touch →</a>
+        I'm <strong>now looking for my next job</strong>, and always happy to speak at conferences and companies.
       </p>
+      <p class="cta"><a href="#contact">Get in touch →</a></p>
     </section>
 
     <section id="speaking" class="speaking-section">
@@ -434,6 +435,22 @@ const getYear = d => new Date(d).getFullYear();
     content: "";
     display: table;
     clear: both;
+  }
+
+  .cta a {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    border: 2px solid var(--color-magenta);
+    border-radius: 999px;
+    color: var(--color-magenta);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .cta a:hover {
+    background: var(--color-magenta);
+    color: var(--color-white);
+    text-decoration: none;
   }
 
   .speaking-section h2 {
