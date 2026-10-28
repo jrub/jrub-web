@@ -104,9 +104,9 @@ Each item supports:
 
 ### Site Structure (Single Page)
 1. **Hero:** Name + profile photo + typed roles
-2. **About:** Bio (3 paragraphs)
-3. **Speaking & Community:** JSON-driven sections
-   - Tech Conference Talks (with hero photo carousel)
+2. **About:** Bio + "Get in touch" button
+3. **Speaking & Community:** JSON-driven sections, each with its own h2 (no section title)
+   - Public Speaking (talks, with hero photo carousel)
    - Workshops & Facilitation
    - Podcasts & Radio
    - Tech Communities

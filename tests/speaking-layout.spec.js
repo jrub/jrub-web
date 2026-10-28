@@ -157,7 +157,6 @@ test.describe('Speaking Section Layout Requirements', () => {
   test('complete layout spatial validation', async ({ page }) => {
     const carousel = await getBoundingBox(page, '.photo-carousel');
     const title = await getBoundingBox(page, '#speaking h2');
-    const intro = await getBoundingBox(page, '#speaking .section-intro');
     const talks = await getBoundingBox(page, '.talks-list-inline');
     const container = await getBoundingBox(page, '#speaking');
 
@@ -174,9 +173,8 @@ test.describe('Speaking Section Layout Requirements', () => {
       const distanceFromRight = container.right - carousel.right;
       expect(distanceFromRight, 'Carousel should be close to right edge').toBeLessThan(100);
 
-      // 3. Title and intro should start from the left (allowing container padding)
+      // 3. Title should start from the left (allowing container padding)
       expect(title.left, 'Title should start from left').toBeLessThan(carousel.left);
-      expect(intro.left, 'Intro should start from left').toBeLessThan(carousel.left);
     }
 
     // 4. Talks list starts from the left edge of container

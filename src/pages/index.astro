@@ -48,14 +48,15 @@ const getYear = d => new Date(d).getFullYear();
         Known for advocating <a href="https://nomeetings.work" target="_blank" rel="noopener noreferrer"><strong>#NoMeetings</strong></a>: healthier remote work, with fewer meetings and better async collaboration. Because the most effective way to change how people behave is to change the system they are in, turning better ways of working into the <strong>path of least resistance</strong>.
       </p>
       <p class="intro">
+        Teaching is my second vocation. I've done it at university, in mentoring programs and tech communities, coaching engineering teams and speaking at conferences.
+      </p>
+      <p class="intro">
         I'm <strong>now looking for my next job</strong>, and always happy to speak at conferences and companies.
       </p>
       <p class="cta"><a href="#contact">Get in touch →</a></p>
     </section>
 
     <section id="speaking" class="speaking-section">
-      <h2>Public Speaking &amp; Tech Communities</h2>
-      <p class="section-intro">Teaching is my second vocation. I've done it at university, in mentoring programs and tech communities, coaching engineering teams and speaking at conferences.</p>
 
       <div class="photo-carousel">
         <div aria-hidden="true">
@@ -116,7 +117,7 @@ const getYear = d => new Date(d).getFullYear();
       </dialog>
 
       <div class="subsection">
-        <h3>Tech Conference Talks</h3>
+        <h2>Public Speaking</h2>
         <ul class="talks-list-inline">
           {talks.map(talk => (
                   <li class="talk"
@@ -155,7 +156,7 @@ const getYear = d => new Date(d).getFullYear();
       </div>
 
       <div class="subsection">
-        <h3>Workshops &amp; Facilitation</h3>
+        <h2>Workshops &amp; Facilitation</h2>
         <ul class="talks-list-inline">
           {workshops.map(item => (
                   <li class="talk"
@@ -194,7 +195,7 @@ const getYear = d => new Date(d).getFullYear();
       </div>
 
       <div class="subsection">
-        <h3>Podcasts &amp; Radio interviews</h3>
+        <h2>Podcasts &amp; Radio interviews</h2>
         <ul class="talks-list-inline">
           {media.map(item => (
                   <li class="talk"
@@ -231,7 +232,7 @@ const getYear = d => new Date(d).getFullYear();
       </div>
 
       <div class="subsection">
-        <h3>Tech Communities</h3>
+        <h2>Tech Communities</h2>
         <ul class="talks-list-inline">
           {communities.map(item => (
                   <li class="talk"
@@ -453,18 +454,6 @@ const getYear = d => new Date(d).getFullYear();
     text-decoration: none;
   }
 
-  .speaking-section h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 0.75rem;
-  }
-
-  .section-intro {
-    font-size: 1.05rem;
-    color: var(--color-black);
-    margin-bottom: 1.5rem;
-  }
-
   .photo-carousel {
     float: right;
     width: 360px;
@@ -632,10 +621,14 @@ const getYear = d => new Date(d).getFullYear();
     margin-top: 3rem;
   }
 
-  .subsection h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-black);
+  /* The first block opens the section, which already has its own spacing */
+  .lightbox + .subsection {
+    margin-top: 0;
+  }
+
+  .subsection h2 {
+    font-size: 1.75rem;
+    font-weight: 400;
     border-bottom: 1px solid var(--color-gray-light);
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
